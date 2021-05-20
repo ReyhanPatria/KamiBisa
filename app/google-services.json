@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "169906913154",
+    "project_id": "kamibisa-5c12d",
+    "storage_bucket": "kamibisa-5c12d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169906913154:android:684f5c9a4bc39b4bcc599b",
+        "android_client_info": {
+          "package_name": "com.example.kamibisa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "169906913154-itc55dkkapngugnat2hciflohcv5jtk3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMcqb-gJ_IIsOwa5mQ6eCIgSwPm1SiGDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "169906913154-itc55dkkapngugnat2hciflohcv5jtk3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

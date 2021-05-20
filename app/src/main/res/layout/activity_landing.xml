@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.view.activity.LandingActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingVertical="60dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_landing_sign_in"
+        android:layout_width="213dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="500dp"
+        android:text="Sign In"
+        android:textSize="24sp"
+        app:backgroundTint="@color/primary_light_blue"
+        app:cornerRadius="50dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ALREADY HAVE AN ACCOUNT?"
+            android:textSize="13sp"
+            android:textColor="@color/pink"/>
+
+        <TextView
+            android:id="@+id/tv_landing_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="LOG IN"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/pink"/>
+    </LinearLayout>
+
+</LinearLayout>

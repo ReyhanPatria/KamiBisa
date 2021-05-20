@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.view.activity.RegisterDataActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingVertical="25dp"
+    android:paddingHorizontal="39dp"
+    android:background="@color/primary_blue">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_login_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_back_button" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="54dp"
+                android:text="CREATE\nACCOUNT"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:gravity="bottom"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="37dp">
+
+        <EditText
+            android:id="@+id/edt_register_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_marginVertical="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:background="@color/transparent_0.25"/>
+
+        <EditText
+            android:id="@+id/edt_register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:layout_marginVertical="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:background="@color/transparent_0.25"/>
+
+        <EditText
+            android:id="@+id/edt_register_dob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date of Birth"
+            android:inputType="date"
+            android:focusable="false"
+            android:padding="10dp"
+            android:layout_marginVertical="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:background="@color/transparent_0.25"/>
+
+        <EditText
+            android:id="@+id/edt_register_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:padding="10dp"
+            android:layout_marginVertical="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:background="@color/transparent_0.25"/>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_register_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="107dp"
+        android:backgroundTint="@color/white"
+        android:paddingVertical="11dp"
+        android:paddingHorizontal="49dp"
+        android:text="Next"
+        android:textSize="24sp"
+        android:textColor="@color/pink"
+        app:cornerRadius="50dp"/>
+
+</LinearLayout>
