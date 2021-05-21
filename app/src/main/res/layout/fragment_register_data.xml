@@ -21,7 +21,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/btn_login_back"
+                android:id="@+id/btn_register_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_back_button" />
@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="54dp"
-                android:text="THE\nFRAGMENT"
+                android:text="CREATE\nACCOUNT"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"

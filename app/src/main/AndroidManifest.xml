@@ -9,9 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KamiBisa">
-        <activity android:name=".ui.view.activity.RegisterActivity"></activity>
-        <activity android:name=".ui.view.activity.LoginActivity"/>
-        <activity android:name=".ui.view.activity.RegisterPasswordActivity"/>
+        <activity android:name=".ui.view.activity.RegisterActivity" />
+        <activity android:name=".ui.view.activity.LoginActivity" />
         <activity android:name=".ui.view.activity.LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

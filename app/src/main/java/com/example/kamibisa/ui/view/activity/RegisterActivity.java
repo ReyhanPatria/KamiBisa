@@ -20,8 +20,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        registerDataFragment = new RegisterDataFragment();
-        registerPasswordFragment = new RegisterPasswordFragment();
+        registerDataFragment = RegisterDataFragment.newInstance();
+        registerPasswordFragment = RegisterPasswordFragment.newInstance();
 
         this.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_fragment, registerDataFragment)

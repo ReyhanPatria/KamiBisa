@@ -2,13 +2,20 @@ package com.example.kamibisa.ui.view.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.kamibisa.R;
+import com.example.kamibisa.ui.view.activity.RegisterActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,50 +24,66 @@ import com.example.kamibisa.R;
  */
 public class RegisterPasswordFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public static String TAG = "RegisterPasswordFragment";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private View rootView;
+
+    private EditText passwordEditText;
+    private EditText verifyPasswordEditText;
+    private Button nextButton;
+    private ImageButton backButton;
 
     public RegisterPasswordFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RegisterPasswordFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RegisterPasswordFragment newInstance(String param1, String param2) {
+    public static RegisterPasswordFragment newInstance() {
         RegisterPasswordFragment fragment = new RegisterPasswordFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_password, container, false);
+        rootView = inflater.inflate(R.layout.fragment_register_password, container, false);
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initializeViewWidgets();
+    }
+
+    private void initializeViewWidgets() {
+        // Gets all widgets
+        passwordEditText = rootView.findViewById(R.id.edt_register_password);
+        verifyPasswordEditText = rootView.findViewById(R.id.edt_register_verify_password);
+        nextButton = rootView.findViewById(R.id.btn_register_next);
+        backButton = rootView.findViewById(R.id.btn_register_back);
+
+        // Set OnClickListeners
+        // Set next button to TODO
+        nextButton.setOnClickListener(v -> {
+            // TODO: Registers the user and route it to homepage
+        });
+
+        backButton.setOnClickListener(v -> {
+            this.getActivity().getSupportFragmentManager()
+                    .popBackStack();
+
+            Log.d(TAG, String.valueOf(getActivity().getSupportFragmentManager().getBackStackEntryCount()));
+
+            this.getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fl_fragment, ((RegisterActivity) getActivity()).getRegisterDataFragment())
+                    .commit();
+        });
     }
 }
