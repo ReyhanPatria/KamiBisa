@@ -16,15 +16,11 @@ public class LandingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landing);
 
         MaterialButton signInButton = this.findViewById(R.id.btn_landing_sign_in);
-        signInButton.setOnClickListener(v -> {
-            startActivity(new Intent(LandingActivity.this, RegisterActivity.class));
-            finish();
-        });
+        signInButton.setOnClickListener(v ->
+                startActivity(new Intent(LandingActivity.this, RegisterActivity.class)));
 
         TextView loginLink = this.findViewById(R.id.tv_landing_login);
-        loginLink.setOnClickListener(v -> {
-            startActivity(new Intent(LandingActivity.this, LoginActivity.class));
-            finish();
-        });
+        loginLink.setOnClickListener(v ->
+                startActivity(new Intent(LandingActivity.this, LoginActivity.class)));
     }
 }
