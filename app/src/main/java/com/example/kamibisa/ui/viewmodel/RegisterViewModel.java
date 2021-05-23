@@ -1,5 +1,7 @@
 package com.example.kamibisa.ui.viewmodel;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -36,10 +38,6 @@ public class RegisterViewModel extends ViewModel {
         return instance;
     }
 
-    public void insertUserData(User user) {
-        userRepository.insertUserData(user);
-    }
-
     public void registerUser(User user, String password) {
         this.isUpdating.setValue(Boolean.TRUE);
 
@@ -48,11 +46,32 @@ public class RegisterViewModel extends ViewModel {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         isUpdating.setValue(Boolean.FALSE);
+
+                        if(task.isSuccessful()) {
+                            user.setFirebaseUser(task.getResult().getUser());
+                            insertUserData(user);
+                        }
+                        else {
+                            isEmailUsed.setValue(Boolean.TRUE);
+                        }
+                    }
+                });
+    }
+
+    public void insertUserData(User user) {
+        this.isRegisterComplete.setValue(Boolean.TRUE);
+
+        userRepository.insertUserData(user)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        isUpdating.setValue(Boolean.FALSE);
+
                         if(task.isSuccessful()) {
                             isRegisterComplete.setValue(Boolean.TRUE);
                         }
                         else {
-                            isEmailUsed.setValue(Boolean.TRUE);
+                            Log.e(TAG, "Error encouteres when saving user data");
                         }
                     }
                 });

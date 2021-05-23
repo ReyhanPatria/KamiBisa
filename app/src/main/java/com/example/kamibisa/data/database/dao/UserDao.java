@@ -13,9 +13,9 @@ public class UserDao {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    public void insertUserData(User user) {
+    public Task<Void> insertUserData(User user) {
         String id = user.getFirebaseUser().getUid();
-        FirebaseFirestore.getInstance()
+        return FirebaseFirestore.getInstance()
                 .collection("users")
                 .document(id)
                 .set(user);

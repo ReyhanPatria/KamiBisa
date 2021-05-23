@@ -21,8 +21,8 @@ public class UserRepository {
         return instance;
     }
 
-    public void insertUserData(User user) {
-        userDao.insertUserData(user);
+    public Task<Void> insertUserData(User user) {
+        return userDao.insertUserData(user);
     }
 
     public Task<AuthResult> registerUser(User user, String password) {
