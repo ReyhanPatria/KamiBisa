@@ -9,12 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KamiBisa">
-        <activity android:name=".ui.view.activity.LoginActivity"></activity>
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".ui.view.activity.RegisterPasswordActivity" />
-        <activity android:name=".ui.view.activity.RegisterDataActivity" />
+        <activity android:name=".ui.view.activity.HomeActivity"></activity>
+        <activity android:name=".ui.view.activity.RegisterActivity" />
+        <activity android:name=".ui.view.activity.LoginActivity" />
         <activity android:name=".ui.view.activity.LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

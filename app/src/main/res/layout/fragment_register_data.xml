@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.activity.RegisterDataActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.view.fragment.RegisterDataFragment"
     android:orientation="vertical"
     android:gravity="center"
     android:paddingVertical="25dp"
@@ -22,7 +21,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/btn_login_back"
+                android:id="@+id/btn_register_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_back_button" />
@@ -37,6 +36,7 @@
                 android:textColor="@color/white"
                 android:gravity="bottom"/>
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -93,6 +93,7 @@
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:background="@color/transparent_0.25"/>
+
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
