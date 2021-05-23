@@ -29,6 +29,10 @@ public class UserRepository {
         return userDao.registerUser(user, password);
     }
 
+    public Task<AuthResult> login(String email, String password) {
+        return userDao.login(email, password);
+    }
+
     public UserDao getUserDao() {
         return userDao;
     }

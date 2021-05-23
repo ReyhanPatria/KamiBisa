@@ -26,6 +26,10 @@ public class UserDao {
         return firebaseAuth.createUserWithEmailAndPassword(email, password);
     }
 
+    public Task<AuthResult> login(String email, String password) {
+        return firebaseAuth.signInWithEmailAndPassword(email, password);
+    }
+
     public FirebaseAuth getFirebaseAuth() {
         return firebaseAuth;
     }
