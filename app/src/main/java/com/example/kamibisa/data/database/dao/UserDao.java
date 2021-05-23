@@ -1,13 +1,6 @@
 package com.example.kamibisa.data.database.dao;
 
-import android.app.Activity;
-import android.app.Application;
-import android.os.AsyncTask;
-
-import androidx.annotation.NonNull;
-
 import com.example.kamibisa.data.model.User;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;

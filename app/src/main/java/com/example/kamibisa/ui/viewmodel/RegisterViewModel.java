@@ -1,7 +1,5 @@
 package com.example.kamibisa.ui.viewmodel;
 
-import android.app.Activity;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -13,17 +11,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
 public class RegisterViewModel extends ViewModel {
+    public static String TAG = "RegisterViewModel";
+
     private static RegisterViewModel instance;
 
     private UserRepository userRepository;
 
     private MutableLiveData<Boolean> isUpdating;
     private MutableLiveData<Boolean> isRegisterComplete;
+    private MutableLiveData<Boolean> isEmailUsed;
 
     public RegisterViewModel(UserRepository userRepository) {
         this.userRepository = userRepository;
         this.isUpdating = new MutableLiveData<Boolean>(Boolean.FALSE);
         this.isRegisterComplete = new MutableLiveData<Boolean>(Boolean.FALSE);
+        this.isEmailUsed = new MutableLiveData<Boolean>(Boolean.FALSE);
     }
 
     public static RegisterViewModel getInstance(UserRepository userRepository) {
@@ -46,7 +48,12 @@ public class RegisterViewModel extends ViewModel {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         isUpdating.setValue(Boolean.FALSE);
-                        isRegisterComplete.setValue(Boolean.TRUE);
+                        if(task.isSuccessful()) {
+                            isRegisterComplete.setValue(Boolean.TRUE);
+                        }
+                        else {
+                            isEmailUsed.setValue(Boolean.TRUE);
+                        }
                     }
                 });
     }
@@ -57,5 +64,9 @@ public class RegisterViewModel extends ViewModel {
 
     public MutableLiveData<Boolean> getIsRegisterComplete() {
         return isRegisterComplete;
+    }
+
+    public MutableLiveData<Boolean> getIsEmailUsed() {
+        return isEmailUsed;
     }
 }

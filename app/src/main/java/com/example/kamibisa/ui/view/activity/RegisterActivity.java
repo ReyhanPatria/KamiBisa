@@ -1,18 +1,16 @@
 package com.example.kamibisa.ui.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.User;
@@ -21,8 +19,6 @@ import com.example.kamibisa.ui.view.fragment.RegisterPasswordFragment;
 import com.example.kamibisa.ui.viewmodel.RegisterViewModel;
 import com.example.kamibisa.ui.viewmodel.factory.RegisterViewModelFactory;
 import com.example.kamibisa.utils.InjectionUtilities;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 
 public class RegisterActivity extends AppCompatActivity {
     public static final String TAG = "RegisterActivity";
@@ -88,6 +84,20 @@ public class RegisterActivity extends AppCompatActivity {
                     Intent newIntent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(newIntent);
                     finish();
+                }
+            }
+        });
+
+        // Observe changes to isEmailUsed variable
+        registerViewModel.getIsEmailUsed().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean) {
+                    Toast.makeText(
+                            RegisterActivity.this,
+                            "Email has been used",
+                            Toast.LENGTH_SHORT
+                    ).show();
                 }
             }
         });
