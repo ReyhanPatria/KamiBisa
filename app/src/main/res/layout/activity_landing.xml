@@ -11,11 +11,11 @@
     android:paddingVertical="60dp">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_landing_sign_in"
+        android:id="@+id/btn_landing_register"
         android:layout_width="213dp"
         android:layout_height="56dp"
         android:layout_marginTop="500dp"
-        android:text="Sign In"
+        android:text="REGISTER"
         android:textSize="24sp"
         app:backgroundTint="@color/primary_light_blue"
         app:cornerRadius="50dp"/>

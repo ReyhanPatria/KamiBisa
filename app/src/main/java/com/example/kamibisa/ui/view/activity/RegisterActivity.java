@@ -82,6 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onChanged(Boolean aBoolean) {
                 if(aBoolean) {
                     Intent newIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                    newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(newIntent);
                     finish();
                 }

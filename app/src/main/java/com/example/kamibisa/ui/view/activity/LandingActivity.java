@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kamibisa.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LandingActivity extends AppCompatActivity {
     @Override
@@ -15,8 +16,16 @@ public class LandingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
-        MaterialButton signInButton = this.findViewById(R.id.btn_landing_sign_in);
-        signInButton.setOnClickListener(v ->
+        // If a user is already logged in, switch to HomeActivity
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+            Intent newIntent = new Intent(this, HomeActivity.class);
+            newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(newIntent);
+            finish();
+        }
+        
+        MaterialButton registerButton = this.findViewById(R.id.btn_landing_register);
+        registerButton.setOnClickListener(v ->
                 startActivity(new Intent(LandingActivity.this, RegisterActivity.class)));
 
         TextView loginLink = this.findViewById(R.id.tv_landing_login);
