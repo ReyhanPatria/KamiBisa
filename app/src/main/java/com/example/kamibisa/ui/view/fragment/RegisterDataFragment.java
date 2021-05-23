@@ -1,5 +1,7 @@
 package com.example.kamibisa.ui.view.fragment;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,21 +15,28 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.kamibisa.R;
+import com.example.kamibisa.data.model.User;
+import com.example.kamibisa.ui.view.activity.HomeActivity;
 import com.example.kamibisa.ui.view.activity.RegisterActivity;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.time.Instant;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link RegisterDataFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RegisterDataFragment extends Fragment {
-
-    public static String TAG = "RegisterDataFragment";
+public class RegisterDataFragment extends Fragment implements View.OnClickListener {
+    public static final String TAG = "RegisterDataFragment";
 
     private View rootView;
 
@@ -37,6 +46,8 @@ public class RegisterDataFragment extends Fragment {
     private EditText phoneEditText;
     private Button nextButton;
     private ImageButton backButton;
+
+    private MaterialDatePicker dobPicker;
 
     public RegisterDataFragment() {
         // Required empty public constructor
@@ -64,6 +75,7 @@ public class RegisterDataFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initializeViewWidgets();
+        setOnClickListeners();
     }
 
     private void initializeViewWidgets() {
@@ -76,28 +88,87 @@ public class RegisterDataFragment extends Fragment {
         backButton = rootView.findViewById(R.id.btn_register_back);
 
         // Create dob picker
-        MaterialDatePicker dobPicker = createDobPicker();
+        dobPicker = createDobPicker();
+    }
 
-        // Set OnClickListeners
-        // Set date picker to show up on click
-        dobEditText.setOnClickListener(v -> {
-            dobPicker.show(getActivity().getSupportFragmentManager(), dobPicker.toString());
-        });
+    private void setOnClickListeners() {
+        nextButton.setOnClickListener(this);
+        backButton.setOnClickListener(this);
+        dobEditText.setOnClickListener(this);
+    }
 
-        // Set next button to go to RegisterPasswordActivity
-        nextButton.setOnClickListener(v -> {
-            this.getActivity().getSupportFragmentManager()
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()) {
+            case R.id.btn_register_back:
+                this.requireActivity().finish();
+                break;
+
+            case R.id.btn_register_next:
+                setUserData();
+                break;
+
+            case R.id.edt_register_dob:
+                dobPicker.show(
+                        requireActivity().getSupportFragmentManager(),
+                        dobPicker.toString()
+                );
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void setUserData() {
+        // Get user data
+        String username = usernameEditText.getText().toString();
+        String email = emailEditText.getText().toString();
+        Date dob = Date.from(Instant.now());
+        String phone = phoneEditText.getText().toString();
+
+        Log.d(TAG, dob.toString());
+
+        // Try to parse dob into Date object
+        try {
+            dob = DateFormat.getDateInstance(DateFormat.MEDIUM).parse(dobEditText.getText().toString());
+        }
+        catch(ParseException e) {
+            Log.e(TAG, e.getMessage());
+        }
+
+        Log.d(TAG, dob.toString());
+
+        String warningMessage = "";
+
+        if(!User.validateEmail(email)) {
+            warningMessage = "Email is not valid";
+        }
+        else if(!User.validateDob(dob)) {
+            warningMessage = "Date of birth is not valid";
+        }
+        else if(!User.validatePhone(phone)) {
+            warningMessage = "Phone number is not valid";
+        }
+        else {
+            // Create new user object
+            User newUser = new User(username, email, dob, phone);
+
+            // Saves user data into RegisterActivity
+            ((RegisterActivity) this.requireActivity()).setNewUser(newUser);
+
+            // Switch to RegisterPasswordActivity
+            this.requireActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fl_fragment, ((RegisterActivity) getActivity()).getRegisterPasswordFragment())
+                    .replace(R.id.fl_register_fragment, ((RegisterActivity) requireActivity()).getRegisterPasswordFragment())
                     .addToBackStack(this.getClass().getName())
                     .commit();
 
-            Log.d(TAG, String.valueOf(getActivity().getSupportFragmentManager().getBackStackEntryCount()));
-        });
+            return;
+        }
 
-        backButton.setOnClickListener(v -> {
-            this.getActivity().finish();
-        });
+        Toast.makeText(requireContext(), warningMessage, Toast.LENGTH_SHORT).show();
     }
 
     private MaterialDatePicker createDobPicker() {

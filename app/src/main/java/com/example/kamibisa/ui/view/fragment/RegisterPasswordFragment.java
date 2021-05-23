@@ -1,20 +1,22 @@
 package com.example.kamibisa.ui.view.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.kamibisa.R;
+import com.example.kamibisa.data.model.User;
 import com.example.kamibisa.ui.view.activity.RegisterActivity;
 
 /**
@@ -22,9 +24,8 @@ import com.example.kamibisa.ui.view.activity.RegisterActivity;
  * Use the {@link RegisterPasswordFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RegisterPasswordFragment extends Fragment {
-
-    public static String TAG = "RegisterPasswordFragment";
+public class RegisterPasswordFragment extends Fragment implements View.OnClickListener {
+    public static final String TAG = "RegisterPasswordFragment";
 
     private View rootView;
 
@@ -59,31 +60,69 @@ public class RegisterPasswordFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initializeViewWidgets();
+        setOnClickListeners();
     }
 
     private void initializeViewWidgets() {
-        // Gets all widgets
         passwordEditText = rootView.findViewById(R.id.edt_register_password);
         verifyPasswordEditText = rootView.findViewById(R.id.edt_register_verify_password);
         nextButton = rootView.findViewById(R.id.btn_register_next);
         backButton = rootView.findViewById(R.id.btn_register_back);
+    }
 
-        // Set OnClickListeners
-        // Set next button to TODO
-        nextButton.setOnClickListener(v -> {
-            // TODO: Registers the user and route it to homepage
-        });
+    private void setOnClickListeners() {
+        nextButton.setOnClickListener(this);
+        backButton.setOnClickListener(this);
+    }
 
-        backButton.setOnClickListener(v -> {
-            this.getActivity().getSupportFragmentManager()
-                    .popBackStack();
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()) {
+            case R.id.btn_register_next:
+                registerUser();
+                break;
 
-            Log.d(TAG, String.valueOf(getActivity().getSupportFragmentManager().getBackStackEntryCount()));
+            default:
+                backToDataFragment();
+                break;
+        }
+    }
 
-            this.getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fl_fragment, ((RegisterActivity) getActivity()).getRegisterDataFragment())
-                    .commit();
-        });
+    private void registerUser() {
+        String password = passwordEditText.getText().toString();
+        String verifyPassword = verifyPasswordEditText.getText().toString();
+
+        String warningMessage = "";
+
+        // Validate input fields
+        if(!User.validatePasswordLength(password)) {
+            warningMessage = "Password must  be 10-14 characters long";
+        }
+        else if(!User.verifyPassword(password, verifyPassword)) {
+            warningMessage = "Password is not the same";
+        }
+        else if(!User.validatePasswordHasDigit(password)) {
+            warningMessage = "Password must contain a number";
+        }
+        else {
+            // Register user
+            ((RegisterActivity) this.requireActivity()).registerUser(password);
+
+            return;
+        }
+
+        // Show warning message if input fields are wrong
+        Toast.makeText(requireContext(), "", Toast.LENGTH_SHORT).show();
+    }
+
+    private void backToDataFragment() {
+        this.requireActivity().getSupportFragmentManager()
+                .popBackStack();
+
+        this.getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fl_register_fragment, ((RegisterActivity) getActivity()).getRegisterDataFragment())
+                .commit();
     }
 }

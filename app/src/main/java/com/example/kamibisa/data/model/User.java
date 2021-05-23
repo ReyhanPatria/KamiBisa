@@ -88,15 +88,17 @@ public class User {
         return (10 <= len && len <= 14);
     }
 
-    public static Boolean validatePassword(String password, String verifyPassword) {
-        boolean hasDigit = false;
+    public static Boolean validatePasswordHasDigit(String password) {
         for(char c: password.toCharArray()) {
             if(Character.isDigit(c)) {
-                hasDigit = true;
-                break;
+                return true;
             }
         }
-        return (password.equals(verifyPassword) && validatePasswordLength(password) && hasDigit);
+        return false;
+    }
+
+    public static Boolean verifyPassword(String password, String verifyPassword) {
+        return password.equals(verifyPassword);
     }
 
     public static Boolean validateEmail(String email) {
@@ -106,7 +108,8 @@ public class User {
     public static Boolean validateDob(Date dob) {
         boolean isValid = false;
         try {
-            Date today = DateFormat.getDateInstance().parse(Date.from(Instant.now()).toString());
+            String todayString = DateFormat.getDateInstance().format(Date.from(Instant.now()));
+            Date today = DateFormat.getDateInstance().parse(todayString);
             isValid = dob.before(today);
         }
         catch(ParseException e) {
