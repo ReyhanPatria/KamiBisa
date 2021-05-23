@@ -1,5 +1,7 @@
 package com.example.kamibisa.ui.viewmodel;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -17,6 +19,7 @@ public class LoginViewModel extends ViewModel {
     private UserRepository userRepository;
 
     private MutableLiveData<Boolean> isUpdating;
+    private MutableLiveData<Boolean> isLoginCompleted;
 
     public LoginViewModel(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -32,17 +35,38 @@ public class LoginViewModel extends ViewModel {
 
     public void initializeVariables() {
         isUpdating = new MutableLiveData<Boolean>(Boolean.FALSE);
+        isLoginCompleted = new MutableLiveData<Boolean>(Boolean.FALSE);
     }
 
     public void login(String email, String password) {
-        isUpdating.setValue(Boolean.FALSE);
+        isUpdating.setValue(Boolean.TRUE);
+
+        Log.d(TAG, "Login attempt");
+        Log.d(TAG, String.format("Email: %s\nPassword: %s", email, password));
 
         userRepository.login(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        isUpdating.setValue(Boolean.TRUE);
+                        isUpdating.setValue(Boolean.FALSE);
+
+                        if(task.isSuccessful()) {
+                            isLoginCompleted.setValue(Boolean.TRUE);
+
+                            Log.d(TAG, "Login successful");
+                        }
+                        else {
+                            Log.d(TAG, "Login failed");
+                        }
                     }
                 });
+    }
+
+    public MutableLiveData<Boolean> getIsUpdating() {
+        return isUpdating;
+    }
+
+    public MutableLiveData<Boolean> getIsLoginCompleted() {
+        return isLoginCompleted;
     }
 }
