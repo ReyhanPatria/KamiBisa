@@ -35,33 +35,31 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         initializeUiWidgets();
+        initializeViewModel();
+        observeVariables();
 
+        // Show register data fragment
         this.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_register_fragment, registerDataFragment)
                 .commit();
     }
 
-    public void initializeUiWidgets() {
+    private void initializeUiWidgets() {
         // Create register fragments
         registerDataFragment = RegisterDataFragment.newInstance();
         registerPasswordFragment = RegisterPasswordFragment.newInstance();
 
+        // Initialize other widgets
         progressBarRegister = this.findViewById(R.id.pb_register);
+    }
 
-        // Create ViewModel for register activity
+    private void initializeViewModel() {
         RegisterViewModelFactory factory = InjectionUtilities.getInstance().provideRegisterViewModelFactory();
         registerViewModel = new ViewModelProvider(this, factory).get(RegisterViewModel.class);
-
-        observeVariables();
     }
 
-    public void registerUser(String password) {
-        registerViewModel.registerUser(newUser, password);
-    }
-
-    public void observeVariables() {
+    private void observeVariables() {
         // Observe changes to isUpdating variable
         registerViewModel.getIsUpdating().observe(this, new Observer<Boolean>() {
             @Override
@@ -113,6 +111,10 @@ public class RegisterActivity extends AppCompatActivity {
     public void hideProgressBar() {
         progressBarRegister.setVisibility(View.GONE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    public void registerUser(String password) {
+        registerViewModel.registerUser(newUser, password);
     }
 
     public Fragment getRegisterDataFragment() {

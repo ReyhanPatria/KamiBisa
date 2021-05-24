@@ -11,6 +11,7 @@ import com.example.kamibisa.data.database.dao.UserDao;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
+    private static String TAG = "HomeActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
