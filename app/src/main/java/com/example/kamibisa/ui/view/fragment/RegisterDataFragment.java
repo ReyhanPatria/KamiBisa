@@ -132,7 +132,8 @@ public class RegisterDataFragment extends Fragment implements View.OnClickListen
 
         // Try to parse dob into Date object
         try {
-            dob = DateFormat.getDateInstance(DateFormat.MEDIUM).parse(dobEditText.getText().toString());
+            dob = DateFormat.getDateInstance(DateFormat.MEDIUM)
+                    .parse(dobEditText.getText().toString());
         }
         catch(ParseException e) {
             Log.e(TAG, e.getMessage());
@@ -161,7 +162,8 @@ public class RegisterDataFragment extends Fragment implements View.OnClickListen
             // Switch to RegisterPasswordActivity
             this.requireActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fl_register_fragment, ((RegisterActivity) requireActivity()).getRegisterPasswordFragment())
+                    .replace(R.id.fl_register_fragment,
+                            ((RegisterActivity) requireActivity()).getRegisterPasswordFragment())
                     .addToBackStack(this.getClass().getName())
                     .commit();
 

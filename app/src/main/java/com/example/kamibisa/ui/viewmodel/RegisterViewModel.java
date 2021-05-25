@@ -25,17 +25,20 @@ public class RegisterViewModel extends ViewModel {
 
     public RegisterViewModel(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.isUpdating = new MutableLiveData<Boolean>(Boolean.FALSE);
-        this.isRegisterComplete = new MutableLiveData<Boolean>(Boolean.FALSE);
-        this.isEmailUsed = new MutableLiveData<Boolean>(Boolean.FALSE);
+        initializeVariables();
     }
 
     public static RegisterViewModel getInstance(UserRepository userRepository) {
         if(instance == null) {
             instance = new RegisterViewModel(userRepository);
         }
-
         return instance;
+    }
+
+    private void initializeVariables() {
+        this.isUpdating = new MutableLiveData<Boolean>(Boolean.FALSE);
+        this.isRegisterComplete = new MutableLiveData<Boolean>(Boolean.FALSE);
+        this.isEmailUsed = new MutableLiveData<Boolean>(Boolean.FALSE);
     }
 
     public void registerUser(User user, String password) {
@@ -53,6 +56,7 @@ public class RegisterViewModel extends ViewModel {
                         }
                         else {
                             isEmailUsed.setValue(Boolean.TRUE);
+                            isEmailUsed.setValue(Boolean.FALSE);
                         }
                     }
                 });
@@ -71,7 +75,7 @@ public class RegisterViewModel extends ViewModel {
                             isRegisterComplete.setValue(Boolean.TRUE);
                         }
                         else {
-                            Log.e(TAG, "Error encouteres when saving user data");
+                            Log.e(TAG, "Error encountered when saving user data");
                         }
                     }
                 });

@@ -3,6 +3,7 @@ package com.example.kamibisa.utils;
 import com.example.kamibisa.data.database.Database;
 import com.example.kamibisa.data.repository.UserRepository;
 import com.example.kamibisa.ui.viewmodel.RegisterViewModel;
+import com.example.kamibisa.ui.viewmodel.factory.LoginViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.RegisterViewModelFactory;
 
 public class InjectionUtilities {
@@ -20,5 +21,10 @@ public class InjectionUtilities {
     public RegisterViewModelFactory provideRegisterViewModelFactory() {
         UserRepository userRepository = UserRepository.getInstance(Database.getInstance().getUserDao());
         return new RegisterViewModelFactory(userRepository);
+    }
+
+    public LoginViewModelFactory provideLoginViewModelFactory() {
+        UserRepository userRepository = UserRepository.getInstance(Database.getInstance().getUserDao());
+        return new LoginViewModelFactory(userRepository);
     }
 }
