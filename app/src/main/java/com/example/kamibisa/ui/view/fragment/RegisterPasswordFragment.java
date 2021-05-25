@@ -113,7 +113,7 @@ public class RegisterPasswordFragment extends Fragment implements View.OnClickLi
         }
 
         // Show warning message if input fields are wrong
-        Toast.makeText(requireContext(), "", Toast.LENGTH_SHORT).show();
+        Toast.makeText(requireContext(), warningMessage, Toast.LENGTH_SHORT).show();
     }
 
     private void backToDataFragment() {

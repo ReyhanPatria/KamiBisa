@@ -56,6 +56,7 @@ public class RegisterViewModel extends ViewModel {
                         }
                         else {
                             isEmailUsed.setValue(Boolean.TRUE);
+                            isEmailUsed.setValue(Boolean.FALSE);
                         }
                     }
                 });
