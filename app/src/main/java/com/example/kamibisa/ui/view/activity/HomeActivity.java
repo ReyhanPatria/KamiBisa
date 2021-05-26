@@ -1,17 +1,20 @@
 package com.example.kamibisa.ui.view.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.database.Database;
+import com.example.kamibisa.ui.view.fragment.BloodDonationFragment;
 import com.example.kamibisa.ui.view.fragment.CreateDonationFragment;
+import com.example.kamibisa.ui.view.fragment.HistoryFragment;
 import com.example.kamibisa.ui.view.fragment.HomeFragment;
+import com.example.kamibisa.ui.view.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -32,6 +35,10 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         initializeUi();
         setOnClickListeners();
+
+
+        // Set home fragment as default when activity first created
+        changeMenu(homeFragment);
     }
 
     @Override
@@ -59,38 +66,41 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Boolean returnValue;
+                Fragment targetMenu;
 
                 switch(item.getItemId()) {
                     case R.id.ic_home_menu:
-                        changeMenu(homeFragment);
+                        targetMenu = homeFragment;
                         returnValue = true;
                         break;
 
                     case R.id.ic_create_donation_menu:
-                        changeMenu(createDonationFragment);
+                        targetMenu = createDonationFragment;
                         returnValue = true;
                         break;
 
                     case R.id.ic_history_menu:
-                        changeMenu(historyFragment);
+                        targetMenu = historyFragment;
                         returnValue = true;
                         break;
 
                     case R.id.ic_blood_donation_menu:
-                        changeMenu(bloodDonationFragment);
+                        targetMenu = bloodDonationFragment;
                         returnValue = true;
                         break;
 
                     case R.id.ic_profile_menu:
-                        changeMenu(profileFragment);
+                        targetMenu = profileFragment;
                         returnValue = true;
                         break;
 
                     default:
+                        targetMenu = homeFragment;
                         returnValue = false;
                         break;
                 }
 
+                changeMenu(targetMenu);
                 return returnValue;
             }
         });
