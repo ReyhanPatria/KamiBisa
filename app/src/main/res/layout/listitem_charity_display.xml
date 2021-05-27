@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_listitem_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_listitem_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_listitem_thumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/tv_listitem_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Charity Title"
+            android:textSize="16sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/img_listitem_thumbnail"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rl_listitem_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/rl_listitem_header"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Terkumpul"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/tv_listitem_gathered_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp.15.0000.000,-"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tv_listitem_days_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="55"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" hari lagi"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

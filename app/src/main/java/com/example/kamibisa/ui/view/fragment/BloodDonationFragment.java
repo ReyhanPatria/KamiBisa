@@ -10,6 +10,11 @@ import android.view.ViewGroup;
 
 import com.example.kamibisa.R;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link BloodDonationFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 public class BloodDonationFragment extends Fragment {
     private static final String TAG = "BloodDonationFragment";
 

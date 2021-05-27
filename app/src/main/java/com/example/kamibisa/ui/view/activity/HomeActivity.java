@@ -1,5 +1,6 @@
 package com.example.kamibisa.ui.view.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -18,7 +19,7 @@ import com.example.kamibisa.ui.view.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
-    private static String TAG = "HomeActivity";
+    private static final String TAG = "HomeActivity";
 
     private EditText searchEditText;
     private BottomNavigationView menuNavigationBar;
@@ -63,7 +64,9 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setOnClickListeners() {
         menuNavigationBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
             @Override
+            @SuppressLint("NonConstantResourceId")
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Boolean returnValue;
                 Fragment targetMenu;

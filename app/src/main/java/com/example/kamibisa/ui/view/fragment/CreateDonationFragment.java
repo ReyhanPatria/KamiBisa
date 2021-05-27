@@ -9,6 +9,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.kamibisa.R;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link CreateDonationFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 public class CreateDonationFragment extends Fragment {
     public static String TAG = "CreateDonationFragment";
 
