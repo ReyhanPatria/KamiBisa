@@ -15,14 +15,15 @@ import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Charity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CharityRecyclerViewAdapter extends RecyclerView.Adapter<CharityRecyclerViewAdapter.ViewHolder> {
     private static final String TAG = "CharityRecyclerViewAdapter";
 
     private Context context;
-    private ArrayList<Charity> charityList;
+    private List<Charity> charityList;
 
-    public CharityRecyclerViewAdapter(Context context, ArrayList<Charity> charityList) {
+    public CharityRecyclerViewAdapter(Context context, List<Charity> charityList) {
         this.context = context;
         this.charityList = charityList;
     }

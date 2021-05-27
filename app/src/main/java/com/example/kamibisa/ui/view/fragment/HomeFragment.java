@@ -8,12 +8,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Charity;
 import com.example.kamibisa.ui.view.recyclerview.CharityRecyclerViewAdapter;
+import com.example.kamibisa.ui.viewmodel.HomeViewModel;
+import com.example.kamibisa.ui.viewmodel.LoginViewModel;
+import com.example.kamibisa.ui.viewmodel.factory.HomeViewModelFactory;
+import com.example.kamibisa.ui.viewmodel.factory.LoginViewModelFactory;
+import com.example.kamibisa.utils.InjectionUtilities;
 
 import java.util.ArrayList;
 
@@ -26,9 +32,7 @@ public class HomeFragment extends Fragment {
     public static String TAG = "HomeFragment";
 
     private View rootView;
-
-    // TODO: Get data from database
-    private ArrayList<Charity> charityList;
+    private HomeViewModel homeViewModel;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -55,14 +59,23 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        initializeViewModel();
         initializeCharityRecyclerView();
+    }
+
+    private void initializeViewModel() {
+        HomeViewModelFactory factory = InjectionUtilities.getInstance().provideHomeViewModelFactory();
+        homeViewModel = new ViewModelProvider(this, factory).get(HomeViewModel.class);
+    }
+
+    private void observeVariables() {
+        // TODO: Set variables to be observed
     }
 
     public void initializeCharityRecyclerView() {
         RecyclerView charityListRecyclerView = rootView.findViewById(R.id.rv_home_charity_list);
         RecyclerView.Adapter charityListAdapter = new CharityRecyclerViewAdapter(requireContext(),
-                charityList);
+                homeViewModel.getCharityList().getValue());
 
         charityListRecyclerView.setAdapter(charityListAdapter);
 
