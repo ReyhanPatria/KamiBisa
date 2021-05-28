@@ -1,6 +1,10 @@
 package com.example.kamibisa.data.repository;
 
 import com.example.kamibisa.data.database.dao.CharityDao;
+import com.example.kamibisa.data.model.Charity;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class CharityRepository {
     private static CharityRepository instance;
@@ -16,5 +20,13 @@ public class CharityRepository {
             instance = new CharityRepository(charityDao);
         }
         return instance;
+    }
+
+    public Task<DocumentReference> insertCharity(Charity charity) {
+        return charityDao.insertCharity(charity);
+    }
+
+    public Task<QuerySnapshot> getAllCharityList() {
+        return charityDao.getAllCharity();
     }
 }

@@ -1,7 +1,24 @@
 package com.example.kamibisa.data.database.dao;
 
-public class CharityDao {
-    public CharityDao() {
+import com.example.kamibisa.data.model.Charity;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
+public class CharityDao {
+    private FirebaseFirestore firestore;
+
+    public CharityDao() {
+        this.firestore = FirebaseFirestore.getInstance();
+    }
+
+    public Task<DocumentReference> insertCharity(Charity charity) {
+        return firestore.collection("charity")
+                .add(charity);
+    }
+
+    public Task<QuerySnapshot> getAllCharity() {
+        return firestore.collection("charity").get();
     }
 }
