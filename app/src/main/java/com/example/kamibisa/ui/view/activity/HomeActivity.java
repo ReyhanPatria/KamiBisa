@@ -37,16 +37,15 @@ public class HomeActivity extends AppCompatActivity {
         initializeUi();
         setOnClickListeners();
 
-
-        // Set home fragment as default when activity first created
-        changeMenu(homeFragment);
+        // Set shown fragment when first created
+        menuNavigationBar.setSelectedItemId(R.id.ic_create_donation_menu);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        // TODO
+        // TODO: Do checks on keep user logged in or not
         // Signs out user for testing purposes
         Database.getInstance().getUserDao().getFirebaseAuth().signOut();
     }
@@ -72,10 +71,12 @@ public class HomeActivity extends AppCompatActivity {
                 Fragment targetMenu;
 
                 switch(item.getItemId()) {
-                    case R.id.ic_home_menu:
-                        targetMenu = homeFragment;
-                        returnValue = true;
-                        break;
+                    // TODO: Test HomeFragment
+                    // Suspended because HomeFragment is not ready
+//                    case R.id.ic_home_menu:
+//                        targetMenu = homeFragment;
+//                        returnValue = true;
+//                        break;
 
                     case R.id.ic_create_donation_menu:
                         targetMenu = createDonationFragment;
