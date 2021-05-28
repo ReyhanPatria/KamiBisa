@@ -1,6 +1,7 @@
 package com.example.kamibisa.ui.view.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -114,5 +115,10 @@ public class HomeActivity extends AppCompatActivity {
         this.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_home_fragment, newMenu)
                 .commit();
+    }
+
+    public void createCharity() {
+        Intent newIntent = new Intent(getApplicationContext(), CreateDonationActivity.class);
+        startActivity(newIntent);
     }
 }
