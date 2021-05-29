@@ -14,11 +14,11 @@ public class CharityDao {
     }
 
     public Task<DocumentReference> insertCharity(Charity charity) {
-        return firestore.collection("charity")
+        return firestore.collection("charities")
                 .add(charity);
     }
 
     public Task<QuerySnapshot> getAllCharity() {
-        return firestore.collection("charity").get();
+        return firestore.collection("charities").get();
     }
 }

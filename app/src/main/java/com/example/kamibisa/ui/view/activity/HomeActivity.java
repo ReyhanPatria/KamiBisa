@@ -4,7 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +34,8 @@ public class HomeActivity extends AppCompatActivity {
     private Fragment bloodDonationFragment;
     private Fragment profileFragment;
 
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         setOnClickListeners();
 
         // Set shown fragment when first created
-        menuNavigationBar.setSelectedItemId(R.id.ic_create_donation_menu);
+        changeMenu(homeFragment);
     }
 
     @Override
@@ -60,11 +65,12 @@ public class HomeActivity extends AppCompatActivity {
         this.historyFragment = HistoryFragment.newInstance();
         this.bloodDonationFragment = BloodDonationFragment.newInstance();
         this.profileFragment = ProfileFragment.newInstance();
+
+        this.progressBar = this.findViewById(R.id.pb_home);
     }
 
     private void setOnClickListeners() {
         menuNavigationBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-
             @Override
             @SuppressLint("NonConstantResourceId")
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -72,12 +78,10 @@ public class HomeActivity extends AppCompatActivity {
                 Fragment targetMenu;
 
                 switch(item.getItemId()) {
-                    // TODO: Test HomeFragment
-                    // Suspended because HomeFragment is not ready
-//                    case R.id.ic_home_menu:
-//                        targetMenu = homeFragment;
-//                        returnValue = true;
-//                        break;
+                    case R.id.ic_home_menu:
+                        targetMenu = homeFragment;
+                        returnValue = true;
+                        break;
 
                     case R.id.ic_create_donation_menu:
                         targetMenu = createDonationFragment;
@@ -120,5 +124,16 @@ public class HomeActivity extends AppCompatActivity {
     public void createCharity() {
         Intent newIntent = new Intent(getApplicationContext(), CreateDonationActivity.class);
         startActivity(newIntent);
+    }
+
+    public void showProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    public void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 }

@@ -24,11 +24,14 @@ public class HomeViewModel extends ViewModel {
     private CharityRepository charityRepository;
 
     // Add variables to be observed
-    private MutableLiveData<List<Charity>> charityList;
     private MutableLiveData<Boolean> isUpdating;
+    private MutableLiveData<List<Charity>> urgentCharityList;
+    private MutableLiveData<List<Charity>> selectedCharityList;
+
 
     public HomeViewModel(CharityRepository charityRepository) {
         this.charityRepository = charityRepository;
+        initializeVariables();
     }
 
     public static HomeViewModel getInstance(CharityRepository charityRepository) {
@@ -40,27 +43,34 @@ public class HomeViewModel extends ViewModel {
 
     public void initializeVariables() {
         isUpdating = new MutableLiveData<Boolean>(Boolean.FALSE);
-        updateCharityList();
+        urgentCharityList = new MutableLiveData<List<Charity>>(new ArrayList<Charity>());
+        selectedCharityList = new MutableLiveData<List<Charity>>(new ArrayList<Charity>());
     }
 
     public void updateCharityList() {
-        isUpdating.setValue(Boolean.TRUE);
+        updateUrgentCharityList();
+        updateSelectedCharityList();
+    }
 
-        // Reset charityList to be an empty list
-        charityList = new MutableLiveData<List<Charity>>(new ArrayList<Charity>());
+    public void updateUrgentCharityList() {
+        isUpdating.setValue(Boolean.TRUE);
 
         // Query all charities from Firestore
         charityRepository.getAllCharityList().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()) {
+                    List<Charity> newUrgentCharityList = urgentCharityList.getValue();
+
                     // Loop through query result
                     for(QueryDocumentSnapshot document: task.getResult()) {
                         // Convert query result into Charity object
                         Charity charity = document.toObject(Charity.class);
                         // Add Charity object into charityList
-                        charityList.getValue().add(charity);
+                        newUrgentCharityList.add(charity);
                     }
+
+                    urgentCharityList.setValue(newUrgentCharityList);
                 }
                 else {
                     Log.e(TAG, "Charity list query failed");
@@ -71,7 +81,40 @@ public class HomeViewModel extends ViewModel {
         });
     }
 
-    public MutableLiveData<List<Charity>> getCharityList() {
-        return charityList;
+    public void updateSelectedCharityList() {
+        isUpdating.setValue(Boolean.TRUE);
+
+        // Query all charities from Firestore
+        charityRepository.getAllCharityList().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()) {
+                    List<Charity> newSelectedCharityList = selectedCharityList.getValue();
+
+                    // Loop through query result
+                    for(QueryDocumentSnapshot document: task.getResult()) {
+                        // Convert query result into Charity object
+                        Charity charity = document.toObject(Charity.class);
+                        // Add Charity object into charityList
+                        newSelectedCharityList.add(charity);
+                    }
+
+                    selectedCharityList.setValue(newSelectedCharityList);
+                }
+                else {
+                    Log.e(TAG, "Charity list query failed");
+                }
+
+                isUpdating.setValue(Boolean.FALSE);
+            }
+        });
+    }
+
+    public MutableLiveData<Boolean> getIsUpdating() {
+        return isUpdating;
+    }
+
+    public MutableLiveData<List<Charity>> getUrgentCharityList() {
+        return urgentCharityList;
     }
 }

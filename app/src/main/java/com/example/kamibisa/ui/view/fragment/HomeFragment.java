@@ -8,20 +8,20 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Charity;
+import com.example.kamibisa.ui.view.activity.HomeActivity;
 import com.example.kamibisa.ui.view.recyclerview.CharityRecyclerViewAdapter;
 import com.example.kamibisa.ui.viewmodel.HomeViewModel;
-import com.example.kamibisa.ui.viewmodel.LoginViewModel;
 import com.example.kamibisa.ui.viewmodel.factory.HomeViewModelFactory;
-import com.example.kamibisa.ui.viewmodel.factory.LoginViewModelFactory;
 import com.example.kamibisa.utils.InjectionUtilities;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +33,12 @@ public class HomeFragment extends Fragment {
 
     private View rootView;
     private HomeViewModel homeViewModel;
+
+    private RecyclerView urgentCharityListRecyclerView;
+    private RecyclerView.Adapter urgentCharityListAdapter;
+
+    private RecyclerView selectedCharityListRecyclerView;
+    private RecyclerView.Adapter selectedCharityListAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -60,7 +66,13 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initializeViewModel();
+        observeVariables();
+        initializeUi();
+    }
+
+    private void initializeUi() {
         initializeCharityRecyclerView();
+        homeViewModel.updateCharityList();
     }
 
     private void initializeViewModel() {
@@ -70,16 +82,46 @@ public class HomeFragment extends Fragment {
 
     private void observeVariables() {
         // TODO: Set variables to be observed
+        homeViewModel.getIsUpdating().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean) {
+                    ((HomeActivity) requireActivity()).showProgressBar();
+                }
+                else {
+                    ((HomeActivity) requireActivity()).hideProgressBar();
+                }
+            }
+        });
+
+        homeViewModel.getUrgentCharityList().observe(getViewLifecycleOwner(), new Observer<List<Charity>>() {
+            @Override
+            public void onChanged(List<Charity> charities) {
+                urgentCharityListAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     public void initializeCharityRecyclerView() {
-        RecyclerView charityListRecyclerView = rootView.findViewById(R.id.rv_home_charity_list);
-        RecyclerView.Adapter charityListAdapter = new CharityRecyclerViewAdapter(requireContext(),
-                homeViewModel.getCharityList().getValue());
+        // Urgent charity list
+        urgentCharityListRecyclerView = rootView.findViewById(R.id.rv_home_urgentCharityList);
+        urgentCharityListAdapter = new CharityRecyclerViewAdapter(requireContext(),
+                homeViewModel.getUrgentCharityList().getValue());
 
-        charityListRecyclerView.setAdapter(charityListAdapter);
+        urgentCharityListRecyclerView.setAdapter(urgentCharityListAdapter);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
-        charityListRecyclerView.setLayoutManager(layoutManager);
+        LinearLayoutManager urgentLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
+        urgentCharityListRecyclerView.setLayoutManager(urgentLayoutManager);
+
+
+        // Selected charity list
+        selectedCharityListRecyclerView = rootView.findViewById(R.id.rv_home_selectedCharityList);
+        selectedCharityListAdapter = new CharityRecyclerViewAdapter(requireContext(),
+                homeViewModel.getUrgentCharityList().getValue());
+
+        selectedCharityListRecyclerView.setAdapter(selectedCharityListAdapter);
+
+        LinearLayoutManager selectedLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
+        selectedCharityListRecyclerView.setLayoutManager(selectedLayoutManager);
     }
 }
