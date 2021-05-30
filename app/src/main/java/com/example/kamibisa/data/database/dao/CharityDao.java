@@ -6,6 +6,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.time.Instant;
+import java.util.Date;
+
 public class CharityDao {
     private FirebaseFirestore firestore;
 
@@ -20,5 +23,11 @@ public class CharityDao {
 
     public Task<QuerySnapshot> getAllCharity() {
         return firestore.collection("charities").get();
+    }
+
+    public Task<QuerySnapshot> getCurrentCharity() {
+        return firestore.collection("charities")
+                .whereGreaterThan("finishedAt", Date.from(Instant.now()))
+                .get();
     }
 }

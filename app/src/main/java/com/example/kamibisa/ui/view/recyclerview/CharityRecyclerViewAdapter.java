@@ -53,6 +53,10 @@ public class CharityRecyclerViewAdapter extends RecyclerView.Adapter<CharityRecy
         return charityList.size();
     }
 
+    public void setCharityList(List<Charity> charityList) {
+        this.charityList = charityList;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private static final String TAG = "ViewHolder";
 

@@ -3,6 +3,7 @@ package com.example.kamibisa.ui.viewmodel;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -32,6 +33,7 @@ public class HomeViewModel extends ViewModel {
     public HomeViewModel(CharityRepository charityRepository) {
         this.charityRepository = charityRepository;
         initializeVariables();
+        updateCharityList();
     }
 
     public static HomeViewModel getInstance(CharityRepository charityRepository) {
@@ -56,11 +58,11 @@ public class HomeViewModel extends ViewModel {
         isUpdating.setValue(Boolean.TRUE);
 
         // Query all charities from Firestore
-        charityRepository.getAllCharityList().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        charityRepository.getCurrentCharity().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()) {
-                    List<Charity> newUrgentCharityList = urgentCharityList.getValue();
+                    List<Charity> newUrgentCharityList = new ArrayList<Charity>();
 
                     // Loop through query result
                     for(QueryDocumentSnapshot document: task.getResult()) {
@@ -68,6 +70,8 @@ public class HomeViewModel extends ViewModel {
                         Charity charity = document.toObject(Charity.class);
                         // Add Charity object into charityList
                         newUrgentCharityList.add(charity);
+
+                        Log.d("HomeFragment", "Charity list query successful");
                     }
 
                     urgentCharityList.setValue(newUrgentCharityList);
@@ -85,11 +89,11 @@ public class HomeViewModel extends ViewModel {
         isUpdating.setValue(Boolean.TRUE);
 
         // Query all charities from Firestore
-        charityRepository.getAllCharityList().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        charityRepository.getAllCharity().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()) {
-                    List<Charity> newSelectedCharityList = selectedCharityList.getValue();
+                    List<Charity> newSelectedCharityList = new ArrayList<Charity>();
 
                     // Loop through query result
                     for(QueryDocumentSnapshot document: task.getResult()) {
@@ -114,7 +118,11 @@ public class HomeViewModel extends ViewModel {
         return isUpdating;
     }
 
-    public MutableLiveData<List<Charity>> getUrgentCharityList() {
+    public LiveData<List<Charity>> getUrgentCharityList() {
         return urgentCharityList;
+    }
+
+    public LiveData<List<Charity>> getSelectedCharityList() {
+        return selectedCharityList;
     }
 }

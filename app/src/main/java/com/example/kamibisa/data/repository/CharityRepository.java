@@ -26,7 +26,11 @@ public class CharityRepository {
         return charityDao.insertCharity(charity);
     }
 
-    public Task<QuerySnapshot> getAllCharityList() {
+    public Task<QuerySnapshot> getAllCharity() {
         return charityDao.getAllCharity();
+    }
+
+    public Task<QuerySnapshot> getCurrentCharity() {
+        return charityDao.getCurrentCharity();
     }
 }
