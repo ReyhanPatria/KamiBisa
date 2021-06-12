@@ -1,4 +1,4 @@
-package com.example.kamibisa.ui.view.fragment;
+package com.example.kamibisa.ui.view.fragment.register;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

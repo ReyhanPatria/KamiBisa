@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.view.fragment.RegisterDataFragment"
+    tools:context=".ui.view.fragment.register.RegisterDataFragment"
     android:orientation="vertical"
     android:gravity="center"
     android:paddingVertical="25dp"

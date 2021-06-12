@@ -1,7 +1,6 @@
-package com.example.kamibisa.ui.view.fragment;
+package com.example.kamibisa.ui.view.fragment.register;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.User;
-import com.example.kamibisa.ui.view.activity.HomeActivity;
 import com.example.kamibisa.ui.view.activity.RegisterActivity;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointBackward;

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.view.fragment.CreateDonationFragment"
+    tools:context=".ui.view.fragment.home.CreateDonationFragment"
     android:paddingHorizontal="28dp"
     android:paddingVertical="25dp"
     android:background="@color/white">
@@ -72,7 +72,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Bantuan Medis &amp; Kesehatan"
+                            android:text="Kategori Penggalangan Dana"
                             android:textColor="@color/primary_dark_blue"
                             android:textSize="14sp"
                             android:textStyle="bold"/>
@@ -80,93 +80,30 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Menggalang dana khusus untuk pengobatan"
+                            android:text="Menggalang dana untuk semua orang yang membutuhkan"
                             android:textColor="@color/primary_dark_blue"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_createDonation_healthcareCharity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:backgroundTint="@color/white"
-                    android:text="Galang Dana Khusus Kesehatan"
-                    android:textStyle="bold"
-                    android:textColor="@color/pink"
-                    app:cornerRadius="50dp"/>
-
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_createDonation_create"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="20dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/secondary_light_blue"
-            app:cardCornerRadius="25dp"
-            android:outlineSpotShadowColor="@color/white"
-            android:outlineAmbientShadowColor="@color/white">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="16dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_misc_donation"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Bantuan lainnya"
-                            android:textColor="@color/primary_dark_blue"
-                            android:textSize="14sp"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Menggalang dana untuk pendidikan, kemanusiaan, rumah ibadah, &amp; lainnya"
-                            android:textColor="@color/primary_dark_blue"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_createDonation_miscCharity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:backgroundTint="@color/white"
-                    android:text="Galang Dana Lainnya"
-                    android:textStyle="bold"
-                    android:textColor="@color/pink"
-                    app:cornerRadius="50dp"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+            android:layout_marginTop="18dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:text="Mulai Galang Dana"
+            android:textStyle="bold"
+            android:textColor="@color/primary_blue"
+            app:cornerRadius="10dp"
+            app:strokeColor="@color/primary_dark_blue"
+            app:strokeWidth="2dp"/>
 
     </LinearLayout>
 

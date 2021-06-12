@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="jobs">
+        <item>Pegawai Sipil</item>
+        <item>Pegawai Swasta</item>
+        <item>Wirausaha</item>
+        <item>Pelajar</item>
+        <item>Tidak Bekerja</item>
+    </string-array>
+</resources>
