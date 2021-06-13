@@ -4,18 +4,18 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class Charity {
+public class Donation {
     private String title;
     private Date createdAt;
     private Date finishedAt;
     private Integer targetAmount;
     private Integer gatheredAmount;
 
-    public Charity() {
+    public Donation() {
         // Required empty constructor for Firestore
     }
 
-    public Charity(String title, Date createdAt, Date finishedAt, Integer targetAmount, Integer gatheredAmount) {
+    public Donation(String title, Date createdAt, Date finishedAt, Integer targetAmount, Integer gatheredAmount) {
         this.title = title;
         this.createdAt = createdAt;
         this.finishedAt = finishedAt;

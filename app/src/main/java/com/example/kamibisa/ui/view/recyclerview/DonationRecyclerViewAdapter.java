@@ -12,20 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kamibisa.R;
-import com.example.kamibisa.data.model.Charity;
+import com.example.kamibisa.data.model.Donation;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CharityRecyclerViewAdapter extends RecyclerView.Adapter<CharityRecyclerViewAdapter.ViewHolder> {
-    private static final String TAG = "CharityRecyclerViewAdapter";
+public class DonationRecyclerViewAdapter extends RecyclerView.Adapter<DonationRecyclerViewAdapter.ViewHolder> {
+    private static final String TAG = "DonationRecyclerViewAdapter";
 
     private Context context;
-    private List<Charity> charityList;
+    private List<Donation> donationList;
 
-    public CharityRecyclerViewAdapter(Context context, List<Charity> charityList) {
+    public DonationRecyclerViewAdapter(Context context, List<Donation> donationList) {
         this.context = context;
-        this.charityList = charityList;
+        this.donationList = donationList;
     }
 
     @NonNull
@@ -38,10 +37,10 @@ public class CharityRecyclerViewAdapter extends RecyclerView.Adapter<CharityRecy
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CharityRecyclerViewAdapter.ViewHolder holder, int position) {
-        String title = charityList.get(position).getTitle();
-        String gatheredAmount = String.valueOf(charityList.get(position).getGatheredAmount());
-        String daysLeft = String.valueOf(charityList.get(position).getDaysLeft());
+    public void onBindViewHolder(@NonNull DonationRecyclerViewAdapter.ViewHolder holder, int position) {
+        String title = donationList.get(position).getTitle();
+        String gatheredAmount = String.valueOf(donationList.get(position).getGatheredAmount());
+        String daysLeft = String.valueOf(donationList.get(position).getDaysLeft());
 
         holder.titleTextView.setText(title);
         holder.gatheredAmountTextView.setText(gatheredAmount);
@@ -50,11 +49,11 @@ public class CharityRecyclerViewAdapter extends RecyclerView.Adapter<CharityRecy
 
     @Override
     public int getItemCount() {
-        return charityList.size();
+        return donationList.size();
     }
 
-    public void setCharityList(List<Charity> charityList) {
-        this.charityList = charityList;
+    public void setCharityList(List<Donation> donationList) {
+        this.donationList = donationList;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

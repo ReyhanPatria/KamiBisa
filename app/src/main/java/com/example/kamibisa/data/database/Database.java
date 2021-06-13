@@ -1,18 +1,17 @@
 package com.example.kamibisa.data.database;
 
-import com.example.kamibisa.data.database.dao.CharityDao;
+import com.example.kamibisa.data.database.dao.DonationDao;
 import com.example.kamibisa.data.database.dao.UserDao;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Database {
     private static Database instance;
 
     private UserDao userDao;
-    private CharityDao charityDao;
+    private DonationDao donationDao;
 
     public Database() {
         this.userDao = new UserDao();
-        this.charityDao = new CharityDao();
+        this.donationDao = new DonationDao();
     }
 
     public static Database getInstance() {
@@ -26,7 +25,7 @@ public class Database {
         return userDao;
     }
 
-    public CharityDao getCharityDao() {
-        return charityDao;
+    public DonationDao getDonationDao() {
+        return donationDao;
     }
 }

@@ -1,7 +1,7 @@
 package com.example.kamibisa.utils;
 
 import com.example.kamibisa.data.database.Database;
-import com.example.kamibisa.data.repository.CharityRepository;
+import com.example.kamibisa.data.repository.DonationRepository;
 import com.example.kamibisa.data.repository.UserRepository;
 import com.example.kamibisa.ui.viewmodel.factory.HomeViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.LoginViewModelFactory;
@@ -32,8 +32,8 @@ public class InjectionUtilities {
     }
 
     public HomeViewModelFactory provideHomeViewModelFactory() {
-        CharityRepository charityRepository = CharityRepository.getInstance(
-                Database.getInstance().getCharityDao());
-        return new HomeViewModelFactory(charityRepository);
+        DonationRepository donationRepository = DonationRepository.getInstance(
+                Database.getInstance().getDonationDao());
+        return new HomeViewModelFactory(donationRepository);
     }
 }
