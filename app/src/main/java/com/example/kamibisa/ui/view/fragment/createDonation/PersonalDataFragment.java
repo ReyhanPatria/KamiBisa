@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.ui.view.activity.CreateDonationActivity;
@@ -26,6 +25,7 @@ import com.google.android.material.button.MaterialButton;
  * create an instance of this fragment.
  */
 public class PersonalDataFragment extends Fragment implements View.OnClickListener {
+    private static String TAG = "PersonalDataFragment";
 
     private View rootView;
 
@@ -85,8 +85,7 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
         // Fill job spinner with options
         ArrayAdapter<CharSequence> jobSpinnerAdapter = ArrayAdapter
                 .createFromResource(this.requireContext(),
-                        R.array.jobs,
-                        R.layout.custom_spinner_item);
+                        R.array.jobs, R.layout.custom_spinner_item);
         jobSpinnerAdapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         jobSpinner.setAdapter(jobSpinnerAdapter);
     }
@@ -128,7 +127,7 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
     }
 
     public void gotoBeneficiaryDataFragment() {
-        Fragment f = ((CreateDonationActivity) this.requireActivity()).getBeneficiaryFragment();
+        Fragment f = ((CreateDonationActivity) this.requireActivity()).getBeneficiaryDataFragment();
         ((CreateDonationActivity) this.requireActivity()).changeMenu(f, Boolean.TRUE);
     }
 }

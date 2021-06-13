@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories">
+        <item>Kesehatan</item>
+        <item>Pendidikan</item>
+        <item>Bencana Alam</item>
+        <item>Pelajar</item>
+        <item>Kegiatan Sosial</item>
+        <item>Penelitian dan Pengembangan</item>
+        <item>Infrastruktur Umum</item>
+        <item>Lingkungan</item>
+        <item>Menolong Hewan</item>
+        <item>Balita dan Ibu Hamil</item>
+        <item>Difabel</item>
+        <item>Panti Asuhan</item>
+    </string-array>
+</resources>

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.ui.view.fragment.createDonation.BeneficiaryDataFragment;
+import com.example.kamibisa.ui.view.fragment.createDonation.DonationDataFragment;
 import com.example.kamibisa.ui.view.fragment.createDonation.PersonalDataFragment;
 
 public class CreateDonationActivity extends AppCompatActivity implements View.OnClickListener {
@@ -20,7 +21,8 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
     private FrameLayout createDonationFrameLayout;
 
     private Fragment personalDataFragment;
-    private Fragment beneficiaryFragment;
+    private Fragment beneficiaryDataFragment;
+    private Fragment donationDataFragment;
 
     private TextView cancelButton;
 
@@ -38,7 +40,8 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
         this.createDonationFrameLayout = this.findViewById(R.id.fl_createDonation_fragment);
 
         this.personalDataFragment = PersonalDataFragment.newInstance();
-        this.beneficiaryFragment = BeneficiaryDataFragment.newInstance();
+        this.beneficiaryDataFragment = BeneficiaryDataFragment.newInstance();
+        this.donationDataFragment = DonationDataFragment.newInstance();
 
         this.cancelButton = this.findViewById(R.id.tv_createDonation_cancel);
     }
@@ -71,7 +74,11 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
         return personalDataFragment;
     }
 
-    public Fragment getBeneficiaryFragment() {
-        return beneficiaryFragment;
+    public Fragment getBeneficiaryDataFragment() {
+        return beneficiaryDataFragment;
+    }
+
+    public Fragment getDonationDataFragment() {
+        return donationDataFragment;
     }
 }

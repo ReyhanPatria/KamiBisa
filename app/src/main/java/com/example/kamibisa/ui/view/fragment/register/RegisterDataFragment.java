@@ -72,11 +72,11 @@ public class RegisterDataFragment extends Fragment implements View.OnClickListen
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initializeViewWidgets();
+        initializeUi();
         setOnClickListeners();
     }
 
-    private void initializeViewWidgets() {
+    private void initializeUi() {
         // Gets all widgets
         usernameEditText = rootView.findViewById(R.id.edt_register_username);
         emailEditText = rootView.findViewById(R.id.edt_register_email);
@@ -86,7 +86,7 @@ public class RegisterDataFragment extends Fragment implements View.OnClickListen
         backButton = rootView.findViewById(R.id.btn_register_back);
 
         // Create dob picker
-        dobPicker = createDobPicker();
+        dobPicker = createDatePicker();
     }
 
     private void setOnClickListeners() {
@@ -171,7 +171,7 @@ public class RegisterDataFragment extends Fragment implements View.OnClickListen
         Toast.makeText(requireContext(), warningMessage, Toast.LENGTH_SHORT).show();
     }
 
-    private MaterialDatePicker createDobPicker() {
+    private MaterialDatePicker createDatePicker() {
         // Create DOB constraints
         CalendarConstraints dobConstraints = (new CalendarConstraints.Builder())
                 .setValidator(DateValidatorPointBackward.now())

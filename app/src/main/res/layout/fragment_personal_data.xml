@@ -118,18 +118,18 @@
         </ScrollView>
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_personalData_next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="@color/primary_light_blue"
-                android:text="SELANJUTNYA"
-                android:textSize="18sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:cornerRadius="50dp"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_personalData_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primary_light_blue"
+            android:text="SELANJUTNYA"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="50dp"/>
 
     </LinearLayout>
 
