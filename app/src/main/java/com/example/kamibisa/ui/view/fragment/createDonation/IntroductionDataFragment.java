@@ -77,7 +77,6 @@ public class IntroductionDataFragment extends Fragment implements View.OnClickLi
         switch(v.getId()) {
             case R.id.btn_introductionData_next:
                 setDonationIntroductionData();
-                insertDonation();
                 break;
 
             case R.id.btn_introductionData_back:
@@ -107,6 +106,8 @@ public class IntroductionDataFragment extends Fragment implements View.OnClickLi
         else {
             newDonation.setIntroduction(introduction);
             newDonation.setMotivator(motivator);
+
+            insertDonation();
 
             return newDonation;
         }

@@ -97,7 +97,6 @@ public class BeneficiaryDataFragment extends Fragment implements View.OnClickLis
         switch(v.getId()) {
             case R.id.btn_beneficiaryData_next:
                 setDonationBeneficiaryData();
-                gotoDonationDataFragment();
                 break;
 
             case R.id.btn_beneficiaryData_back:
@@ -136,6 +135,8 @@ public class BeneficiaryDataFragment extends Fragment implements View.OnClickLis
             newDonation.setBeneficiaryName(beneficiaryName);
             newDonation.setBeneficiaryRelation(beneficiaryRelation);
             newDonation.setCategory(category);
+
+            gotoDonationDataFragment();
 
             return newDonation;
         }

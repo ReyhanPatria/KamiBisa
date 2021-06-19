@@ -125,7 +125,6 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         if(v.getId() == this.nextButton.getId()) {
             setDonationPersonalData();
-            gotoBeneficiaryDataFragment();
         }
     }
 
@@ -139,7 +138,7 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
 
         String creatorName = creatorNameEditText.getText().toString();
         String institution = institutionEditText.getText().toString();
-        String socialMedia = institutionEditText.getText().toString();
+        String socialMedia = socialMediaEditText.getText().toString();
         String location = locationEditText.getText().toString();
         String creatorDescription = creatorDescriptionEditText.getText().toString();
 
@@ -166,6 +165,8 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
             newDonation.setSocialMedia(socialMedia);
             newDonation.setLocation(location);
             newDonation.setCreatorDescription(creatorDescription);
+
+            gotoBeneficiaryDataFragment();
 
             return newDonation;
         }

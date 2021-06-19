@@ -91,7 +91,6 @@ public class DonationDataFragment extends Fragment implements View.OnClickListen
         switch(v.getId()) {
             case R.id.btn_donationData_next:
                 setDonationData();
-                gotoIntroductionDataFragment();
                 break;
 
             case R.id.btn_donationData_back:
@@ -189,6 +188,8 @@ public class DonationDataFragment extends Fragment implements View.OnClickListen
             newDonation.setFinishedDate(finishedDate);
             newDonation.setCreatedDate(createdDate);
             newDonation.setPhone(phone);
+
+            gotoIntroductionDataFragment();
 
             return newDonation;
         }
