@@ -14,8 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.User;
-import com.example.kamibisa.ui.view.fragment.RegisterDataFragment;
-import com.example.kamibisa.ui.view.fragment.RegisterPasswordFragment;
+import com.example.kamibisa.ui.view.fragment.register.RegisterDataFragment;
+import com.example.kamibisa.ui.view.fragment.register.RegisterPasswordFragment;
 import com.example.kamibisa.ui.viewmodel.RegisterViewModel;
 import com.example.kamibisa.ui.viewmodel.factory.RegisterViewModelFactory;
 import com.example.kamibisa.utils.InjectionUtilities;

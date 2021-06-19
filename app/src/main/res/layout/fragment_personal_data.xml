@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".ui.view.fragment.createDonation.PersonalDataFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Isi data diri di bawah ini untuk galang dana"
+            android:textColor="@color/primary_dark_blue"
+            android:textSize="32sp"
+            android:textStyle="bold"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_marginTop="20dp"
+            android:isScrollContainer="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edt_personalData_fullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/stroke_box"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:hint="Fullname"
+                    android:textColorHint="@color/primary_dark_blue"
+                    android:textColor="@color/primary_dark_blue"
+                    android:inputType="textPersonName" />
+
+                <Spinner
+                    android:id="@+id/spin_personalData_job"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/stroke_box"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:layout_marginTop="20dp"
+                    android:spinnerMode="dropdown" />
+
+                <EditText
+                    android:id="@+id/edt_personalData_institution"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/stroke_box"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="Nama Sekolah/Perusahaan/Lembaga"
+                    android:textColorHint="@color/primary_dark_blue"
+                    android:textColor="@color/primary_dark_blue"/>
+
+                <EditText
+                    android:id="@+id/edt_personalData_socialMedia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/stroke_box"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="Akun Media Sosial - Username"
+                    android:textColorHint="@color/primary_dark_blue"
+                    android:textColor="@color/primary_dark_blue"
+                    android:lines="5"
+                    android:inputType="textMultiLine"
+                    android:gravity="top|left"
+                    android:scrollHorizontally="false"
+                    android:scrollbars="vertical"
+                    android:overScrollMode="always"/>
+
+                <EditText
+                    android:id="@+id/edt_personalData_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/stroke_box"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="Lokasi Tempat Tinggal"
+                    android:textColorHint="@color/primary_dark_blue"
+                    android:textColor="@color/primary_dark_blue" />
+
+                <EditText
+                    android:id="@+id/edt_personalData_userDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/stroke_box"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="Deskripsi User"
+                    android:textColorHint="@color/primary_dark_blue"
+                    android:textColor="@color/primary_dark_blue"
+                    android:lines="5"
+                    android:inputType="textMultiLine"
+                    android:gravity="top|left"
+                    android:scrollHorizontally="false"
+                    android:scrollbars="vertical"
+                    android:overScrollMode="always"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_personalData_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primary_light_blue"
+            android:text="SELANJUTNYA"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="50dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

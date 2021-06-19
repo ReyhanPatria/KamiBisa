@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.view.fragment.createDonation.BeneficiaryDataFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Isi data di bawah ini untuk galang dana"
+        android:textSize="32sp"
+        android:textColor="@color/primary_dark_blue"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:text="Kategori Penggalangan Dana"
+            android:textColor="@color/primary_dark_blue"/>
+
+        <Spinner
+            android:id="@+id/spin_beneficiaryData_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/stroke_box"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:text="Untuk siapa kamu menggalang dana?"
+            android:textColor="@color/primary_dark_blue"/>
+
+        <Spinner
+            android:id="@+id/spin_beneficiaryData_beneficiaryRelation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/stroke_box"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:text="Siapa nama penerima bantuan?"
+            android:textColor="@color/primary_dark_blue"/>
+
+        <EditText
+            android:id="@+id/edt_beneficiaryData_beneficiaryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/stroke_box"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:hint="Nama penerima bantuan"
+            android:textColorHint="@color/primary_dark_blue"
+            android:textColor="@color/primary_dark_blue"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_beneficiaryData_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="50"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="8dp"
+            android:backgroundTint="@color/white"
+            android:text="SEBELUMNYA"
+            android:textSize="18sp"
+            android:textColor="@color/primary_blue"
+            android:textStyle="bold"
+            app:cornerRadius="50dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_beneficiaryData_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="50"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="8dp"
+            android:backgroundTint="@color/primary_light_blue"
+            android:text="SELANJUTNYA"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="50dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

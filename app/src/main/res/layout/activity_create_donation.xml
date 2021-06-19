@@ -4,14 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.view.activity.CreateDonationActivity">
 
+    <RelativeLayout
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:background="@color/primary_light_blue"
+        android:paddingHorizontal="19dp"
+        android:paddingVertical="19dp">
+
+        <EditText
+            android:id="@+id/edt_home_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary_blue"
+            android:paddingHorizontal="9dp"
+            android:hint="Search"
+            android:textColorHint="@color/white"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="9dp"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_createDonation_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_bar"
+        android:layout_marginHorizontal="30dp"/>
+
     <TextView
+        android:id="@+id/tv_createDonation_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CREATE DONATION ACTIVITY"
-        android:textSize="56sp"
-        android:textAlignment="center"
-        android:layout_centerInParent="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/fl_createDonation_fragment"
+        android:text="BATAL MENGGALANG DANA"
+        android:textColor="@color/pink"
+        android:textSize="14sp"/>
+
+    <ProgressBar
+        android:id="@+id/pb_createDonation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.kamibisa.ui.view.fragment;
+package com.example.kamibisa.ui.view.fragment.home;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.kamibisa.R;
-import com.example.kamibisa.ui.view.activity.HomeActivity;
+import com.example.kamibisa.ui.view.activity.CreateDonationActivity;
 import com.google.android.material.button.MaterialButton;
 
 /**
@@ -25,8 +25,7 @@ public class CreateDonationFragment extends Fragment implements View.OnClickList
 
     private View rootView;
 
-    private MaterialButton healthcareCharityButton;
-    private MaterialButton miscCharityButton;
+    private MaterialButton createDonationButton;
 
     public CreateDonationFragment() {
         // Required empty public constructor
@@ -58,25 +57,19 @@ public class CreateDonationFragment extends Fragment implements View.OnClickList
     }
 
     private void initializeUi() {
-        this.healthcareCharityButton = rootView.findViewById(R.id.btn_createDonation_healthcareCharity);
-        this.miscCharityButton = rootView.findViewById(R.id.btn_createDonation_miscCharity);
+        this.createDonationButton = rootView.findViewById(R.id.btn_createDonation_create);
     }
 
     private void setOnClickListeners() {
-        this.healthcareCharityButton.setOnClickListener(this);
-        this.miscCharityButton.setOnClickListener(this);
+        this.createDonationButton.setOnClickListener(this);
     }
 
         @Override
     @SuppressLint("NonConstantResourceId")
     public void onClick(View v) {
         switch(v.getId()) {
-            case R.id.btn_createDonation_healthcareCharity:
-                createHealthcareCharity();
-                break;
-
-            case R.id.btn_createDonation_miscCharity:
-                createMiscCharity();
+            case R.id.btn_createDonation_create:
+                createDonation();
                 break;
 
             default:
@@ -84,11 +77,8 @@ public class CreateDonationFragment extends Fragment implements View.OnClickList
         }
     }
 
-    private void createHealthcareCharity() {
-        ((HomeActivity) this.requireActivity()).createCharity();
-    }
-
-    private void createMiscCharity() {
-        ((HomeActivity) this.requireActivity()).createCharity();
+    private void createDonation() {
+        Intent newIntent = new Intent(this.requireContext(), CreateDonationActivity.class);
+        this.requireActivity().startActivity(newIntent);
     }
 }

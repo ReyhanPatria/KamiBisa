@@ -1,4 +1,4 @@
-package com.example.kamibisa.ui.view.fragment;
+package com.example.kamibisa.ui.view.fragment.home;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -15,9 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kamibisa.R;
-import com.example.kamibisa.data.model.Charity;
+import com.example.kamibisa.data.model.Donation;
 import com.example.kamibisa.ui.view.activity.HomeActivity;
-import com.example.kamibisa.ui.view.recyclerview.CharityRecyclerViewAdapter;
+import com.example.kamibisa.ui.view.recyclerview.DonationRecyclerViewAdapter;
 import com.example.kamibisa.ui.viewmodel.HomeViewModel;
 import com.example.kamibisa.ui.viewmodel.factory.HomeViewModelFactory;
 import com.example.kamibisa.utils.InjectionUtilities;
@@ -35,11 +35,11 @@ public class HomeFragment extends Fragment {
     private View rootView;
     private HomeViewModel homeViewModel;
 
-    private RecyclerView urgentCharityListRecyclerView;
-    private CharityRecyclerViewAdapter urgentCharityListAdapter;
+    private RecyclerView urgentDonationListRecyclerView;
+    private DonationRecyclerViewAdapter urgentDonationListAdapter;
 
-    private RecyclerView selectedCharityListRecyclerView;
-    private CharityRecyclerViewAdapter selectedCharityListAdapter;
+    private RecyclerView selectedDonationListRecyclerView;
+    private DonationRecyclerViewAdapter selectedDonationListAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -94,53 +94,53 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        homeViewModel.getUrgentCharityList()
-                .observe(getViewLifecycleOwner(), new Observer<List<Charity>>() {
+        homeViewModel.getUrgentDonationList()
+                .observe(getViewLifecycleOwner(), new Observer<List<Donation>>() {
                     @Override
-                    public void onChanged(List<Charity> charities) {
-                        urgentCharityListAdapter.setCharityList(charities);
-                        urgentCharityListAdapter.notifyDataSetChanged();
+                    public void onChanged(List<Donation> charities) {
+                        urgentDonationListAdapter.setCharityList(charities);
+                        urgentDonationListAdapter.notifyDataSetChanged();
 
                         Log.d(TAG, String.format("Urgent charity list changed. %d items in list",
-                                urgentCharityListRecyclerView.getAdapter().getItemCount()));
+                                urgentDonationListRecyclerView.getAdapter().getItemCount()));
                     }
                 });
 
-        homeViewModel.getSelectedCharityList()
-                .observe(getViewLifecycleOwner(), new Observer<List<Charity>>() {
+        homeViewModel.getSelectedDonationList()
+                .observe(getViewLifecycleOwner(), new Observer<List<Donation>>() {
                     @Override
-                    public void onChanged(List<Charity> charities) {
-                        selectedCharityListAdapter.setCharityList(charities);
-                        selectedCharityListAdapter.notifyDataSetChanged();
+                    public void onChanged(List<Donation> charities) {
+                        selectedDonationListAdapter.setCharityList(charities);
+                        selectedDonationListAdapter.notifyDataSetChanged();
 
                         Log.d(TAG, String.format("Selected charity list changed. %d items in list",
-                                selectedCharityListRecyclerView.getAdapter().getItemCount()));
+                                selectedDonationListRecyclerView.getAdapter().getItemCount()));
                     }
                 });
     }
 
     public void initializeCharityRecyclerView() {
         // Urgent charity list
-        urgentCharityListRecyclerView = rootView.findViewById(R.id.rv_home_urgentCharityList);
+        urgentDonationListRecyclerView = rootView.findViewById(R.id.rv_home_urgentCharityList);
 
         LinearLayoutManager urgentLayoutManager = new LinearLayoutManager(requireContext(),
                 LinearLayoutManager.HORIZONTAL, false);
-        urgentCharityListRecyclerView.setLayoutManager(urgentLayoutManager);
+        urgentDonationListRecyclerView.setLayoutManager(urgentLayoutManager);
 
-        urgentCharityListAdapter = new CharityRecyclerViewAdapter(requireContext(),
-                homeViewModel.getUrgentCharityList().getValue());
-        urgentCharityListRecyclerView.setAdapter(urgentCharityListAdapter);
+        urgentDonationListAdapter = new DonationRecyclerViewAdapter(requireContext(),
+                homeViewModel.getUrgentDonationList().getValue());
+        urgentDonationListRecyclerView.setAdapter(urgentDonationListAdapter);
 
 
         // Selected charity list
-        selectedCharityListRecyclerView = rootView.findViewById(R.id.rv_home_selectedCharityList);
+        selectedDonationListRecyclerView = rootView.findViewById(R.id.rv_home_selectedCharityList);
 
         LinearLayoutManager selectedLayoutManager = new LinearLayoutManager(requireContext(),
                 LinearLayoutManager.HORIZONTAL, false);
-        selectedCharityListRecyclerView.setLayoutManager(selectedLayoutManager);
+        selectedDonationListRecyclerView.setLayoutManager(selectedLayoutManager);
 
-        selectedCharityListAdapter = new CharityRecyclerViewAdapter(requireContext(),
-                homeViewModel.getSelectedCharityList().getValue());
-        selectedCharityListRecyclerView.setAdapter(selectedCharityListAdapter);
+        selectedDonationListAdapter = new DonationRecyclerViewAdapter(requireContext(),
+                homeViewModel.getSelectedDonationList().getValue());
+        selectedDonationListRecyclerView.setAdapter(selectedDonationListAdapter);
     }
 }

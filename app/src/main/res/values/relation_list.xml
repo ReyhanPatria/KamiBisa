@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="relations">
+        <item>Saya sendiri</item>
+        <item>Keluarga</item>
+        <item>Teman</item>
+        <item>Orang lain</item>
+    </string-array>
+</resources>

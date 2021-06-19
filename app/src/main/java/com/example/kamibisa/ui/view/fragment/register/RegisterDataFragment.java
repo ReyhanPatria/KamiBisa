@@ -1,7 +1,6 @@
-package com.example.kamibisa.ui.view.fragment;
+package com.example.kamibisa.ui.view.fragment.register;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.User;
-import com.example.kamibisa.ui.view.activity.HomeActivity;
 import com.example.kamibisa.ui.view.activity.RegisterActivity;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointBackward;
@@ -74,11 +72,11 @@ public class RegisterDataFragment extends Fragment implements View.OnClickListen
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initializeViewWidgets();
+        initializeUi();
         setOnClickListeners();
     }
 
-    private void initializeViewWidgets() {
+    private void initializeUi() {
         // Gets all widgets
         usernameEditText = rootView.findViewById(R.id.edt_register_username);
         emailEditText = rootView.findViewById(R.id.edt_register_email);
@@ -88,7 +86,7 @@ public class RegisterDataFragment extends Fragment implements View.OnClickListen
         backButton = rootView.findViewById(R.id.btn_register_back);
 
         // Create dob picker
-        dobPicker = createDobPicker();
+        dobPicker = createDatePicker();
     }
 
     private void setOnClickListeners() {
@@ -173,7 +171,7 @@ public class RegisterDataFragment extends Fragment implements View.OnClickListen
         Toast.makeText(requireContext(), warningMessage, Toast.LENGTH_SHORT).show();
     }
 
-    private MaterialDatePicker createDobPicker() {
+    private MaterialDatePicker createDatePicker() {
         // Create DOB constraints
         CalendarConstraints dobConstraints = (new CalendarConstraints.Builder())
                 .setValidator(DateValidatorPointBackward.now())

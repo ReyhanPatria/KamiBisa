@@ -11,4 +11,37 @@
     <string name="login_failed">"Login failed"</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="donation_description_example">
+        contoh: Biaya rawat inap/tindakan Rp. 5.000.000, membeli obat-obatan/suplemen/penunjang pengobatan tambahan sebesar Rp. 10.000.000, untuk operasional sehari-hari sebesar Rp. 5.000.000
+    </string>
+    <string name="donation_introduction_header">
+        Untuk memudahkanmu, kami membuat informasi yang kamu masukkan menjadi cerita penggalangan dana. Kamu dapat mengubah cerita di bawah ini sesuai keinginanmu
+    </string>
+    <string name="donation_introduction_example">
+        Hai perkenalkan nama saya *qwerty*, sekarang saya bekerja sebagai ______ di _____ dan saya ingin menggalang dana untuk biaya pengobatan sepupu, *abcdef*.
+        <br/><br/>
+        Usia *abcdef* saat ini ______ tahun, menderita penyakit *sesuatu* sejak tahun _______ dan menjalani tindakan pengobatan di *rs apa*.
+        <br/><br/>
+        Awalnya *abcdef* mengalami gejala _________ selama kurang lebih _______. Karena tidak kunjung membaik, *abcdef* memberanikan diri untuk melakukan pemeriksaan lebih lanjut di *rs apa*.
+        <br/><br/>
+        Saat ini keluhan terberat yang *abcdef* rasakan adalah _____, dan harus segera dilakukan tindakan _____ agar penyakit ini tidak semakin parah. Jika tidak mendapatkan tindakan tersebut dalam waktu dekat akan berakibat pada _____.
+        <br/><br/>
+        Saat ini total biaya yang dibutuhkan sebesar Rp 123.232.323, untuk rinciannya:
+        <br/><br/>
+        Biaya rawat inap/tindakan Rp. 5.000.000, membeli obat-obatan/ suplemen/penunjang pengobatan tambahan sebesar Rp. 10.000.000, untuk operasional sehari-hari sebesar Rp. 5.000.000
+        <br/><br/>
+        Untuk berobat *abcdef* mengandalkan biaya dari ______. Selain menggalang dana di Kamibisa, kami juga berjuang mendapatkan biaya tambahan untuk berobat dengan cara ______.
+        <br/><br/>
+        Untuk itu, sangat besar harapan saya akan bantuan dan doa para #OrangBaik agar *abcdef* bisa melanjutkan pengobatan hingga selesai, dengan cara:
+        1. Klik tombol “DONASI SEKARANG”
+        2. Masukkan nominal donasi
+        3. Pilih metode pembayaran GO-PAY, Jenius Pay, LinkAja, DANA, Mandiri Virtual Account, BCA Virtual Account, atau transfer Bank (transfer bank BNI, Mandiri, BCA, BRI, BNI Syariah, atau kartu kredit) dan transfer ke no. rekening yang tertera.
+        <br/><br/>
+        Tak hanya mendoakan dan berdonasi, saudara-saudara juga bisa membagikan halaman galang dana saya ini agar semakin banyak yang turut menemani perjuangan saya.
+        <br/><br/>
+        Terima kasih banyak, #orangbaik!
+    </string>
+    <string name="donation_motivator_example">
+        contoh: Mohon bantuan doa dan donasinya untuk proses kesembuhan buah hati kami, Kafi
+    </string>
 </resources>

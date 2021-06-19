@@ -15,11 +15,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.database.Database;
-import com.example.kamibisa.ui.view.fragment.BloodDonationFragment;
-import com.example.kamibisa.ui.view.fragment.CreateDonationFragment;
-import com.example.kamibisa.ui.view.fragment.HistoryFragment;
-import com.example.kamibisa.ui.view.fragment.HomeFragment;
-import com.example.kamibisa.ui.view.fragment.ProfileFragment;
+import com.example.kamibisa.ui.view.fragment.home.BloodDonationFragment;
+import com.example.kamibisa.ui.view.fragment.home.CreateDonationFragment;
+import com.example.kamibisa.ui.view.fragment.home.HistoryFragment;
+import com.example.kamibisa.ui.view.fragment.home.HomeFragment;
+import com.example.kamibisa.ui.view.fragment.home.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {

@@ -7,8 +7,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.kamibisa.data.model.Charity;
-import com.example.kamibisa.data.repository.CharityRepository;
+import com.example.kamibisa.data.model.Donation;
+import com.example.kamibisa.data.repository.DonationRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -22,59 +22,59 @@ public class HomeViewModel extends ViewModel {
 
     private static HomeViewModel instance;
 
-    private CharityRepository charityRepository;
+    private DonationRepository donationRepository;
 
     // Add variables to be observed
     private MutableLiveData<Boolean> isUpdating;
-    private MutableLiveData<List<Charity>> urgentCharityList;
-    private MutableLiveData<List<Charity>> selectedCharityList;
+    private MutableLiveData<List<Donation>> urgentDonationList;
+    private MutableLiveData<List<Donation>> selectedDonationList;
 
 
-    public HomeViewModel(CharityRepository charityRepository) {
-        this.charityRepository = charityRepository;
+    public HomeViewModel(DonationRepository donationRepository) {
+        this.donationRepository = donationRepository;
         initializeVariables();
-        updateCharityList();
+        updateDonationList();
     }
 
-    public static HomeViewModel getInstance(CharityRepository charityRepository) {
+    public static HomeViewModel getInstance(DonationRepository donationRepository) {
         if(instance == null) {
-            instance = new HomeViewModel(charityRepository);
+            instance = new HomeViewModel(donationRepository);
         }
         return instance;
     }
 
     public void initializeVariables() {
         isUpdating = new MutableLiveData<Boolean>(Boolean.FALSE);
-        urgentCharityList = new MutableLiveData<List<Charity>>(new ArrayList<Charity>());
-        selectedCharityList = new MutableLiveData<List<Charity>>(new ArrayList<Charity>());
+        urgentDonationList = new MutableLiveData<List<Donation>>(new ArrayList<Donation>());
+        selectedDonationList = new MutableLiveData<List<Donation>>(new ArrayList<Donation>());
     }
 
-    public void updateCharityList() {
-        updateUrgentCharityList();
-        updateSelectedCharityList();
+    public void updateDonationList() {
+        updateUrgentDonationList();
+        updateSelectedDonationList();
     }
 
-    public void updateUrgentCharityList() {
+    public void updateUrgentDonationList() {
         isUpdating.setValue(Boolean.TRUE);
 
         // Query all charities from Firestore
-        charityRepository.getCurrentCharity().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        donationRepository.getCurrentDonation().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()) {
-                    List<Charity> newUrgentCharityList = new ArrayList<Charity>();
+                    List<Donation> newUrgentDonationList = new ArrayList<Donation>();
 
                     // Loop through query result
                     for(QueryDocumentSnapshot document: task.getResult()) {
                         // Convert query result into Charity object
-                        Charity charity = document.toObject(Charity.class);
+                        Donation donation = document.toObject(Donation.class);
                         // Add Charity object into charityList
-                        newUrgentCharityList.add(charity);
+                        newUrgentDonationList.add(donation);
 
                         Log.d("HomeFragment", "Charity list query successful");
                     }
 
-                    urgentCharityList.setValue(newUrgentCharityList);
+                    urgentDonationList.setValue(newUrgentDonationList);
                 }
                 else {
                     Log.e(TAG, "Charity list query failed");
@@ -85,25 +85,25 @@ public class HomeViewModel extends ViewModel {
         });
     }
 
-    public void updateSelectedCharityList() {
+    public void updateSelectedDonationList() {
         isUpdating.setValue(Boolean.TRUE);
 
         // Query all charities from Firestore
-        charityRepository.getAllCharity().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        donationRepository.getAllDonation().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()) {
-                    List<Charity> newSelectedCharityList = new ArrayList<Charity>();
+                    List<Donation> newSelectedDonationList = new ArrayList<Donation>();
 
                     // Loop through query result
                     for(QueryDocumentSnapshot document: task.getResult()) {
                         // Convert query result into Charity object
-                        Charity charity = document.toObject(Charity.class);
+                        Donation donation = document.toObject(Donation.class);
                         // Add Charity object into charityList
-                        newSelectedCharityList.add(charity);
+                        newSelectedDonationList.add(donation);
                     }
 
-                    selectedCharityList.setValue(newSelectedCharityList);
+                    selectedDonationList.setValue(newSelectedDonationList);
                 }
                 else {
                     Log.e(TAG, "Charity list query failed");
@@ -118,11 +118,11 @@ public class HomeViewModel extends ViewModel {
         return isUpdating;
     }
 
-    public LiveData<List<Charity>> getUrgentCharityList() {
-        return urgentCharityList;
+    public LiveData<List<Donation>> getUrgentDonationList() {
+        return urgentDonationList;
     }
 
-    public LiveData<List<Charity>> getSelectedCharityList() {
-        return selectedCharityList;
+    public LiveData<List<Donation>> getSelectedDonationList() {
+        return selectedDonationList;
     }
 }
