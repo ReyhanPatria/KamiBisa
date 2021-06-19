@@ -14,8 +14,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.kamibisa.R;
+import com.example.kamibisa.data.model.Donation;
 import com.example.kamibisa.ui.view.activity.CreateDonationActivity;
 import com.google.android.material.button.MaterialButton;
 
@@ -29,11 +31,11 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
 
     private View rootView;
 
-    private EditText fullnameEditText;
+    private EditText creatorNameEditText;
     private EditText institutionEditText;
     private EditText socialMediaEditText;
     private EditText locationEditText;
-    private EditText userDescriptionEditText;
+    private EditText creatorDescriptionEditText;
 
     private Spinner jobSpinner;
 
@@ -72,11 +74,11 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
 
 
     public void initializeUi() {
-        this.fullnameEditText = rootView.findViewById(R.id.edt_personalData_fullname);
+        this.creatorNameEditText = rootView.findViewById(R.id.edt_personalData_fullname);
         this.institutionEditText = rootView.findViewById(R.id.edt_personalData_institution);
         this.socialMediaEditText = rootView.findViewById(R.id.edt_personalData_socialMedia);
         this.locationEditText = rootView.findViewById(R.id.edt_personalData_location);
-        this.userDescriptionEditText = rootView.findViewById(R.id.edt_personalData_userDescription);
+        this.creatorDescriptionEditText = rootView.findViewById(R.id.edt_personalData_userDescription);
 
         this.jobSpinner = rootView.findViewById(R.id.spin_personalData_job);
 
@@ -111,7 +113,7 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
         };
 
         this.socialMediaEditText.setOnTouchListener(touchScrollPriority);
-        this.userDescriptionEditText.setOnTouchListener(touchScrollPriority);
+        this.creatorDescriptionEditText.setOnTouchListener(touchScrollPriority);
     }
 
     public void setOnClickListeners() {
@@ -122,12 +124,53 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
     @SuppressLint("NonConstantResourceId")
     public void onClick(View v) {
         if(v.getId() == this.nextButton.getId()) {
+            setDonationPersonalData();
             gotoBeneficiaryDataFragment();
         }
     }
 
-    public void gotoBeneficiaryDataFragment() {
+    private void gotoBeneficiaryDataFragment() {
         Fragment f = ((CreateDonationActivity) this.requireActivity()).getBeneficiaryDataFragment();
         ((CreateDonationActivity) this.requireActivity()).changeMenu(f, Boolean.TRUE);
+    }
+
+    public Donation setDonationPersonalData() {
+        Donation newDonation = ((CreateDonationActivity) this.requireActivity()).getNewDonation();
+
+        String creatorName = creatorNameEditText.getText().toString();
+        String institution = institutionEditText.getText().toString();
+        String socialMedia = institutionEditText.getText().toString();
+        String location = locationEditText.getText().toString();
+        String creatorDescription = creatorDescriptionEditText.getText().toString();
+
+        String warningMessage = "";
+
+        if(!Donation.isCreatorNameValid(creatorName)) {
+            warningMessage = "Name cannot be empty";
+        }
+        else if(!Donation.isInstitutionValid(institution)) {
+            warningMessage = "Institution cannot be empty";
+        }
+        else if(!Donation.isSocialMediaValid(socialMedia)) {
+            warningMessage = "Social media cannot be empty";
+        }
+        else if(!Donation.isLocationValid(location)) {
+            warningMessage = "Location cannot be empty";
+        }
+        else if(!Donation.isCreatorDescriptionValid(creatorDescription)) {
+            warningMessage = "Creator description cannot be empty";
+        }
+        else {
+            newDonation.setCreatorName(creatorName);
+            newDonation.setInstitution(institution);
+            newDonation.setSocialMedia(socialMedia);
+            newDonation.setLocation(location);
+            newDonation.setCreatorDescription(creatorDescription);
+
+            return newDonation;
+        }
+
+        Toast.makeText(requireContext(), warningMessage, Toast.LENGTH_LONG).show();
+        return newDonation;
     }
 }

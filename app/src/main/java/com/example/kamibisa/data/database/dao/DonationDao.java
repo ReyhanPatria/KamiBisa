@@ -17,17 +17,17 @@ public class DonationDao {
     }
 
     public Task<DocumentReference> insertDonation(Donation donation) {
-        return firestore.collection("charities")
+        return firestore.collection("donations")
                 .add(donation);
     }
 
     public Task<QuerySnapshot> getAllDonation() {
-        return firestore.collection("charities").get();
+        return firestore.collection("donations").get();
     }
 
     public Task<QuerySnapshot> getCurrentDonation() {
-        return firestore.collection("charities")
-                .whereGreaterThan("finishedAt", Date.from(Instant.now()))
+        return firestore.collection("donations")
+                .whereGreaterThan("finishedDate", Date.from(Instant.now()))
                 .get();
     }
 }

@@ -13,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.kamibisa.R;
+import com.example.kamibisa.data.model.Donation;
 import com.example.kamibisa.ui.view.activity.CreateDonationActivity;
 import com.google.android.material.button.MaterialButton;
 
@@ -94,6 +96,7 @@ public class BeneficiaryDataFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.btn_beneficiaryData_next:
+                setDonationBeneficiaryData();
                 gotoDonationDataFragment();
                 break;
 
@@ -115,5 +118,29 @@ public class BeneficiaryDataFragment extends Fragment implements View.OnClickLis
     private void gotoDonationDataFragment() {
         Fragment f = ((CreateDonationActivity) this.requireActivity()).getDonationDataFragment();
         ((CreateDonationActivity) this.requireActivity()).changeMenu(f, Boolean.TRUE);
+    }
+
+    public Donation setDonationBeneficiaryData() {
+        Donation newDonation = ((CreateDonationActivity) this.requireActivity()).getNewDonation();
+
+        String beneficiaryName = beneficiaryNameEditText.getText().toString();
+        String beneficiaryRelation = beneficiaryRelationSpinner.getSelectedItem().toString();
+        String category = categorySpinner.getSelectedItem().toString();
+
+        String warningMessage = "";
+
+        if(!Donation.isBeneficiaryNameValid(beneficiaryName)) {
+            warningMessage = "Beneficiary name cannot be empty";
+        }
+        else {
+            newDonation.setBeneficiaryName(beneficiaryName);
+            newDonation.setBeneficiaryRelation(beneficiaryRelation);
+            newDonation.setCategory(category);
+
+            return newDonation;
+        }
+
+        Toast.makeText(requireContext(), warningMessage, Toast.LENGTH_LONG).show();
+        return newDonation;
     }
 }
