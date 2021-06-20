@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/white"
+    tools:context=".ui.view.activity.DonationActivity">
+
+    <ImageButton
+        android:id="@+id/btn_donation_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_back_button"
+        android:layout_margin="6dp"/>
+
+    <TextView
+        android:id="@+id/tv_donation_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_donation_back"
+        android:layout_marginBottom="12dp"
+        android:text="Donation Title"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/primary_dark_blue"/>
+
+    <LinearLayout
+        android:layout_below="@id/tv_donation_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/sv_donation_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_below="@id/tv_donation_title">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="30dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_donation_thumbnail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_launcher"
+                        android:layout_centerHorizontal="true"/>
+
+                    <LinearLayout
+                        android:id="@+id/lr_donation_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="16dp"
+                        android:layout_below="@+id/img_donation_thumbnail">
+
+                        <TextView
+                            android:id="@+id/tv_donation_gatheredAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="33"
+                            android:text="Rp 4.427.000"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/pink"
+                            android:textAlignment="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="33"
+                            android:text="Terkumpul dari"
+                            android:textSize="16sp"
+                            android:textColor="@color/primary_dark_blue"
+                            android:textAlignment="center"/>
+
+                        <TextView
+                            android:id="@+id/tv_donation_targetAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="33"
+                            android:text="Rp 200.000.000"
+                            android:textSize="16sp"
+                            android:textColor="@color/primary_dark_blue"
+                            android:textAlignment="center"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_donation_daysLeft"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/lr_donation_header"
+                        android:text="92 hari lagi"
+                        android:textSize="16sp"
+                        android:textColor="@color/primary_dark_blue"
+                        android:textAlignment="textEnd"/>
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_separator"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Informasi Galang Dana"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_dark_blue"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="24dp"
+                        android:text="Penggalang Dana"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_donation_creatorName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="15dp"
+                        android:text="KamiBisa"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="20sp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_separator"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cerita"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_dark_blue"/>
+
+                    <EditText
+                        android:id="@+id/edt_donation_introduction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/stroke_box"
+                        android:gravity="start"
+                        android:inputType="textMultiLine"
+                        android:overScrollMode="always"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="10dp"
+                        android:scrollbars="vertical"
+                        android:scrollHorizontally="false"
+                        android:textColor="@color/primary_dark_blue"
+                        android:textColorHint="@color/primary_dark_blue"
+                        android:textSize="14sp"
+                        android:enabled="false"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_donation_donate"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/pink"
+            android:text="Donasi Sekarang"
+            android:textSize="20sp"
+            app:cornerRadius="50dp"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_donation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

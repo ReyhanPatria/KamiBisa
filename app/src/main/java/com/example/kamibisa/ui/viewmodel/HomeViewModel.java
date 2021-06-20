@@ -68,6 +68,8 @@ public class HomeViewModel extends ViewModel {
                     for(QueryDocumentSnapshot document: task.getResult()) {
                         // Convert query result into Charity object
                         Donation donation = document.toObject(Donation.class);
+                        donation.setId(document.getId());
+
                         // Add Charity object into charityList
                         newUrgentDonationList.add(donation);
 
@@ -99,6 +101,8 @@ public class HomeViewModel extends ViewModel {
                     for(QueryDocumentSnapshot document: task.getResult()) {
                         // Convert query result into Charity object
                         Donation donation = document.toObject(Donation.class);
+                        donation.setId(document.getId());
+
                         // Add Charity object into charityList
                         newSelectedDonationList.add(donation);
                     }

@@ -3,6 +3,7 @@ package com.example.kamibisa.data.database.dao;
 import com.example.kamibisa.data.model.Donation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -19,6 +20,10 @@ public class DonationDao {
     public Task<DocumentReference> insertDonation(Donation donation) {
         return firestore.collection("donations")
                 .add(donation);
+    }
+
+    public Task<DocumentSnapshot> getDonation(String id) {
+        return firestore.collection("donations").document(id).get();
     }
 
     public Task<QuerySnapshot> getAllDonation() {

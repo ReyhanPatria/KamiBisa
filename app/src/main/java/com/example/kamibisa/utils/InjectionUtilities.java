@@ -4,6 +4,7 @@ import com.example.kamibisa.data.database.Database;
 import com.example.kamibisa.data.repository.DonationRepository;
 import com.example.kamibisa.data.repository.UserRepository;
 import com.example.kamibisa.ui.viewmodel.factory.CreateDonationViewModelFactory;
+import com.example.kamibisa.ui.viewmodel.factory.DonationViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.HomeViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.LoginViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.RegisterViewModelFactory;
@@ -42,5 +43,11 @@ public class InjectionUtilities {
         DonationRepository donationRepository = DonationRepository.getInstance(
                 Database.getInstance().getDonationDao());
         return new CreateDonationViewModelFactory(donationRepository);
+    }
+
+    public DonationViewModelFactory provideDonationViewModelFactory() {
+        DonationRepository donationRepository = DonationRepository.getInstance(
+                Database.getInstance().getDonationDao());
+        return new DonationViewModelFactory(donationRepository);
     }
 }

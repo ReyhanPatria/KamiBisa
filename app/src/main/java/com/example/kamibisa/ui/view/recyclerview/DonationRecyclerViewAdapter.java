@@ -1,6 +1,7 @@
 package com.example.kamibisa.ui.view.recyclerview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Donation;
+import com.example.kamibisa.ui.view.activity.DonationActivity;
 
 import java.util.List;
 
@@ -42,6 +44,8 @@ public class DonationRecyclerViewAdapter extends RecyclerView.Adapter<DonationRe
         String gatheredAmount = String.valueOf(donationList.get(position).getGatheredAmount());
         String daysLeft = String.valueOf(donationList.get(position).getDaysLeft());
 
+        holder.donationId = donationList.get(position).getId();
+
         holder.titleTextView.setText(title);
         holder.gatheredAmountTextView.setText(gatheredAmount);
         holder.daysLeftTextView.setText(daysLeft);
@@ -56,8 +60,15 @@ public class DonationRecyclerViewAdapter extends RecyclerView.Adapter<DonationRe
         this.donationList = donationList;
     }
 
+
+
+
+
+    // THE ITEM OF THE RECYCLER VIEW
     public class ViewHolder extends RecyclerView.ViewHolder {
         private static final String TAG = "ViewHolder";
+
+        private String donationId;
 
         private RelativeLayout listItemParentLayout;
         private ImageView thumbnailImageView;
@@ -68,6 +79,16 @@ public class DonationRecyclerViewAdapter extends RecyclerView.Adapter<DonationRe
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             initializeUi();
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Move to donation page
+                    Intent newIntent = new Intent(v.getContext(), DonationActivity.class);
+                    newIntent.putExtra("donationId", donationId);
+                    v.getContext().startActivity(newIntent);
+                }
+            });
         }
 
         public void initializeUi() {
