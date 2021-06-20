@@ -27,6 +27,10 @@ public class DonationRepository {
         return donationDao.insertDonation(donation);
     }
 
+    public Task<Void> donateToDonation(String donationId, Integer amount) {
+        return donationDao.donateToDonation(donationId, amount);
+    }
+
     public Task<DocumentSnapshot> getDonation(String id) {
         return donationDao.getDonation(id);
     }

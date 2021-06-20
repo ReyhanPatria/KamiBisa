@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KamiBisa"
         android:windowSoftInputMode="adjustPan">
-        <activity android:name=".ui.view.activity.DonationActivity"></activity>
+        <activity android:name=".ui.view.activity.DonateActivity"></activity>
+        <activity android:name=".ui.view.activity.DonationActivity" />
         <activity android:name=".ui.view.activity.CreateDonationActivity" />
         <activity android:name=".ui.view.activity.HomeActivity" />
         <activity android:name=".ui.view.activity.RegisterActivity" />

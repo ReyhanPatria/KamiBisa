@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/white"
+    tools:context=".ui.view.activity.DonateActivity">
+
+    <ImageButton
+        android:id="@+id/btn_donate_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_back_button"
+        android:layout_margin="6dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btn_donate_back"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:layout_marginBottom="12dp"
+            android:text="Masukkan Nominal Donasi"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/primary_dark_blue"/>
+
+        <EditText
+            android:id="@+id/edt_donate_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="12dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/ic_light_blue_rounded_rectangle"
+            android:drawableLeft="@drawable/ic_big_rp"
+            android:drawablePadding="12dp"
+            android:inputType="number"
+            android:textColor="@color/primary_dark_blue"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minimal jumlah donasi Rp. 10.000,-"
+            android:textColor="@color/primary_dark_blue"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_pink_separator"/>
+
+        <Spinner
+            android:id="@+id/spin_donate_paymentMethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/stroke_box"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:spinnerMode="dropdown"
+            android:prompt="@string/select_payment_method"/>
+
+        <TextView
+            android:id="@+id/tv_donate_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/ic_gray_bordered_rounded_rectangle"
+            android:layout_gravity="center_horizontal"
+            android:text="No Rekening BCA"
+            android:textSize="16dp"
+            android:textAlignment="center"
+            android:textColor="@color/primary_dark_blue"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_pink_separator"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_donate_pay"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/pink"
+        android:text="Lanjut Pembayaran"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:cornerRadius="50dp"/>
+
+    <ProgressBar
+        android:id="@+id/pb_donate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

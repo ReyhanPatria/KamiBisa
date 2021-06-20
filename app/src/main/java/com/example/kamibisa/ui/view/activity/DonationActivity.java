@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -130,12 +131,20 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.btn_donation_donate:
-                // TODO: START DONATE ACTIVITY
+                gotoDonatePage();
                 break;
 
             default:
                 break;
         }
+    }
+
+    private void gotoDonatePage() {
+        String donationId = this.getIntent().getStringExtra("donationId");
+
+        Intent newIntent = new Intent(this, DonateActivity.class);
+        newIntent.putExtra("donationId", donationId);
+        startActivity(newIntent);
     }
 
     public void showProgressBar() {

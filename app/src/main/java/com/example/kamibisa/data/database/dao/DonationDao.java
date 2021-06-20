@@ -1,9 +1,13 @@
 package com.example.kamibisa.data.database.dao;
 
+import androidx.annotation.NonNull;
+
 import com.example.kamibisa.data.model.Donation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -34,5 +38,10 @@ public class DonationDao {
         return firestore.collection("donations")
                 .whereGreaterThan("finishedDate", Date.from(Instant.now()))
                 .get();
+    }
+
+    public Task<Void> donateToDonation(String donationId, Integer amount) {
+        return firestore.collection("donations").document(donationId)
+                .update("gatheredAmount", FieldValue.increment(amount));
     }
 }
