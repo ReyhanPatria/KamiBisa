@@ -10,6 +10,9 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Donation {
+    @Exclude
+    private String id;
+
     private String title;
     private String link;
     private Date createdDate;
@@ -138,6 +141,11 @@ public class Donation {
         return !beneficiaryName.isEmpty();
     }
 
+    @Exclude
+    public String getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -208,6 +216,11 @@ public class Donation {
 
     public String getBeneficiaryRelation() {
         return beneficiaryRelation;
+    }
+
+    @Exclude
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {
