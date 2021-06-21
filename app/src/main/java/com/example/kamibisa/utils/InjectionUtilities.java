@@ -1,8 +1,10 @@
 package com.example.kamibisa.utils;
 
 import com.example.kamibisa.data.database.Database;
+import com.example.kamibisa.data.repository.BloodDonationRepository;
 import com.example.kamibisa.data.repository.DonationRepository;
 import com.example.kamibisa.data.repository.UserRepository;
+import com.example.kamibisa.ui.viewmodel.factory.BloodDonationViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.CreateDonationViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.DonateViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.DonationViewModelFactory;
@@ -56,5 +58,11 @@ public class InjectionUtilities {
         DonationRepository donationRepository = DonationRepository.getInstance(
                 Database.getInstance().getDonationDao());
         return new DonateViewModelFactory(donationRepository);
+    }
+
+    public BloodDonationViewModelFactory provideBloodDonationViewModelFactory() {
+        BloodDonationRepository bloodDonationRepository = BloodDonationRepository.getInstance(
+                Database.getInstance().getBloodDonationDao());
+        return new BloodDonationViewModelFactory(bloodDonationRepository);
     }
 }
