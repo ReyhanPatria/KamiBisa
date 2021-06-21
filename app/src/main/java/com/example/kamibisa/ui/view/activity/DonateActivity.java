@@ -123,15 +123,15 @@ public class DonateActivity extends AppCompatActivity implements View.OnClickLis
 
                 switch(position) {
                     case 0:
-                        message = "No Rekening BCA";
+                        message = "No Rekening BCA 645385976";
                         break;
 
                     case 1:
-                        message = "No Akun OVO";
+                        message = "No Akun OVO 08228574933";
                         break;
 
                     case 2:
-                        message = "No Akun GoPay";
+                        message = "No Akun GoPay 0812948339";
                         break;
 
                     default:
