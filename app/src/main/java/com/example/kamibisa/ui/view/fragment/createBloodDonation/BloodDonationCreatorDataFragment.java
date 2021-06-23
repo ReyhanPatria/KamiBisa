@@ -18,6 +18,8 @@ import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.BloodDonation;
 import com.example.kamibisa.ui.view.activity.CreateBloodDonationActivity;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 
 public class BloodDonationCreatorDataFragment extends Fragment implements View.OnClickListener {
     private static String TAG = "CreatorDataFragment";
@@ -91,6 +93,7 @@ public class BloodDonationCreatorDataFragment extends Fragment implements View.O
     }
 
     private void setCreatorData() {
+        String creatorId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String creatorName = this.creatorNameEditText.getText().toString();
         String phone = this.phoneEditText.getText().toString();
         String socialMedia = this.socialMediaEditText.getText().toString();
@@ -111,6 +114,7 @@ public class BloodDonationCreatorDataFragment extends Fragment implements View.O
             BloodDonation newBloodDonation = ((CreateBloodDonationActivity) this.requireActivity())
                     .getNewBloodDonation();
 
+            newBloodDonation.setCreatorId(creatorId);
             newBloodDonation.setCreatorName(creatorName);
             newBloodDonation.setPhone(phone);
             newBloodDonation.setSocialMedia(socialMedia);

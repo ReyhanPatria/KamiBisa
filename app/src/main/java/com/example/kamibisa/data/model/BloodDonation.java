@@ -17,6 +17,7 @@ public class BloodDonation {
     @Exclude
     private String id;
 
+    private String creatorId;
     private String creatorName;
     private String creatorJob;
     private String phone;
@@ -33,9 +34,11 @@ public class BloodDonation {
         // Required empty constructor
     }
 
-    public BloodDonation(String creatorName, String creatorJob, String phone, String socialMedia,
-                         String beneficiaryRelation, String beneficiaryName, String beneficiaryBloodType,
-                         String location, String link, Date createdDate, Date finishedDate) {
+    public BloodDonation(String creatorId, String creatorName, String creatorJob, String phone,
+                         String socialMedia, String beneficiaryRelation, String beneficiaryName,
+                         String beneficiaryBloodType, String location, String link, Date createdDate,
+                         Date finishedDate) {
+        this.creatorId = creatorId;
         this.creatorName = creatorName;
         this.creatorJob = creatorJob;
         this.phone = phone;
@@ -86,7 +89,6 @@ public class BloodDonation {
         return isValid;
     }
 
-
     @Exclude
     public String getId() {
         return id;
@@ -110,6 +112,10 @@ public class BloodDonation {
         long differenceInDays = TimeUnit.MILLISECONDS.toDays(differenceInMilliseconds);
 
         return differenceInDays;
+    }
+
+    public String getCreatorId() {
+        return creatorId;
     }
 
     public String getCreatorName() {
@@ -159,6 +165,10 @@ public class BloodDonation {
     @Exclude
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
     }
 
     public void setCreatorName(String creatorName) {
