@@ -23,6 +23,7 @@ public class Donation {
     private String description;
     private String introduction;
     private String motivator;
+    private String creatorId;
     private String creatorName;
     private String creatorDescription;
     private String institution;
@@ -38,7 +39,7 @@ public class Donation {
 
     public Donation(String title, String link, Date createdDate, Date finishedDate,
                     String category, Integer targetAmount, Integer gatheredAmount,
-                    String description, String introduction, String motivator,
+                    String description, String introduction, String motivator, String creatorId,
                     String creatorName, String creatorDescription, String institution,
                     String socialMedia, String location, String phone, String beneficiaryName,
                     String beneficiaryRelation) {
@@ -52,6 +53,7 @@ public class Donation {
         this.description = description;
         this.introduction = introduction;
         this.motivator = motivator;
+        this.creatorId = creatorId;
         this.creatorName = creatorName;
         this.creatorDescription = creatorDescription;
         this.institution = institution;
@@ -146,6 +148,10 @@ public class Donation {
         return id;
     }
 
+    public String getCreatorId() {
+        return creatorId;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -221,6 +227,10 @@ public class Donation {
     @Exclude
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
     }
 
     public void setTitle(String title) {
