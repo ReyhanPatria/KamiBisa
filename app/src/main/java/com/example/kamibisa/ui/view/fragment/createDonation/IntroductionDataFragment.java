@@ -107,7 +107,7 @@ public class IntroductionDataFragment extends Fragment implements View.OnClickLi
             newDonation.setIntroduction(introduction);
             newDonation.setMotivator(motivator);
 
-            insertDonation();
+            gotoConfirmationFragment();
 
             return newDonation;
         }
@@ -116,7 +116,8 @@ public class IntroductionDataFragment extends Fragment implements View.OnClickLi
         return newDonation;
     }
 
-    public void insertDonation() {
-        ((CreateDonationActivity) this.requireActivity()).insertDonation();
+    public void gotoConfirmationFragment() {
+        Fragment f = ((CreateDonationActivity) this.requireActivity()).getConfirmationFragment();
+        ((CreateDonationActivity) this.requireActivity()).changeMenu(f, Boolean.TRUE);
     }
 }
