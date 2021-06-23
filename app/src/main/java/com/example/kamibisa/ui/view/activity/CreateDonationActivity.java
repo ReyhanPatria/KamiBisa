@@ -2,6 +2,7 @@ package com.example.kamibisa.ui.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -17,7 +18,9 @@ import android.widget.TextView;
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Donation;
 import com.example.kamibisa.ui.view.fragment.createDonation.BeneficiaryDataFragment;
+import com.example.kamibisa.ui.view.fragment.createDonation.DonationConfirmationFragment;
 import com.example.kamibisa.ui.view.fragment.createDonation.DonationDataFragment;
+import com.example.kamibisa.ui.view.fragment.createDonation.DonationSuccessFragment;
 import com.example.kamibisa.ui.view.fragment.createDonation.IntroductionDataFragment;
 import com.example.kamibisa.ui.view.fragment.createDonation.PersonalDataFragment;
 import com.example.kamibisa.ui.viewmodel.CreateDonationViewModel;
@@ -37,6 +40,7 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
     private Fragment beneficiaryDataFragment;
     private Fragment donationDataFragment;
     private Fragment introductionDataFragment;
+    private Fragment confirmationFragment;
 
     private TextView cancelButton;
 
@@ -65,6 +69,7 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
         this.beneficiaryDataFragment = BeneficiaryDataFragment.newInstance();
         this.donationDataFragment = DonationDataFragment.newInstance();
         this.introductionDataFragment = IntroductionDataFragment.newInstance();
+        this.confirmationFragment = DonationConfirmationFragment.newInstance();
 
         this.cancelButton = this.findViewById(R.id.tv_createDonation_cancel);
 
@@ -95,7 +100,7 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
             @Override
             public void onChanged(Boolean aBoolean) {
                 if(aBoolean) {
-                    finish();
+                    gotoSuccessFragment();
                 }
             }
         });
@@ -129,6 +134,16 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
         this.cancelButton.setOnClickListener(this);
     }
 
+    private void gotoSuccessFragment() {
+        FragmentManager fm = this.getSupportFragmentManager();
+        for(Integer i = 0; i < fm.getBackStackEntryCount(); ++i) {
+            fm.popBackStack();
+        }
+
+        String link = newDonation.getLink();
+        changeMenu(DonationSuccessFragment.newInstance(link), Boolean.FALSE);
+    }
+
     public void showProgressBar() {
         progressBarCreateDonation.setVisibility(View.VISIBLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
@@ -154,6 +169,10 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
 
     public Fragment getIntroductionDataFragment() {
         return introductionDataFragment;
+    }
+
+    public Fragment getConfirmationFragment() {
+        return confirmationFragment;
     }
 
     public Donation getNewDonation() {
