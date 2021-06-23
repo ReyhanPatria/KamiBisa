@@ -76,7 +76,7 @@
                     android:hint="Akun Media Sosial - Username"
                     android:textColorHint="@color/primary_dark_blue"
                     android:textColor="@color/primary_dark_blue"
-                    android:lines="5"
+                    android:lines="3"
                     android:inputType="textMultiLine"
                     android:gravity="top|left"
                     android:scrollHorizontally="false"

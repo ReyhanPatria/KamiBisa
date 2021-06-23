@@ -33,7 +33,6 @@
             android:id="@+id/cv_bloodDonation_bloodDonationList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="20dp"
             app:cardCornerRadius="20dp"
             android:backgroundTint="@color/primary_light_blue">

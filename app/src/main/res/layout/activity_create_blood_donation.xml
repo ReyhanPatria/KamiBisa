@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.view.activity.CreateBloodDonationActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:background="@color/primary_light_blue"
+        android:paddingHorizontal="19dp"
+        android:paddingVertical="19dp">
+
+        <EditText
+            android:id="@+id/edt_createBloodDonation_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary_blue"
+            android:paddingHorizontal="9dp"
+            android:hint="Search"
+            android:textColorHint="@color/white"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="9dp"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_createBloodDonation_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_bar"
+        android:layout_marginHorizontal="30dp"/>
+
+    <TextView
+        android:id="@+id/tv_createBloodDonation_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/fl_createBloodDonation_fragment"
+        android:text="BATAL MENCARI PENDONOR DARAH"
+        android:textColor="@color/pink"
+        android:textSize="14sp"/>
+
+    <ProgressBar
+        android:id="@+id/pb_createBloodDonation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

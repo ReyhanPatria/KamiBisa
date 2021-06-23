@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.view.fragment.createBloodDonation.BloodDonationBeneficiaryDataFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Isi data diri di bawah ini untuk mencari pendonor darah"
+        android:textSize="32sp"
+        android:textColor="@color/primary_dark_blue"
+        android:textStyle="bold"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="480dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:text="Untuk siapa kamu mencari pendonor darah?"
+                android:textColor="@color/primary_dark_blue"/>
+
+            <Spinner
+                android:id="@+id/spin_bloodDonation_beneficiaryData_relation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_box"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:text="Siapa nama penerima bantuan?"
+                android:textColor="@color/primary_dark_blue"/>
+
+            <EditText
+                android:id="@+id/edt_bloodDonation_beneficiaryData_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_box"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:hint="Nama penerima bantuan"
+                android:textColorHint="@color/primary_dark_blue"
+                android:textColor="@color/primary_dark_blue"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:text="Golongan darah penerima bantuan"
+                android:textColor="@color/primary_dark_blue"/>
+
+            <Spinner
+                android:id="@+id/spin_bloodDonation_beneficiaryData_bloodType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_box"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Sampai kapan donor darah mu berlangsung?"
+                android:textColor="@color/primary_dark_blue" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Perkiraan tanggal berakhir dapat diubah lagi nanti"
+                android:textColor="@color/primary_dark_blue"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/edt_bloodDonation_beneficiaryData_finishedDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_box"
+                android:drawableEnd="@drawable/ic_arrow_down"
+                android:drawablePadding="10dp"
+                android:focusable="false"
+                android:hint="Pilih tanggal akhir penggalangan dana"
+                android:inputType="date"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/primary_dark_blue"
+                android:textColorHint="@color/primary_dark_blue"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:text="Lokasi penerima bantuan saat ini"
+                android:textColor="@color/primary_dark_blue"/>
+
+            <EditText
+                android:id="@+id/edt_bloodDonation_beneficiaryData_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_box"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:hint="Lokasi"
+                android:textColorHint="@color/primary_dark_blue"
+                android:textColor="@color/primary_dark_blue"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:text="Siapa nama penerima bantuan?"
+                android:textColor="@color/primary_dark_blue"/>
+
+            <EditText
+                android:id="@+id/edt_bloodDonation_beneficiaryData_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_box"
+                android:drawableStart="@drawable/ic_kamibisa_web_link"
+                android:drawablePadding="10dp"
+                android:hint="contoh: bantukafi"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/primary_dark_blue"
+                android:textColorHint="@color/primary_dark_blue"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_bloodDonation_beneficiaryData_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="50"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="8dp"
+            android:backgroundTint="@color/white"
+            android:text="SEBELUMNYA"
+            android:textSize="18sp"
+            android:textColor="@color/primary_blue"
+            android:textStyle="bold"
+            app:cornerRadius="50dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_bloodDOnation_beneficiaryData_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="50"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="8dp"
+            android:backgroundTint="@color/primary_light_blue"
+            android:text="SELANJUTNYA"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="50dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

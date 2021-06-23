@@ -1,7 +1,9 @@
 package com.example.kamibisa.data.repository;
 
 import com.example.kamibisa.data.database.dao.BloodDonationDao;
+import com.example.kamibisa.data.model.BloodDonation;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -19,6 +21,10 @@ public class BloodDonationRepository {
             instance = new BloodDonationRepository(bloodDonationDao);
         }
         return instance;
+    }
+
+    public Task<DocumentReference> insertBloodDonation(BloodDonation bloodDonation) {
+        return bloodDonationDao.insertBloodDonation(bloodDonation);
     }
 
     public Task<QuerySnapshot> getAllBloodDonation() {

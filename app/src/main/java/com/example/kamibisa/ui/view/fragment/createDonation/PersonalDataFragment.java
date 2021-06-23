@@ -21,11 +21,6 @@ import com.example.kamibisa.data.model.Donation;
 import com.example.kamibisa.ui.view.activity.CreateDonationActivity;
 import com.google.android.material.button.MaterialButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PersonalDataFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PersonalDataFragment extends Fragment implements View.OnClickListener {
     private static String TAG = "PersonalDataFragment";
 

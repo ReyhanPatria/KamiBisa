@@ -10,14 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KamiBisa"
         android:windowSoftInputMode="adjustPan">
-        <activity android:name=".ui.view.activity.CreateBloodDonationActivity"></activity>
-        <activity android:name=".ui.view.activity.DonateActivity" />
-        <activity android:name=".ui.view.activity.DonationActivity" />
-        <activity android:name=".ui.view.activity.CreateDonationActivity" />
-        <activity android:name=".ui.view.activity.HomeActivity" />
-        <activity android:name=".ui.view.activity.RegisterActivity" />
-        <activity android:name=".ui.view.activity.LoginActivity" />
-        <activity android:name=".ui.view.activity.LandingActivity">
+        <activity android:name=".ui.view.activity.CreateBloodDonationActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.view.activity.DonateActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.view.activity.DonationActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.view.activity.CreateDonationActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.view.activity.HomeActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.view.activity.RegisterActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.view.activity.LoginActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.view.activity.LandingActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,12 +1,19 @@
 package com.example.kamibisa.data.model;
 
+import android.util.Log;
+import android.util.Patterns;
+
 import com.google.firebase.firestore.Exclude;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.time.Instant;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class BloodDonation {
+    private static String TAG = "BloodDonation";
+
     @Exclude
     private String id;
 
@@ -41,6 +48,44 @@ public class BloodDonation {
         this.createdDate = createdDate;
         this.finishedDate = finishedDate;
     }
+
+    public static Boolean isCreatorNameValid(String creatorName) {
+        return !creatorName.isEmpty();
+    }
+
+    public static Boolean isPhoneValid(String phone) {
+        return (!phone.isEmpty() && Patterns.PHONE.matcher(phone).matches());
+    }
+
+    public static Boolean isSocialMediaValid(String socialMedia) {
+        return !socialMedia.isEmpty();
+    }
+
+    public static Boolean isBeneficiaryNameValid(String beneficiaryName) {
+        return !beneficiaryName.isEmpty();
+    }
+
+    public static Boolean isLinkValid(String link) {
+        return !link.isEmpty();
+    }
+
+    public static Boolean isLocationValid(String location) {
+        return !location.isEmpty();
+    }
+
+    public static Boolean isFinishedDateValid(Date finishedDate) {
+        boolean isValid = false;
+        try {
+            String todayString = DateFormat.getDateInstance().format(Date.from(Instant.now()));
+            Date today = DateFormat.getDateInstance().parse(todayString);
+            isValid = finishedDate.after(today);
+        }
+        catch(ParseException e) {
+            Log.e(TAG, e.getMessage());
+        }
+        return isValid;
+    }
+
 
     @Exclude
     public String getId() {

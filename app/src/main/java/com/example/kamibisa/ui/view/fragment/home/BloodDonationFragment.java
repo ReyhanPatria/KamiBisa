@@ -1,5 +1,6 @@
 package com.example.kamibisa.ui.view.fragment.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.BloodDonation;
+import com.example.kamibisa.ui.view.activity.CreateBloodDonationActivity;
 import com.example.kamibisa.ui.view.activity.HomeActivity;
 import com.example.kamibisa.ui.view.recyclerview.BloodDonationRecyclerViewAdapter;
 import com.example.kamibisa.ui.view.recyclerview.DonationRecyclerViewAdapter;
@@ -28,7 +30,7 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
-public class BloodDonationFragment extends Fragment {
+public class BloodDonationFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "BloodDonationFragment";
 
     private View rootView;
@@ -65,9 +67,11 @@ public class BloodDonationFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         initializeViewModel();
         observeVariables();
         initializeUi();
+        setOnClickListeners();
     }
 
     private void initializeUi() {
@@ -114,5 +118,17 @@ public class BloodDonationFragment extends Fragment {
         bloodDonationListAdapter = new BloodDonationRecyclerViewAdapter(requireContext(),
                 bloodDonationViewModel.getBloodDonationList().getValue());
         bloodDonationListRecyclerView.setAdapter(bloodDonationListAdapter);
+    }
+
+    private void setOnClickListeners() {
+        this.createBloodDonationButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == createBloodDonationButton.getId()) {
+            Intent newIntent = new Intent(this.requireContext(), CreateBloodDonationActivity.class);
+            this.requireActivity().startActivity(newIntent);
+        }
     }
 }
