@@ -93,7 +93,6 @@ public class CreateBloodDonationActivity extends AppCompatActivity implements Vi
             @Override
             public void onChanged(Boolean aBoolean) {
                 if(aBoolean) {
-                    // TODO: finish activity and move to success page
                     gotoSuccessPage();
                 }
             }

@@ -83,7 +83,7 @@ public class BloodDonationRecyclerViewAdapter extends RecyclerView.Adapter<Blood
                 @Override
                 public void onClick(View v) {
                     // TODO:
-                    // Move to donation page
+                    // Move to blood donation page
 //                    Intent newIntent = new Intent(v.getContext(), BloodDonationActivity.class);
 //                    newIntent.putExtra("bloodDonationId", bloodDonationId);
 //                    v.getContext().startActivity(newIntent);
