@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.BloodDonation;
+import com.example.kamibisa.ui.view.activity.BloodDonationPageActivity;
 
 import java.util.List;
 
@@ -82,11 +83,10 @@ public class BloodDonationRecyclerViewAdapter extends RecyclerView.Adapter<Blood
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // TODO:
                     // Move to blood donation page
-//                    Intent newIntent = new Intent(v.getContext(), BloodDonationActivity.class);
-//                    newIntent.putExtra("bloodDonationId", bloodDonationId);
-//                    v.getContext().startActivity(newIntent);
+                    Intent newIntent = new Intent(v.getContext(), BloodDonationPageActivity.class);
+                    newIntent.putExtra("bloodDonationId", bloodDonationId);
+                    v.getContext().startActivity(newIntent);
                 }
             });
         }
