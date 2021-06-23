@@ -46,6 +46,7 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation);
+
         initializeViewModel();
         observeVariables();
         initializeUi();
@@ -58,7 +59,7 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
     private void initializeUi() {
         this.backButton = this.findViewById(R.id.btn_donation_back);
 
-        this.titleTextView = this.findViewById(R.id.tv_donation_title);
+        this.titleTextView = this.findViewById(R.id.tv_bloodDonation_title);
         this.gatheredAmountTextView = this.findViewById(R.id.tv_donation_gatheredAmount);
         this.targetAmountTextView = this.findViewById(R.id.tv_donation_targetAmount);
         this.creatorNameTextView = this.findViewById(R.id.tv_donation_creatorName);

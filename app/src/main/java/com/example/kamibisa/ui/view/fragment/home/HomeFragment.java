@@ -81,7 +81,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void observeVariables() {
-        // TODO: Set variables to be observed
         homeViewModel.getIsUpdating().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
