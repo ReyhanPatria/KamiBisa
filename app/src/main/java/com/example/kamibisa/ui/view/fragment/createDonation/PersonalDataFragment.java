@@ -20,6 +20,7 @@ import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Donation;
 import com.example.kamibisa.ui.view.activity.CreateDonationActivity;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class PersonalDataFragment extends Fragment implements View.OnClickListener {
     private static String TAG = "PersonalDataFragment";
@@ -131,6 +132,7 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
     public Donation setDonationPersonalData() {
         Donation newDonation = ((CreateDonationActivity) this.requireActivity()).getNewDonation();
 
+        String creatorId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String creatorName = creatorNameEditText.getText().toString();
         String institution = institutionEditText.getText().toString();
         String socialMedia = socialMediaEditText.getText().toString();
@@ -155,6 +157,7 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
             warningMessage = "Creator description cannot be empty";
         }
         else {
+            newDonation.setCreatorId(creatorId);
             newDonation.setCreatorName(creatorName);
             newDonation.setInstitution(institution);
             newDonation.setSocialMedia(socialMedia);
