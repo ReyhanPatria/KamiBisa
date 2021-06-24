@@ -18,12 +18,17 @@ import android.widget.TextView;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Donation;
+import com.example.kamibisa.data.model.DonationRecord;
 import com.example.kamibisa.ui.viewmodel.DonateViewModel;
 import com.example.kamibisa.ui.viewmodel.DonationViewModel;
 import com.example.kamibisa.ui.viewmodel.factory.DonateViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.DonationViewModelFactory;
 import com.example.kamibisa.utils.InjectionUtilities;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.time.Instant;
+import java.util.Date;
 
 public class DonateActivity extends AppCompatActivity implements View.OnClickListener {
     private static String TAG = "DonateActivity";
@@ -149,12 +154,19 @@ public class DonateActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void donateToDonation() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String donationId = this.getIntent().getStringExtra("donationId");
-
         String amountString = amountEditText.getText().toString();
         Integer amount = Integer.parseInt(amountString);
+        Date donationMadeDate = Date.from(Instant.now());
 
-        donateViewModel.donateToDonation(donationId, amount);
+        DonationRecord newDonationRecord = new DonationRecord();
+        newDonationRecord.setUserId(userId);
+        newDonationRecord.setDonationId(donationId);
+        newDonationRecord.setDonationAmount(amount);
+        newDonationRecord.setDonationMadeDate(donationMadeDate);
+
+        donateViewModel.donateToDonation(newDonationRecord);
     }
 
     public void showProgressBar() {
