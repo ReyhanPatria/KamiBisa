@@ -7,6 +7,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.List;
+
 public class DonationRepository {
     private static DonationRepository instance;
 
@@ -33,6 +35,14 @@ public class DonationRepository {
 
     public Task<DocumentSnapshot> getDonation(String id) {
         return donationDao.getDonation(id);
+    }
+
+    public Task<QuerySnapshot> getDonationListBasedOnCreatorId(String creatorId) {
+        return donationDao.getDonationListBasedOnCreatorId(creatorId);
+    }
+
+    public Task<QuerySnapshot> getDonationsIn(List<String> donationIdList) {
+        return donationDao.getDonationsIn(donationIdList);
     }
 
     public Task<QuerySnapshot> getAllDonation() {

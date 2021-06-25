@@ -128,6 +128,8 @@ public class CreateBloodDonationActivity extends AppCompatActivity implements Vi
     }
 
     public void gotoSuccessPage() {
+        this.cancelButton.setVisibility(View.GONE);
+
         FragmentManager fm = this.getSupportFragmentManager();
         for(Integer i = 0; i < fm.getBackStackEntryCount(); ++i) {
             fm.popBackStack();
