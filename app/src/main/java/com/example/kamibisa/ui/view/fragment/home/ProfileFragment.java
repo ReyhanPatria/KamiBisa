@@ -1,5 +1,6 @@
 package com.example.kamibisa.ui.view.fragment.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +16,12 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.User;
 import com.example.kamibisa.ui.view.activity.HomeActivity;
+import com.example.kamibisa.ui.view.activity.LandingActivity;
 import com.example.kamibisa.ui.viewmodel.ProfileViewModel;
 import com.example.kamibisa.ui.viewmodel.factory.ProfileViewModelFactory;
 import com.example.kamibisa.utils.InjectionUtilities;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "ProfileFragment";
@@ -132,7 +135,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.btn_profile_logOut:
-                // TODO: Create function to log out
+                logOut();
                 break;
 
             default:
@@ -146,5 +149,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         this.userNameTextView.setText(userName);
         this.userPhoneTextView.setText(phone);
+    }
+
+    public void logOut() {
+        FirebaseAuth.getInstance().signOut();
+
+        Intent newIntent = new Intent(this.requireContext(), LandingActivity.class);
+        newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(newIntent);
+
+        this.requireActivity().finish();
     }
 }
