@@ -28,6 +28,16 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
 
+            <TextView
+                android:id="@+id/tv_history_emptyOwnedDonation"
+                android:layout_marginTop="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kamu belum memulai donasi"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textColor="@color/primary_dark_blue"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_history_ownedDonationList"
                 android:layout_width="wrap_content"
@@ -61,6 +71,16 @@
                 android:text="Donasi yang telah kamu berikan"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_history_emptyGivenDonation"
+                android:layout_marginTop="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kamu belum memberikan ke donasi"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textColor="@color/primary_dark_blue"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_history_givenDonationList"

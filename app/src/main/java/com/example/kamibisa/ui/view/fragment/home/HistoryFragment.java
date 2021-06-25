@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Donation;
@@ -36,6 +37,9 @@ public class HistoryFragment extends Fragment {
 
     private RecyclerView givenDonationListRecyclerView;
     private DonationRecyclerViewAdapter givenDonationListAdapter;
+
+    private TextView emptyOwnedDonationTextView;
+    private TextView emptyGivenDonationTextView;
 
     public HistoryFragment() {
         // Required empty public constructor
@@ -100,6 +104,13 @@ public class HistoryFragment extends Fragment {
                 .observe(getViewLifecycleOwner(), new Observer<List<Donation>>() {
                     @Override
                     public void onChanged(List<Donation> donations) {
+                        if(donations.isEmpty()) {
+                            emptyOwnedDonationTextView.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            emptyOwnedDonationTextView.setVisibility(View.GONE);
+                        }
+
                         ownedDonationListAdapter.setDonationList(donations);
                         ownedDonationListAdapter.notifyDataSetChanged();
                     }
@@ -109,6 +120,13 @@ public class HistoryFragment extends Fragment {
                 .observe(getViewLifecycleOwner(), new Observer<List<Donation>>() {
                     @Override
                     public void onChanged(List<Donation> donations) {
+                        if(donations.isEmpty()) {
+                            emptyGivenDonationTextView.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            emptyGivenDonationTextView.setVisibility(View.GONE);
+                        }
+
                         givenDonationListAdapter.setDonationList(donations);
                         givenDonationListAdapter.notifyDataSetChanged();
                     }
@@ -116,6 +134,12 @@ public class HistoryFragment extends Fragment {
     }
 
     public void initializeUi() {
+        this.emptyOwnedDonationTextView = rootView.findViewById(R.id.tv_history_emptyOwnedDonation);
+        this.emptyOwnedDonationTextView.setVisibility(View.GONE);
+
+        this.emptyGivenDonationTextView = rootView.findViewById(R.id.tv_history_emptyGivenDonation);
+        this.emptyGivenDonationTextView.setVisibility(View.GONE);
+
         this.initializeDonationRecyclerView();
     }
 
