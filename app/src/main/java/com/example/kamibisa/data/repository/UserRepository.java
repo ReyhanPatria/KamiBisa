@@ -4,6 +4,7 @@ import com.example.kamibisa.data.database.dao.UserDao;
 import com.example.kamibisa.data.model.User;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class UserRepository {
     private static UserRepository instance;
@@ -19,6 +20,10 @@ public class UserRepository {
             instance = new UserRepository(userDao);
         }
         return instance;
+    }
+
+    public Task<DocumentSnapshot> getUserData(String id) {
+        return userDao.getUserData(id);
     }
 
     public Task<Void> insertUserData(User user) {
