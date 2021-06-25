@@ -11,6 +11,7 @@
     <color name="primary_dark_blue">#18526d</color>
     <color name="primary_light_blue">#FF5CBCEA</color>
     <color name="secondary_light_blue">#cde8f5</color>
+    <color name="background_light_blue">#525cbcea</color>
     <color name="transparent_0.25">#40FFFFFF</color>
     <color name="pink">#FFFF8360</color>
 </resources>
