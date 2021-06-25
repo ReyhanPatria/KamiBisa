@@ -13,6 +13,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 
 public class DonationDao {
     private FirebaseFirestore firestore;
@@ -43,5 +44,17 @@ public class DonationDao {
     public Task<Void> donateToDonation(String donationId, Integer amount) {
         return firestore.collection("donations").document(donationId)
                 .update("gatheredAmount", FieldValue.increment(amount));
+    }
+
+    public Task<QuerySnapshot> getDonationListBasedOnCreatorId(String creatorId) {
+        return firestore.collection("donations")
+                .whereEqualTo("creatorId", creatorId)
+                .get();
+    }
+
+    public Task<QuerySnapshot> getDonationsIn(List<String> donationIdList) {
+        return firestore.collection("donations")
+                .whereIn("__name__", donationIdList)
+                .get();
     }
 }

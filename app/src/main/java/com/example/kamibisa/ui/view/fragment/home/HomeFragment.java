@@ -72,7 +72,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void initializeUi() {
-        initializeCharityRecyclerView();
+        initializeDonationRecyclerView();
     }
 
     private void initializeViewModel() {
@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment {
                 .observe(getViewLifecycleOwner(), new Observer<List<Donation>>() {
                     @Override
                     public void onChanged(List<Donation> charities) {
-                        urgentDonationListAdapter.setCharityList(charities);
+                        urgentDonationListAdapter.setDonationList(charities);
                         urgentDonationListAdapter.notifyDataSetChanged();
 
                         Log.d(TAG, String.format("Urgent charity list changed. %d items in list",
@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment {
                 .observe(getViewLifecycleOwner(), new Observer<List<Donation>>() {
                     @Override
                     public void onChanged(List<Donation> charities) {
-                        selectedDonationListAdapter.setCharityList(charities);
+                        selectedDonationListAdapter.setDonationList(charities);
                         selectedDonationListAdapter.notifyDataSetChanged();
 
                         Log.d(TAG, String.format("Selected charity list changed. %d items in list",
@@ -118,7 +118,7 @@ public class HomeFragment extends Fragment {
                 });
     }
 
-    public void initializeCharityRecyclerView() {
+    public void initializeDonationRecyclerView() {
         // Urgent charity list
         urgentDonationListRecyclerView = rootView.findViewById(R.id.rv_home_urgentCharityList);
 

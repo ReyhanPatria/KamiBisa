@@ -4,6 +4,7 @@ import com.example.kamibisa.data.database.dao.DonationRecordDao;
 import com.example.kamibisa.data.model.DonationRecord;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class DonationRecordRepository {
     private static DonationRecordRepository instance;
@@ -23,5 +24,9 @@ public class DonationRecordRepository {
 
     public Task<DocumentReference> insertDonationRecord(DonationRecord donationRecord) {
         return this.donationRecordDao.insertDonationRecord(donationRecord);
+    }
+
+    public Task<QuerySnapshot> getDonationRecordBasedOnUserId(String userId) {
+        return this.donationRecordDao.getDonationRecordBasedOnUserId(userId);
     }
 }

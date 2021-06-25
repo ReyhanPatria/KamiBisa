@@ -56,7 +56,7 @@ public class DonationRecyclerViewAdapter extends RecyclerView.Adapter<DonationRe
         return donationList.size();
     }
 
-    public void setCharityList(List<Donation> donationList) {
+    public void setDonationList(List<Donation> donationList) {
         this.donationList = donationList;
     }
 
