@@ -1,5 +1,6 @@
 package com.example.kamibisa.ui.view.fragment.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Donation;
+import com.example.kamibisa.ui.view.activity.DonationInformationActivity;
 import com.example.kamibisa.ui.view.activity.HomeActivity;
 import com.example.kamibisa.ui.view.recyclerview.DonationRecyclerViewAdapter;
 import com.example.kamibisa.ui.viewmodel.HomeViewModel;
@@ -152,7 +154,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(v.getId() == this.informationButton.getId()) {
-            // TODO: Start donation information activity
+            gotoDonationInformationPage();
         }
+    }
+
+    private void gotoDonationInformationPage() {
+        Intent newIntent = new Intent(this.requireContext(), DonationInformationActivity.class);
+        this.requireActivity().startActivity(newIntent);
     }
 }

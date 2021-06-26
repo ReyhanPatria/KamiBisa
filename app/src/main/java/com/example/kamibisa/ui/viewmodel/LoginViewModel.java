@@ -52,6 +52,7 @@ public class LoginViewModel extends ViewModel {
 
                         if(task.isSuccessful()) {
                             isLoginCompleted.setValue(Boolean.TRUE);
+                            isLoginCompleted.setValue(Boolean.FALSE);
 
                             Log.d(TAG, "Login successful");
                         }
