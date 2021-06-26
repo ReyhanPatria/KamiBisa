@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,15 +25,11 @@ import com.example.kamibisa.utils.InjectionUtilities;
 
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
     public static String TAG = "HomeFragment";
 
     private View rootView;
+
     private HomeViewModel homeViewModel;
 
     private RecyclerView urgentDonationListRecyclerView;
@@ -40,6 +37,8 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView selectedDonationListRecyclerView;
     private DonationRecyclerViewAdapter selectedDonationListAdapter;
+
+    private ImageButton informationButton;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -66,12 +65,15 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         initializeViewModel();
         observeVariables();
         initializeUi();
+        setOnClickListeners();
     }
 
     private void initializeUi() {
+        this.informationButton = rootView.findViewById(R.id.btn_home_information);
         initializeDonationRecyclerView();
     }
 
@@ -141,5 +143,16 @@ public class HomeFragment extends Fragment {
         selectedDonationListAdapter = new DonationRecyclerViewAdapter(requireContext(),
                 homeViewModel.getSelectedDonationList().getValue());
         selectedDonationListRecyclerView.setAdapter(selectedDonationListAdapter);
+    }
+
+    private void setOnClickListeners() {
+        this.informationButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == this.informationButton.getId()) {
+            // TODO: Start donation information activity
+        }
     }
 }
