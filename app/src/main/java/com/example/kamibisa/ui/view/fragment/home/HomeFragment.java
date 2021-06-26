@@ -20,11 +20,13 @@ import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Donation;
 import com.example.kamibisa.ui.view.activity.DonationInformationActivity;
 import com.example.kamibisa.ui.view.activity.HomeActivity;
+import com.example.kamibisa.ui.view.recyclerview.CategoryRecyclerViewAdapter;
 import com.example.kamibisa.ui.view.recyclerview.DonationRecyclerViewAdapter;
 import com.example.kamibisa.ui.viewmodel.HomeViewModel;
 import com.example.kamibisa.ui.viewmodel.factory.HomeViewModelFactory;
 import com.example.kamibisa.utils.InjectionUtilities;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -34,13 +36,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private HomeViewModel homeViewModel;
 
+    private ImageButton informationButton;
+
     private RecyclerView urgentDonationListRecyclerView;
     private DonationRecyclerViewAdapter urgentDonationListAdapter;
 
     private RecyclerView selectedDonationListRecyclerView;
     private DonationRecyclerViewAdapter selectedDonationListAdapter;
 
-    private ImageButton informationButton;
+    private RecyclerView categoryListRecyclerView;
+    private CategoryRecyclerViewAdapter categoryListAdapter;
+
+    private RecyclerView categoryDonationListRecyclerView;
+    private DonationRecyclerViewAdapter categoryDonationListAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -104,6 +112,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         urgentDonationListAdapter.setDonationList(charities);
                         urgentDonationListAdapter.notifyDataSetChanged();
 
+                        categoryDonationListAdapter.setDonationList(charities);
+                        categoryDonationListAdapter.notifyDataSetChanged();
+
                         Log.d(TAG, String.format("Urgent charity list changed. %d items in list",
                                 urgentDonationListRecyclerView.getAdapter().getItemCount()));
                     }
@@ -124,7 +135,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     public void initializeDonationRecyclerView() {
         // Urgent charity list
-        urgentDonationListRecyclerView = rootView.findViewById(R.id.rv_home_urgentCharityList);
+        urgentDonationListRecyclerView = rootView.findViewById(R.id.rv_home_urgentDonationList);
 
         LinearLayoutManager urgentLayoutManager = new LinearLayoutManager(requireContext(),
                 LinearLayoutManager.HORIZONTAL, false);
@@ -135,8 +146,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         urgentDonationListRecyclerView.setAdapter(urgentDonationListAdapter);
 
 
+
         // Selected charity list
-        selectedDonationListRecyclerView = rootView.findViewById(R.id.rv_home_selectedCharityList);
+        selectedDonationListRecyclerView = rootView.findViewById(R.id.rv_home_selectedDonationList);
 
         LinearLayoutManager selectedLayoutManager = new LinearLayoutManager(requireContext(),
                 LinearLayoutManager.HORIZONTAL, false);
@@ -145,6 +157,34 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         selectedDonationListAdapter = new DonationRecyclerViewAdapter(requireContext(),
                 homeViewModel.getSelectedDonationList().getValue());
         selectedDonationListRecyclerView.setAdapter(selectedDonationListAdapter);
+
+
+
+        // Category list
+        categoryListRecyclerView = rootView.findViewById(R.id.rv_home_categoryList);
+
+        LinearLayoutManager categoryLayoutManager = new LinearLayoutManager(requireContext(),
+                LinearLayoutManager.HORIZONTAL, false);
+        categoryListRecyclerView.setLayoutManager(categoryLayoutManager);
+
+        String[] categoryList = getResources().getStringArray(R.array.category_search_choices);
+        categoryListAdapter = new CategoryRecyclerViewAdapter(requireContext(),
+                Arrays.asList(categoryList));
+        categoryListRecyclerView.setAdapter(categoryListAdapter);
+
+
+
+        // Category charity list
+        categoryDonationListRecyclerView = rootView.findViewById(R.id.rv_home_categoryDonationList);
+
+        LinearLayoutManager categoryDonationLayoutManager = new LinearLayoutManager(requireContext(),
+                LinearLayoutManager.VERTICAL, false);
+        categoryDonationListRecyclerView.setLayoutManager(categoryDonationLayoutManager);
+
+        // TODO: Change donation list
+        categoryDonationListAdapter = new DonationRecyclerViewAdapter(requireContext(),
+                homeViewModel.getUrgentDonationList().getValue());
+        categoryDonationListRecyclerView.setAdapter(categoryDonationListAdapter);
     }
 
     private void setOnClickListeners() {

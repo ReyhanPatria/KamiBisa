@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category_search_choices">
+        <item>Pendidikan</item>
+        <item>Lingkungan</item>
+        <item>Kegiatan Sosial</item>
+        <item>Lainnya</item>
+    </string-array>
+</resources>
