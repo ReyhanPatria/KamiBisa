@@ -31,11 +31,11 @@ public class DonationDao {
         return firestore.collection("donations").document(id).get();
     }
 
-    public Task<QuerySnapshot> getAllDonation() {
+    public Task<QuerySnapshot> getAllDonationList() {
         return firestore.collection("donations").get();
     }
 
-    public Task<QuerySnapshot> getCurrentDonation() {
+    public Task<QuerySnapshot> getActiveDonationList() {
         return firestore.collection("donations")
                 .whereGreaterThan("finishedDate", Date.from(Instant.now()))
                 .get();
@@ -49,6 +49,12 @@ public class DonationDao {
     public Task<QuerySnapshot> getDonationListBasedOnCreatorId(String creatorId) {
         return firestore.collection("donations")
                 .whereEqualTo("creatorId", creatorId)
+                .get();
+    }
+
+    public Task<QuerySnapshot> getDonationListBasedOnCategory(String category) {
+        return firestore.collection("donations")
+                .whereEqualTo("category", category)
                 .get();
     }
 

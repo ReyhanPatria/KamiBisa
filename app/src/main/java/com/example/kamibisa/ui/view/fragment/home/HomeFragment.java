@@ -1,5 +1,6 @@
 package com.example.kamibisa.ui.view.fragment.home;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,13 +22,11 @@ import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Donation;
 import com.example.kamibisa.ui.view.activity.DonationInformationActivity;
 import com.example.kamibisa.ui.view.activity.HomeActivity;
-import com.example.kamibisa.ui.view.recyclerview.CategoryRecyclerViewAdapter;
 import com.example.kamibisa.ui.view.recyclerview.DonationRecyclerViewAdapter;
 import com.example.kamibisa.ui.viewmodel.HomeViewModel;
 import com.example.kamibisa.ui.viewmodel.factory.HomeViewModelFactory;
 import com.example.kamibisa.utils.InjectionUtilities;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -44,11 +44,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private RecyclerView selectedDonationListRecyclerView;
     private DonationRecyclerViewAdapter selectedDonationListAdapter;
 
-    private RecyclerView categoryListRecyclerView;
-    private CategoryRecyclerViewAdapter categoryListAdapter;
-
     private RecyclerView categoryDonationListRecyclerView;
     private DonationRecyclerViewAdapter categoryDonationListAdapter;
+
+    private LinearLayout pendidikanCategoryLinearLayout;
+    private LinearLayout lingkunganCategoryLinearLayout;
+    private LinearLayout kegiatanSosialCategoryLinearLayout;
+    private LinearLayout lainnyaCategoryLinearLayout;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -84,6 +86,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void initializeUi() {
         this.informationButton = rootView.findViewById(R.id.btn_home_information);
+
+        this.pendidikanCategoryLinearLayout = rootView.findViewById(R.id.ll_home_category_pendidikan);
+        this.lingkunganCategoryLinearLayout = rootView.findViewById(R.id.ll_home_category_lingkungan);
+        this.kegiatanSosialCategoryLinearLayout = rootView.findViewById(R.id.ll_home_category_kegiatanSosial);
+        this.lainnyaCategoryLinearLayout = rootView.findViewById(R.id.ll_home_category_lainnya);
+
         initializeDonationRecyclerView();
     }
 
@@ -112,9 +120,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         urgentDonationListAdapter.setDonationList(charities);
                         urgentDonationListAdapter.notifyDataSetChanged();
 
-                        categoryDonationListAdapter.setDonationList(charities);
-                        categoryDonationListAdapter.notifyDataSetChanged();
-
                         Log.d(TAG, String.format("Urgent charity list changed. %d items in list",
                                 urgentDonationListRecyclerView.getAdapter().getItemCount()));
                     }
@@ -123,12 +128,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         homeViewModel.getSelectedDonationList()
                 .observe(getViewLifecycleOwner(), new Observer<List<Donation>>() {
                     @Override
-                    public void onChanged(List<Donation> charities) {
-                        selectedDonationListAdapter.setDonationList(charities);
+                    public void onChanged(List<Donation> donations) {
+                        selectedDonationListAdapter.setDonationList(donations);
                         selectedDonationListAdapter.notifyDataSetChanged();
 
                         Log.d(TAG, String.format("Selected charity list changed. %d items in list",
                                 selectedDonationListRecyclerView.getAdapter().getItemCount()));
+                    }
+                });
+
+        homeViewModel.getCategoryDonationList()
+                .observe(getViewLifecycleOwner(), new Observer<List<Donation>>() {
+                    @Override
+                    public void onChanged(List<Donation> donations) {
+                        categoryDonationListAdapter.setDonationList(donations);
+                        categoryDonationListAdapter.notifyDataSetChanged();
                     }
                 });
     }
@@ -160,20 +174,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
 
 
-        // Category list
-        categoryListRecyclerView = rootView.findViewById(R.id.rv_home_categoryList);
-
-        LinearLayoutManager categoryLayoutManager = new LinearLayoutManager(requireContext(),
-                LinearLayoutManager.HORIZONTAL, false);
-        categoryListRecyclerView.setLayoutManager(categoryLayoutManager);
-
-        String[] categoryList = getResources().getStringArray(R.array.category_search_choices);
-        categoryListAdapter = new CategoryRecyclerViewAdapter(requireContext(),
-                Arrays.asList(categoryList));
-        categoryListRecyclerView.setAdapter(categoryListAdapter);
-
-
-
         // Category charity list
         categoryDonationListRecyclerView = rootView.findViewById(R.id.rv_home_categoryDonationList);
 
@@ -181,20 +181,47 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 LinearLayoutManager.VERTICAL, false);
         categoryDonationListRecyclerView.setLayoutManager(categoryDonationLayoutManager);
 
-        // TODO: Change donation list
         categoryDonationListAdapter = new DonationRecyclerViewAdapter(requireContext(),
-                homeViewModel.getUrgentDonationList().getValue());
+                homeViewModel.getCategoryDonationList().getValue());
         categoryDonationListRecyclerView.setAdapter(categoryDonationListAdapter);
     }
 
     private void setOnClickListeners() {
         this.informationButton.setOnClickListener(this);
+
+        this.pendidikanCategoryLinearLayout.setOnClickListener(this);
+        this.lingkunganCategoryLinearLayout.setOnClickListener(this);
+        this.kegiatanSosialCategoryLinearLayout.setOnClickListener(this);
+        this.lainnyaCategoryLinearLayout.setOnClickListener(this);
     }
 
     @Override
+    @SuppressLint("NonConstantResourceId")
     public void onClick(View v) {
-        if(v.getId() == this.informationButton.getId()) {
-            gotoDonationInformationPage();
+        switch(v.getId()) {
+            case R.id.btn_home_information:
+                gotoDonationInformationPage();
+                break;
+
+            case R.id.ll_home_category_pendidikan:
+                homeViewModel.updateCategoryDonationList("Pendidikan");
+                break;
+
+            case R.id.ll_home_category_lingkungan:
+                homeViewModel.updateCategoryDonationList("Lingkungan");
+
+                break;
+
+            case R.id.ll_home_category_kegiatanSosial:
+                homeViewModel.updateCategoryDonationList("Kegiatan Sosial");
+                break;
+
+            case R.id.ll_home_category_lainnya:
+                homeViewModel.updateCategoryDonationList("*");
+                break;
+
+            default:
+                break;
         }
     }
 
