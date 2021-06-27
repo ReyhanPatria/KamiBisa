@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.User;
 import com.example.kamibisa.ui.view.activity.EditProfileActivity;
+import com.example.kamibisa.ui.view.activity.FaqActivity;
 import com.example.kamibisa.ui.view.activity.HomeActivity;
 import com.example.kamibisa.ui.view.activity.LandingActivity;
 import com.example.kamibisa.ui.viewmodel.ProfileViewModel;
@@ -135,7 +136,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.btn_profile_faq:
-                // TODO: Create function to start faq activity
+                gotoFaqActivity();
                 break;
 
             case R.id.btn_profile_contactUs:
@@ -161,6 +162,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     public void gotoEditProfileActivity() {
         Intent newIntent = new Intent(this.requireContext(), EditProfileActivity.class);
+        this.requireActivity().startActivity(newIntent);
+    }
+
+    public void gotoFaqActivity() {
+        Intent newIntent = new Intent(this.requireContext(), FaqActivity.class);
         this.requireActivity().startActivity(newIntent);
     }
 
