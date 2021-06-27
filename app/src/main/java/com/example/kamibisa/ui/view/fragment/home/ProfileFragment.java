@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.User;
+import com.example.kamibisa.ui.view.activity.ContactUsActivity;
 import com.example.kamibisa.ui.view.activity.EditProfileActivity;
 import com.example.kamibisa.ui.view.activity.FaqActivity;
 import com.example.kamibisa.ui.view.activity.HomeActivity;
@@ -140,7 +141,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.btn_profile_contactUs:
-                // TODO: Create function to start contact us activity
+                gotoContactUsActivity();
                 break;
 
             case R.id.btn_profile_logOut:
@@ -167,6 +168,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     public void gotoFaqActivity() {
         Intent newIntent = new Intent(this.requireContext(), FaqActivity.class);
+        this.requireActivity().startActivity(newIntent);
+    }
+
+    public void gotoContactUsActivity() {
+        Intent newIntent = new Intent(this.requireContext(), ContactUsActivity.class);
         this.requireActivity().startActivity(newIntent);
     }
 
