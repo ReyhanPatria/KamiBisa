@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.User;
+import com.example.kamibisa.ui.view.activity.EditProfileActivity;
 import com.example.kamibisa.ui.view.activity.HomeActivity;
 import com.example.kamibisa.ui.view.activity.LandingActivity;
 import com.example.kamibisa.ui.viewmodel.ProfileViewModel;
@@ -70,6 +71,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         setOnClickListeners();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        profileViewModel.updateUserData();
+    }
+
     private void initializeViewModel() {
         ProfileViewModelFactory factory = InjectionUtilities.getInstance()
                 .provideProfileViewModelFactory();
@@ -123,7 +131,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.btn_profile_editProfile:
-                // TODO: Create function to start edit profile activity
+                gotoEditProfileActivity();
                 break;
 
             case R.id.btn_profile_faq:
@@ -149,6 +157,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         this.userNameTextView.setText(userName);
         this.userPhoneTextView.setText(phone);
+    }
+
+    public void gotoEditProfileActivity() {
+        Intent newIntent = new Intent(this.requireContext(), EditProfileActivity.class);
+        this.requireActivity().startActivity(newIntent);
     }
 
     public void logOut() {

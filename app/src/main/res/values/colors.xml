@@ -14,4 +14,5 @@
     <color name="background_light_blue">#525cbcea</color>
     <color name="transparent_0.25">#40FFFFFF</color>
     <color name="pink">#FFFF8360</color>
+    <color name="text_hint_blue">#99114A66</color>
 </resources>

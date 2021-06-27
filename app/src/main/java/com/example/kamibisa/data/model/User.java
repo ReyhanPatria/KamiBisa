@@ -83,14 +83,18 @@ public class User {
         this.phone = phone;
     }
 
+    public static Boolean isNameValid(String name) {
+        return !name.isEmpty();
+    }
+
     public static Boolean validatePasswordLength(String password) {
         int len = password.length();
         return (10 <= len && len <= 14);
     }
 
     public static Boolean validatePasswordHasDigit(String password) {
-        for(char c: password.toCharArray()) {
-            if(Character.isDigit(c)) {
+        for (char c : password.toCharArray()) {
+            if (Character.isDigit(c)) {
                 return true;
             }
         }

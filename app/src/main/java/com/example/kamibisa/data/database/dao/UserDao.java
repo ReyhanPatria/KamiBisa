@@ -16,7 +16,7 @@ public class UserDao {
         this.firestore = FirebaseFirestore.getInstance();
     }
 
-    public Task<Void> insertUserData(User user) {
+    public Task<Void> setUserData(User user) {
         String id = user.getFirebaseUser().getUid();
         return firestore.collection("users")
                 .document(id)

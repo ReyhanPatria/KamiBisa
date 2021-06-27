@@ -11,6 +11,7 @@ import com.example.kamibisa.ui.viewmodel.factory.CreateBloodDonationViewModelFac
 import com.example.kamibisa.ui.viewmodel.factory.CreateDonationViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.DonateViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.DonationViewModelFactory;
+import com.example.kamibisa.ui.viewmodel.factory.EditProfileViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.HistoryViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.HomeViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.LoginViewModelFactory;
@@ -101,5 +102,11 @@ public class InjectionUtilities {
         UserRepository userRepository = UserRepository.getInstance(
                 Database.getInstance().getUserDao());
         return new ProfileViewModelFactory(userRepository);
+    }
+
+    public EditProfileViewModelFactory provideEditProfileViewModelFactory() {
+        UserRepository userRepository = UserRepository.getInstance(
+                Database.getInstance().getUserDao());
+        return new EditProfileViewModelFactory(userRepository);
     }
 }
