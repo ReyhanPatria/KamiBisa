@@ -74,6 +74,13 @@ public class BloodDonationFragment extends Fragment implements View.OnClickListe
         setOnClickListeners();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        bloodDonationViewModel.updateBloodDonationList();
+    }
+
     private void initializeUi() {
         this.createBloodDonationButton = rootView.findViewById(R.id.btn_bloodDonation_createBloodDonation);
         initializeBloodDonationRecyclerView();

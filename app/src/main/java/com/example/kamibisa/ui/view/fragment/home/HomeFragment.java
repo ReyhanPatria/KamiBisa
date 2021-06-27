@@ -84,6 +84,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         setOnClickListeners();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        homeViewModel.updateDonationList();
+    }
+
     private void initializeUi() {
         this.informationButton = rootView.findViewById(R.id.btn_home_information);
 

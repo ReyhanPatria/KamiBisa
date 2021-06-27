@@ -15,11 +15,6 @@ import com.example.kamibisa.R;
 import com.example.kamibisa.ui.view.activity.CreateDonationActivity;
 import com.google.android.material.button.MaterialButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CreateDonationFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CreateDonationFragment extends Fragment implements View.OnClickListener {
     public static String TAG = "CreateDonationFragment";
 
