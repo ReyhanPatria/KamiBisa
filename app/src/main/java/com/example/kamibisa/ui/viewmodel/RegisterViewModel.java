@@ -65,7 +65,7 @@ public class RegisterViewModel extends ViewModel {
     public void insertUserData(User user) {
         this.isRegisterComplete.setValue(Boolean.TRUE);
 
-        userRepository.insertUserData(user)
+        userRepository.setUserData(user)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

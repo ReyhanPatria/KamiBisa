@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.view.activity.FaqActivity">
+
+    <ImageButton
+        android:id="@+id/btn_faq_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_back_button"
+        android:layout_margin="6dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Frequently Asked Questions (FAQ)"
+        android:textSize="24sp"
+        android:textColor="@color/primary_dark_blue"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="14dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/ic_question_background"
+                    android:drawablePadding="12dp"
+                    android:text="Bagaimana langkah-langkah/guide melakukan donasi?"
+                    android:textSize="18sp"
+                    android:textColor="@color/primary_dark_blue"
+                    app:drawableLeftCompat="@drawable/ic_q" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/ic_answer_background"
+                    android:drawablePadding="12dp"
+                    android:text="Bisa dilihat di Donation Guide"
+                    android:textSize="18sp"
+                    android:textColor="@color/pink"
+                    app:drawableLeftCompat="@drawable/ic_a" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/ic_question_background"
+                    android:drawablePadding="12dp"
+                    android:text="Berapa minimal donasi?"
+                    android:textSize="18sp"
+                    android:textColor="@color/primary_dark_blue"
+                    app:drawableLeftCompat="@drawable/ic_q" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/ic_answer_background"
+                    android:drawablePadding="12dp"
+                    android:text="Rp. 10.000,-"
+                    android:textSize="18sp"
+                    android:textColor="@color/pink"
+                    app:drawableLeftCompat="@drawable/ic_a" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/ic_question_background"
+                    android:drawablePadding="12dp"
+                    android:text="Bagaimana cara saya membuat donasi di aplikasi KamiBisa?"
+                    android:textSize="18sp"
+                    android:textColor="@color/primary_dark_blue"
+                    app:drawableLeftCompat="@drawable/ic_q" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/ic_answer_background"
+                    android:drawablePadding="12dp"
+                    android:text="Klik tombol ‘mulai galang dana’"
+                    android:textSize="18sp"
+                    android:textColor="@color/pink"
+                    app:drawableLeftCompat="@drawable/ic_a" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/ic_question_background"
+                    android:drawablePadding="12dp"
+                    android:text="Bagaimana cara menghubungi admin aplikasi KamiBisa ?"
+                    android:textSize="18sp"
+                    android:textColor="@color/primary_dark_blue"
+                    app:drawableLeftCompat="@drawable/ic_q" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/ic_answer_background"
+                    android:drawablePadding="12dp"
+                    android:text="Anda bisa menghubungi kami melalui 0819284748 atau mengirimkan email ke aplikasikamibisa@gmail.com"
+                    android:textSize="18sp"
+                    android:textColor="@color/pink"
+                    app:drawableLeftCompat="@drawable/ic_a" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -18,16 +18,18 @@ public class User {
     @Exclude
     private FirebaseUser firebaseUser;
 
+    @Exclude
+    private String id;
+
     private String username;
     private String email;
     private Date dob;
     private String phone;
 
+    public User() {
+        // Required empty constructor;
+    }
 
-
-
-
-    // NON-STATIC FUNCTIONS
     public User(String username, String email, Date dob, String phone) {
         this.username = username;
         this.email = email;
@@ -35,13 +37,12 @@ public class User {
         this.phone = phone;
     }
 
-
-
-
-
-    // SETTER & GETTER
     @Exclude
     public FirebaseUser getFirebaseUser() { return firebaseUser; }
+
+    public String getId() {
+        return id;
+    }
 
     public String getUsername() {
         return username;
@@ -62,6 +63,10 @@ public class User {
     @Exclude
     public void setFirebaseUser(FirebaseUser firebaseUser) { this.firebaseUser = firebaseUser; }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -78,19 +83,18 @@ public class User {
         this.phone = phone;
     }
 
+    public static Boolean isNameValid(String name) {
+        return !name.isEmpty();
+    }
 
-
-
-
-    // VALIDATION FUNCTIONS
     public static Boolean validatePasswordLength(String password) {
         int len = password.length();
         return (10 <= len && len <= 14);
     }
 
     public static Boolean validatePasswordHasDigit(String password) {
-        for(char c: password.toCharArray()) {
-            if(Character.isDigit(c)) {
+        for (char c : password.toCharArray()) {
+            if (Character.isDigit(c)) {
                 return true;
             }
         }
