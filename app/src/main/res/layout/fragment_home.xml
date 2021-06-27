@@ -134,6 +134,7 @@
                             android:orientation="vertical">
 
                             <ImageButton
+                                android:id="@+id/btn_home_category_pendidikan"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/ic_pendidikan"
@@ -157,6 +158,7 @@
                             android:orientation="vertical">
 
                             <ImageButton
+                                android:id="@+id/btn_home_category_lingkungan"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/ic_lingkungan"
@@ -180,6 +182,7 @@
                             android:orientation="vertical">
 
                             <ImageButton
+                                android:id="@+id/btn_home_category_kegiatanSosial"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/ic_kegiatan_sosial"
@@ -203,6 +206,7 @@
                             android:orientation="vertical">
 
                             <ImageButton
+                                android:id="@+id/btn_home_category_lainnya"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/ic_lainnya"

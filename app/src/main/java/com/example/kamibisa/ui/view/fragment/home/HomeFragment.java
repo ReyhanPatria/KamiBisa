@@ -52,6 +52,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private LinearLayout kegiatanSosialCategoryLinearLayout;
     private LinearLayout lainnyaCategoryLinearLayout;
 
+    private ImageButton pendidikanCategoryButton;
+    private ImageButton lingkunganCategoryButton;
+    private ImageButton kegiatanSosialCategoryButton;
+    private ImageButton lainnyaCategoryButton;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -98,6 +103,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         this.lingkunganCategoryLinearLayout = rootView.findViewById(R.id.ll_home_category_lingkungan);
         this.kegiatanSosialCategoryLinearLayout = rootView.findViewById(R.id.ll_home_category_kegiatanSosial);
         this.lainnyaCategoryLinearLayout = rootView.findViewById(R.id.ll_home_category_lainnya);
+
+        this.pendidikanCategoryButton = rootView.findViewById(R.id.btn_home_category_pendidikan);
+        this.lingkunganCategoryButton = rootView.findViewById(R.id.btn_home_category_lingkungan);
+        this.kegiatanSosialCategoryButton = rootView.findViewById(R.id.btn_home_category_kegiatanSosial);
+        this.lainnyaCategoryButton = rootView.findViewById(R.id.btn_home_category_lainnya);
 
         initializeDonationRecyclerView();
     }
@@ -200,6 +210,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         this.lingkunganCategoryLinearLayout.setOnClickListener(this);
         this.kegiatanSosialCategoryLinearLayout.setOnClickListener(this);
         this.lainnyaCategoryLinearLayout.setOnClickListener(this);
+
+        this.pendidikanCategoryButton.setOnClickListener(this);
+        this.lingkunganCategoryButton.setOnClickListener(this);
+        this.kegiatanSosialCategoryButton.setOnClickListener(this);
+        this.lainnyaCategoryButton.setOnClickListener(this);
     }
 
     @Override
@@ -210,19 +225,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 gotoDonationInformationPage();
                 break;
 
+            case R.id.btn_home_category_pendidikan:
             case R.id.ll_home_category_pendidikan:
                 homeViewModel.updateCategoryDonationList("Pendidikan");
                 break;
 
+            case R.id.btn_home_category_lingkungan:
             case R.id.ll_home_category_lingkungan:
                 homeViewModel.updateCategoryDonationList("Lingkungan");
 
                 break;
 
+            case R.id.btn_home_category_kegiatanSosial:
             case R.id.ll_home_category_kegiatanSosial:
                 homeViewModel.updateCategoryDonationList("Kegiatan Sosial");
                 break;
 
+            case R.id.btn_home_category_lainnya:
             case R.id.ll_home_category_lainnya:
                 homeViewModel.updateCategoryDonationList("*");
                 break;
