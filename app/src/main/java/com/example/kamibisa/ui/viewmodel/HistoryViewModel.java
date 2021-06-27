@@ -63,6 +63,11 @@ public class HistoryViewModel extends ViewModel {
         this.givenDonationIdList = new MutableLiveData<List<String>>(new ArrayList<String>());
     }
 
+    public void updateDonationList() {
+        this.updateOwnedDonationList();
+        this.updateGivenDonationList();
+    }
+
     public void updateOwnedDonationList() {
         this.isUpdating.setValue(Boolean.TRUE);
 

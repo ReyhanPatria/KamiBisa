@@ -1,76 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.view.fragment.home.HomeFragment">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_home_urgentCharity"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="20dp"
-        app:cardCornerRadius="20dp"
-        android:backgroundTint="@color/primary_light_blue">
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="18dp"
-            android:orientation="vertical">
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="end">
 
-            <TextView
+            <ImageButton
+                android:id="@+id/btn_home_information"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Penggalangan Dana Mendesak"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:src="@drawable/ic_information"
+                android:background="@color/white"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_home_urgentCharityList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"/>
+        </LinearLayout>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_home_selectedCharity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="20dp"
-        android:layout_below="@+id/cv_home_urgentCharity"
-        app:cardCornerRadius="20dp"
-        android:backgroundTint="@color/primary_light_blue">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_home_urgentDonations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="18dp"
-            android:orientation="vertical">
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="20dp"
+            app:cardCornerRadius="20dp"
+            android:backgroundTint="@color/primary_light_blue">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pilihan KamiBisa"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:padding="18dp"
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_home_selectedCharityList"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Penggalangan Dana Mendesak"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_home_urgentDonationList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_home_selectedDonations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="20dp"
+            app:cardCornerRadius="20dp"
+            android:backgroundTint="@color/primary_light_blue">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"/>
+                android:padding="18dp"
+                android:orientation="vertical">
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pilihan KamiBisa"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
-    </androidx.cardview.widget.CardView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_home_selectedDonationList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"/>
 
-</RelativeLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_home_categoryDonations"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="20dp"
+            app:cardCornerRadius="20dp"
+            android:backgroundTint="@color/primary_light_blue">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="18dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pilihan Category KamiBisa"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp">
+
+                        <LinearLayout
+                            android:id="@+id/ll_home_category_pendidikan"
+                            android:layout_width="92dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+
+                            <ImageButton
+                                android:id="@+id/btn_home_category_pendidikan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_pendidikan"
+                                android:backgroundTint="@color/primary_light_blue"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Pendidikan"
+                                android:textColor="@color/white"
+                                android:textAlignment="center"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_home_category_lingkungan"
+                            android:layout_width="92dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+
+                            <ImageButton
+                                android:id="@+id/btn_home_category_lingkungan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_lingkungan"
+                                android:backgroundTint="@color/primary_light_blue"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Lingkungan"
+                                android:textColor="@color/white"
+                                android:textAlignment="center"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_home_category_kegiatanSosial"
+                            android:layout_width="92dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+
+                            <ImageButton
+                                android:id="@+id/btn_home_category_kegiatanSosial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_kegiatan_sosial"
+                                android:backgroundTint="@color/primary_light_blue"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Kegiatan Sosial"
+                                android:textColor="@color/white"
+                                android:textAlignment="center"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_home_category_lainnya"
+                            android:layout_width="92dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:layout_marginHorizontal="4dp"
+                            android:orientation="vertical">
+
+                            <ImageButton
+                                android:id="@+id/btn_home_category_lainnya"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_lainnya"
+                                android:backgroundTint="@color/primary_light_blue"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Lainnya"
+                                android:textColor="@color/white"
+                                android:textAlignment="center"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_home_categoryDonationList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

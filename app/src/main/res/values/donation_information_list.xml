@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="donation_information">
+        <item>
+            Unduh terlebih dahulu aplikasi KamiBisa di HP Anda
+        </item>
+        <item>
+            Pastikan Anda telah register account dan login terlebih dahulu
+        </item>
+        <item>
+            Pada halaman utama, silahkan klik tombol berbentuk centang.
+        </item>
+        <item>
+            Setelah itu klik tombol “Mulai Galang Dana” dan ikuti petunjuk yang diberikan sistem dalam mengisi data yang diminta.
+        </item>
+        <item>
+            Pada akhir pembuatan galang dana, sistem akan memvalidasi supaya galang dana terverifikasi otomatis dan berhasil dibuat.
+        </item>
+        <item>
+            Anda akan menerima notifikasi berhasil begitu galang dana terverifikasi.
+        </item>
+    </string-array>
+</resources>

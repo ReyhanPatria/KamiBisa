@@ -45,4 +45,6 @@
         contoh: Mohon bantuan doa dan donasinya untuk proses kesembuhan buah hati kami, Kafi
     </string>
     <string name="select_payment_method">Pilih metode pembayaran</string>
+    <string name="donation_information_heading">KamiBisa merupakan wadah galang dana dan donasi secara online.</string>
+    <string name="donation_information_subheading">Bagaimana cara membuat donasi melalui KamiBisa?</string>
 </resources>
