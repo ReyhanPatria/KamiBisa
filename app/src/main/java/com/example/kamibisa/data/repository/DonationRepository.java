@@ -41,15 +41,19 @@ public class DonationRepository {
         return donationDao.getDonationListBasedOnCreatorId(creatorId);
     }
 
+    public Task<QuerySnapshot> getDonationListBasedOnCategory(String category) {
+        return donationDao.getDonationListBasedOnCategory(category);
+    }
+
     public Task<QuerySnapshot> getDonationsIn(List<String> donationIdList) {
         return donationDao.getDonationsIn(donationIdList);
     }
 
     public Task<QuerySnapshot> getAllDonation() {
-        return donationDao.getAllDonation();
+        return donationDao.getAllDonationList();
     }
 
-    public Task<QuerySnapshot> getCurrentDonation() {
-        return donationDao.getCurrentDonation();
+    public Task<QuerySnapshot> getActiveDonation() {
+        return donationDao.getActiveDonationList();
     }
 }

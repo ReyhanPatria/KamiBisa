@@ -21,6 +21,7 @@ import com.example.kamibisa.ui.view.fragment.home.HistoryFragment;
 import com.example.kamibisa.ui.view.fragment.home.HomeFragment;
 import com.example.kamibisa.ui.view.fragment.home.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
@@ -40,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         initializeUi();
         setOnClickListeners();
 

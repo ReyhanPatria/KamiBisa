@@ -27,6 +27,7 @@ public class BloodDonationViewModel extends ViewModel {
 
     // Add variables to be observed
     private MutableLiveData<Boolean> isUpdating;
+
     private MutableLiveData<List<BloodDonation>> bloodDonationList;
 
     public BloodDonationViewModel(BloodDonationRepository bloodDonationRepository) {

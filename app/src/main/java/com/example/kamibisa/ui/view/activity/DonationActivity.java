@@ -56,6 +56,14 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
         donationViewModel.loadDonationData(donationId);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        String donationId = this.getIntent().getStringExtra("donationId");
+        donationViewModel.loadDonationData(donationId);
+    }
+
     private void initializeUi() {
         this.backButton = this.findViewById(R.id.btn_donation_back);
 
