@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void setOnClickListeners() {
         backButton.setOnClickListener(this);
         loginButton.setOnClickListener(this);
+        registerTextView.setOnClickListener(this);
     }
 
     private void initializeViewModel() {
