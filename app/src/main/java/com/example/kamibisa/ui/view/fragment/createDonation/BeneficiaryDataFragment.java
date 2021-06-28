@@ -130,6 +130,10 @@ public class BeneficiaryDataFragment extends Fragment implements View.OnClickLis
 
         if(!Donation.isBeneficiaryNameValid(beneficiaryName)) {
             warningMessage = "Beneficiary name cannot be empty";
+
+            if(beneficiaryName.length() > 50) {
+                warningMessage = "Name maximum length is 50";
+            }
         }
         else {
             newDonation.setBeneficiaryName(beneficiaryName);

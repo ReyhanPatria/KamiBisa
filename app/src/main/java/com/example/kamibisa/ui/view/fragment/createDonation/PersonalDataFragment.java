@@ -143,6 +143,10 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
 
         if(!Donation.isCreatorNameValid(creatorName)) {
             warningMessage = "Name cannot be empty";
+
+            if(creatorName.length() > 50) {
+                warningMessage = "Name maximum length is 50";
+            }
         }
         else if(!Donation.isInstitutionValid(institution)) {
             warningMessage = "Institution cannot be empty";
@@ -152,6 +156,10 @@ public class PersonalDataFragment extends Fragment implements View.OnClickListen
         }
         else if(!Donation.isLocationValid(location)) {
             warningMessage = "Location cannot be empty";
+
+            if(location.length() > 50) {
+                warningMessage = "Location maximum length is 50";
+            }
         }
         else if(!Donation.isCreatorDescriptionValid(creatorDescription)) {
             warningMessage = "Creator description cannot be empty";

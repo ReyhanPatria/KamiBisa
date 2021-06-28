@@ -103,6 +103,10 @@ public class BloodDonationCreatorDataFragment extends Fragment implements View.O
 
         if(!BloodDonation.isCreatorNameValid(creatorName)) {
             warningMessage = "Name cannot be empty";
+
+            if(creatorName.length() > 50) {
+                warningMessage = "Name maximum length is 50";
+            }
         }
         else if(!BloodDonation.isPhoneValid(phone)) {
             warningMessage = "Phone number is not valid";

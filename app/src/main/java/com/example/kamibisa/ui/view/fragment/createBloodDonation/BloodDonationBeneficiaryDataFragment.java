@@ -158,12 +158,20 @@ public class BloodDonationBeneficiaryDataFragment extends Fragment implements Vi
 
         if(!BloodDonation.isBeneficiaryNameValid(beneficiaryName)) {
             warningMessage = "Beneficiary name cannot be empty";
+
+            if(beneficiaryName.length() > 50) {
+                warningMessage = "Name maximum length is 50";
+            }
         }
         else if(!BloodDonation.isFinishedDateValid(finishedDate) || !parseDateSuccessful) {
             warningMessage = "Finished date is not valid";
         }
         else if(!BloodDonation.isLocationValid(location)) {
             warningMessage = "Location cannot be empty";
+
+            if(location.length() > 50) {
+                warningMessage = "Location maximum length is 50";
+            }
         }
         else if(!BloodDonation.isLinkValid(link)) {
             warningMessage = "Link cannot be empty";
