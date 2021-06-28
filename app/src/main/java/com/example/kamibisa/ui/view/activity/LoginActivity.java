@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -22,30 +23,40 @@ import com.google.android.material.button.MaterialButton;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     public static String TAG = "LoginActivity";
 
+    private LoginViewModel loginViewModel;
+
     private EditText emailEditText;
     private EditText passwordEditText;
-    private ImageButton backButton;
-    private MaterialButton loginButton;
-    private ProgressBar progressBar;
 
-    private LoginViewModel loginViewModel;
+    private ImageButton backButton;
+
+    private MaterialButton loginButton;
+
+    private TextView registerTextView;
+
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        initializeUiWidgets();
+
+        initializeUi();
         setOnClickListeners();
         initializeViewModel();
         observeVariables();
     }
 
-    private void initializeUiWidgets() {
-        emailEditText = this.findViewById(R.id.edt_login_email);
-        passwordEditText = this.findViewById(R.id.edt_login_password);
-        backButton = this.findViewById(R.id.btn_login_back);
-        loginButton = this.findViewById(R.id.btn_login_login);
-        progressBar = this.findViewById(R.id.pb_login);
+    private void initializeUi() {
+        this.emailEditText = this.findViewById(R.id.edt_login_email);
+        this.passwordEditText = this.findViewById(R.id.edt_login_password);
+
+        this.backButton = this.findViewById(R.id.btn_login_back);
+        this.loginButton = this.findViewById(R.id.btn_login_login);
+
+        this.registerTextView = this.findViewById(R.id.tv_login_register);
+
+        this.progressBar = this.findViewById(R.id.pb_login);
     }
 
     private void setOnClickListeners() {
@@ -96,6 +107,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 login();
                 break;
 
+            case R.id.tv_login_register:
+                gotoRegisterActivity();
+
             default:
                 break;
         }
@@ -115,6 +129,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void login() {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-        loginViewModel.login(email, password);
+
+        if(email.isEmpty()) {
+            emailEditText.setError("Email cannot be empty");
+        }
+        if(password.isEmpty()) {
+            passwordEditText.setError("Password cannot be empty");
+        }
+
+        if(!email.isEmpty() && !password.isEmpty()) {
+            loginViewModel.login(email, password);
+        }
+    }
+
+    private void gotoRegisterActivity() {
+        Intent newIntent = new Intent(this, RegisterActivity.class);
+        this.startActivity(newIntent);
+        this.finish();
     }
 }
