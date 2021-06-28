@@ -90,13 +90,6 @@
                 android:buttonTint="@color/white"
                 android:textSize="11sp"/>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="FORGET PASSWORD"
-                android:textColor="@color/white"
-                android:textAlignment="textEnd"/>
-
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
