@@ -7,14 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.view.activity.LandingActivity"
     android:orientation="vertical"
+    android:background="@color/white"
     android:gravity="center"
     android:paddingVertical="60dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blue_logo" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_landing_register"
         android:layout_width="213dp"
         android:layout_height="56dp"
-        android:layout_marginTop="500dp"
         android:text="REGISTER"
         android:textSize="24sp"
         app:backgroundTint="@color/primary_light_blue"
