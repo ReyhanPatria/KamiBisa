@@ -36,6 +36,7 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
     private TextView titleTextView;
     private TextView gatheredAmountTextView;
     private TextView targetAmountTextView;
+    private TextView daysLeftTextView;
     private TextView creatorNameTextView;
 
     private EditText introductionEditText;
@@ -70,6 +71,7 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
         this.titleTextView = this.findViewById(R.id.tv_bloodDonation_title);
         this.gatheredAmountTextView = this.findViewById(R.id.tv_donation_gatheredAmount);
         this.targetAmountTextView = this.findViewById(R.id.tv_donation_targetAmount);
+        this.daysLeftTextView = this.findViewById(R.id.tv_donation_daysLeft);
         this.creatorNameTextView = this.findViewById(R.id.tv_donation_creatorName);
 
         this.introductionEditText = this.findViewById(R.id.edt_donation_introduction);
@@ -116,12 +118,14 @@ public class DonationActivity extends AppCompatActivity implements View.OnClickL
         String title = donation.getTitle();
         String gatheredAmount = formatNumberToRupiah(donation.getGatheredAmount());
         String targetAmount = formatNumberToRupiah(donation.getTargetAmount());
+        Long daysLeft = donation.getDaysLeft();
         String creatorName = donation.getCreatorName();
         String introduction = donation.getIntroduction();
 
         titleTextView.setText(title);
         gatheredAmountTextView.setText(String.valueOf(gatheredAmount));
         targetAmountTextView.setText(String.valueOf(targetAmount));
+        daysLeftTextView.setText(String.valueOf(daysLeft));
         creatorNameTextView.setText(creatorName);
         introductionEditText.setText(introduction);
     }
