@@ -52,7 +52,7 @@ public class BloodDonationViewModel extends ViewModel {
         isUpdating.setValue(Boolean.TRUE);
 
         // Query all charities from Firestore
-        bloodDonationRepository.getAllBloodDonation().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        bloodDonationRepository.getActiveBloodDonations().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()) {

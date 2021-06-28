@@ -28,7 +28,11 @@ public class BloodDonationRepository {
     }
 
     public Task<QuerySnapshot> getAllBloodDonation() {
-        return bloodDonationDao.getAllBloodDonation();
+        return bloodDonationDao.getAllBloodDonations();
+    }
+
+    public Task<QuerySnapshot> getActiveBloodDonations() {
+        return bloodDonationDao.getActiveBloodDonations();
     }
 
     public Task<DocumentSnapshot> getBloodDonation(String id) {
