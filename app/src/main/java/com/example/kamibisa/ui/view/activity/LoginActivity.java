@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         initializeUiWidgets();
         setOnClickListeners();
         initializeViewModel();
@@ -115,6 +116,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void login() {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-        loginViewModel.login(email, password);
+
+        if(email.isEmpty()) {
+            emailEditText.setError("Email cannot be empty");
+        }
+        if(password.isEmpty()) {
+            passwordEditText.setError("Password cannot be empty");
+        }
+
+        if(!email.isEmpty() && !password.isEmpty()) {
+            loginViewModel.login(email, password);
+        }
     }
 }
