@@ -57,7 +57,8 @@ public class BloodDonation {
     }
 
     public static Boolean isPhoneValid(String phone) {
-        return (!phone.isEmpty() && Patterns.PHONE.matcher(phone).matches());
+        return (!phone.isEmpty() && Patterns.PHONE.matcher(phone).matches()
+                && (phone.length() >= 10 && phone.length() <= 14));
     }
 
     public static Boolean isSocialMediaValid(String socialMedia) {
