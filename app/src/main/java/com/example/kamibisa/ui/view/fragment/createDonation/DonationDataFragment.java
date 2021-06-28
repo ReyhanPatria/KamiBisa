@@ -180,6 +180,13 @@ public class DonationDataFragment extends Fragment implements View.OnClickListen
         else {
             Integer actualTargetAmount = Integer.parseInt(targetAmount);
 
+            if(actualTargetAmount < 500000) {
+                warningMessage = "Target amount minimum is Rp 500.000,-";
+
+                Toast.makeText(requireContext(), warningMessage, Toast.LENGTH_LONG).show();
+                return newDonation;
+            }
+
             newDonation.setTitle(title);
             newDonation.setLink(link);
             newDonation.setTargetAmount(actualTargetAmount);
