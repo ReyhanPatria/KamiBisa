@@ -92,7 +92,7 @@ public class Donation {
         return !link.isEmpty();
     }
 
-    public static Boolean isTargetAmopuntValid(String targetAmount) {
+    public static Boolean isTargetAmountValid(String targetAmount) {
         Integer i = 0;
         try {
             i = Integer.parseInt(targetAmount);
@@ -116,7 +116,7 @@ public class Donation {
     }
 
     public static Boolean isCreatorNameValid(String creatorName) {
-        return !creatorName.isEmpty();
+        return !creatorName.isEmpty() && creatorName.length() <= 50;
     }
 
     public static Boolean isCreatorDescriptionValid(String creatorDescription) {
@@ -141,7 +141,7 @@ public class Donation {
     }
 
     public static Boolean isBeneficiaryNameValid(String beneficiaryName) {
-        return !beneficiaryName.isEmpty();
+        return !beneficiaryName.isEmpty() && beneficiaryName.length() <= 50;
     }
 
     @Exclude

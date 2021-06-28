@@ -168,7 +168,7 @@ public class DonationDataFragment extends Fragment implements View.OnClickListen
         else if(!Donation.isLinkValid(link)) {
             warningMessage = "Link cannot be empty";
         }
-        else if(!Donation.isTargetAmopuntValid(targetAmount)) {
+        else if(!Donation.isTargetAmountValid(targetAmount)) {
             warningMessage = "Target amount is not valid";
         }
         else if(!Donation.isDescriptionValid(description)) {

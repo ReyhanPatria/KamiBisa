@@ -53,7 +53,7 @@ public class BloodDonation {
     }
 
     public static Boolean isCreatorNameValid(String creatorName) {
-        return !creatorName.isEmpty();
+        return !creatorName.isEmpty() && creatorName.length() <= 50;
     }
 
     public static Boolean isPhoneValid(String phone) {
@@ -66,7 +66,7 @@ public class BloodDonation {
     }
 
     public static Boolean isBeneficiaryNameValid(String beneficiaryName) {
-        return !beneficiaryName.isEmpty();
+        return !beneficiaryName.isEmpty() && beneficiaryName.length() <= 50;
     }
 
     public static Boolean isLinkValid(String link) {
