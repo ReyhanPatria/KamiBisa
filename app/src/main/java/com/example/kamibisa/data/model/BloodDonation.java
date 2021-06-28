@@ -74,7 +74,7 @@ public class BloodDonation {
     }
 
     public static Boolean isLocationValid(String location) {
-        return !location.isEmpty();
+        return !location.isEmpty() && location.length() <= 50;
     }
 
     public static Boolean isFinishedDateValid(Date finishedDate) {

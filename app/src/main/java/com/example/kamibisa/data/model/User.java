@@ -84,7 +84,7 @@ public class User {
     }
 
     public static Boolean isNameValid(String name) {
-        return !name.isEmpty();
+        return !name.isEmpty() && name.length() <= 50;
     }
 
     public static Boolean validatePasswordLength(String password) {

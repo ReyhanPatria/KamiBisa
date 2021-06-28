@@ -100,7 +100,7 @@ public class Donation {
         catch(NumberFormatException e) {
             return false;
         }
-        return (i > 0);
+        return (i > 500000);
     }
 
     public static Boolean isDescriptionValid(String description) {
@@ -132,7 +132,7 @@ public class Donation {
     }
 
     public static Boolean isLocationValid(String location) {
-        return !location.isEmpty();
+        return !location.isEmpty() && location.length() <= 50;
     }
 
     public static Boolean isPhoneValid(String phone) {
