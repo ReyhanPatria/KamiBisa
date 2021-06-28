@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kamibisa.R;
 import com.example.kamibisa.data.model.Donation;
@@ -157,8 +158,19 @@ public class DonateActivity extends AppCompatActivity implements View.OnClickLis
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String donationId = this.getIntent().getStringExtra("donationId");
         String amountString = amountEditText.getText().toString();
-        Integer amount = Integer.parseInt(amountString);
         Date donationMadeDate = Date.from(Instant.now());
+
+        if(amountString.isEmpty()) {
+            amountEditText.setError("Amount cannot be empty");
+            return;
+        }
+
+        Integer amount = Integer.parseInt(amountString);
+
+        if(amount < 10000) {
+            amountEditText.setError("Minimum amount is Rp 10.000,-");
+            return;
+        }
 
         DonationRecord newDonationRecord = new DonationRecord();
         newDonationRecord.setUserId(userId);

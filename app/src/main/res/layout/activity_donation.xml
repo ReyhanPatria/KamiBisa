@@ -97,15 +97,31 @@
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tv_donation_daysLeft"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/lr_donation_header"
-                        android:text="92 hari lagi"
-                        android:textSize="16sp"
-                        android:textColor="@color/primary_dark_blue"
-                        android:textAlignment="textEnd"/>
+                        android:gravity="end">
+
+                        <TextView
+                            android:id="@+id/tv_donation_daysLeft"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="92"
+                            android:textSize="16sp"
+                            android:textColor="@color/primary_dark_blue"
+                            android:textAlignment="textEnd"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" hari lagi"
+                            android:textSize="16sp"
+                            android:textColor="@color/primary_dark_blue"
+                            android:textAlignment="textEnd"/>
+
+                    </LinearLayout>
+
 
                 </RelativeLayout>
 
