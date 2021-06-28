@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KamiBisa"
         android:windowSoftInputMode="adjustPan">
-        <activity android:name=".ui.view.activity.ContactUsActivity"></activity>
+        <activity android:name=".ui.view.activity.SearchResultActivity"></activity>
+        <activity android:name=".ui.view.activity.ContactUsActivity" />
         <activity android:name=".ui.view.activity.FaqActivity" />
         <activity android:name=".ui.view.activity.EditProfileActivity" />
         <activity android:name=".ui.view.activity.DonationInformationActivity" />

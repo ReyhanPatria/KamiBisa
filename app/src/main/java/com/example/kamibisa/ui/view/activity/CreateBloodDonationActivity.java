@@ -7,12 +7,14 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.kamibisa.R;
@@ -29,6 +31,8 @@ public class CreateBloodDonationActivity extends AppCompatActivity implements Vi
     private static String TAG = "CreateBloodDonationActivity";
 
     private CreateBloodDonationViewModel createBloodDonationViewModel;
+
+    private SearchView searchView;
 
     private FrameLayout createBloodDonationFrameLayout;
 
@@ -51,6 +55,7 @@ public class CreateBloodDonationActivity extends AppCompatActivity implements Vi
         observeVariables();
         initializeUi();
         setOnClickListeners();
+        setOnQueryListeners();
 
         this.newBloodDonation = new BloodDonation();
 
@@ -58,6 +63,8 @@ public class CreateBloodDonationActivity extends AppCompatActivity implements Vi
     }
 
     private void initializeUi() {
+        this.searchView = this.findViewById(R.id.search_bar);
+
         this.createBloodDonationFrameLayout = this.findViewById(R.id.fl_createBloodDonation_fragment);
 
         this.creatorDataFragment = BloodDonationCreatorDataFragment.newInstance();
@@ -108,6 +115,25 @@ public class CreateBloodDonationActivity extends AppCompatActivity implements Vi
         if(v.getId() == cancelButton.getId()) {
             finish();
         }
+    }
+
+    private void setOnQueryListeners() {
+        this.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent newIntent = new Intent(getApplicationContext(), SearchResultActivity.class);
+                newIntent.putExtra("query", query);
+                startActivity(newIntent);
+                finish();
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     public void changeMenu(Fragment newMenu, Boolean addToBackStack) {

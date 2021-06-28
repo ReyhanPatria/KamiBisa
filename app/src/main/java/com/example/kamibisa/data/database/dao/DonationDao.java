@@ -1,5 +1,7 @@
 package com.example.kamibisa.data.database.dao;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.example.kamibisa.data.model.Donation;
@@ -16,6 +18,8 @@ import java.util.Date;
 import java.util.List;
 
 public class DonationDao {
+    private static final String TAG = "DonationDao";
+
     private FirebaseFirestore firestore;
 
     public DonationDao() {
@@ -55,6 +59,14 @@ public class DonationDao {
     public Task<QuerySnapshot> getDonationListBasedOnCategory(String category) {
         return firestore.collection("donations")
                 .whereEqualTo("category", category)
+                .get();
+    }
+
+    public Task<QuerySnapshot> getDonationListBasedOnTitle(String title) {
+        return firestore.collection("donations")
+                .orderBy("title")
+                .startAt(title.toUpperCase())
+                .endAt(title.toLowerCase() + "\uf8ff")
                 .get();
     }
 

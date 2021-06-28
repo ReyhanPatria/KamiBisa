@@ -7,32 +7,32 @@
     android:background="@color/white"
     tools:context=".ui.view.activity.CreateDonationActivity">
 
-    <RelativeLayout
-        android:id="@+id/search_bar"
+    <LinearLayout
+        android:id="@+id/search_background"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
+        android:layout_height="wrap_content"
         android:background="@color/primary_light_blue"
+        android:orientation="vertical"
         android:paddingHorizontal="19dp"
         android:paddingVertical="19dp">
 
-        <EditText
-            android:id="@+id/edt_home_search"
+        <SearchView
+            android:id="@+id/search_bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:searchIcon="@drawable/ic_search"
+            android:iconifiedByDefault="false"
             android:background="@color/primary_blue"
-            android:paddingHorizontal="9dp"
-            android:hint="Search"
-            android:textColorHint="@color/white"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="9dp"/>
+            android:inputType="text"
+            android:queryHint="Search based on title"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fl_createDonation_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/search_bar"
+        android:layout_below="@+id/search_background"
         android:layout_marginHorizontal="30dp"/>
 
     <TextView

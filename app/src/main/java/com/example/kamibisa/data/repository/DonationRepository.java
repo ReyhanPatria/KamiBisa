@@ -45,6 +45,10 @@ public class DonationRepository {
         return donationDao.getDonationListBasedOnCategory(category);
     }
 
+    public Task<QuerySnapshot> getDonationListBasedOnTitle(String title) {
+        return donationDao.getDonationListBasedOnTitle(title);
+    }
+
     public Task<QuerySnapshot> getDonationsIn(List<String> donationIdList) {
         return donationDao.getDonationsIn(donationIdList);
     }

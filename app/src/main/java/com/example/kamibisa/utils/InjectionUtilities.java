@@ -17,6 +17,7 @@ import com.example.kamibisa.ui.viewmodel.factory.HomeViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.LoginViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.ProfileViewModelFactory;
 import com.example.kamibisa.ui.viewmodel.factory.RegisterViewModelFactory;
+import com.example.kamibisa.ui.viewmodel.factory.SearchResultViewModelFactory;
 
 public class InjectionUtilities {
     public static InjectionUtilities instance;
@@ -108,5 +109,11 @@ public class InjectionUtilities {
         UserRepository userRepository = UserRepository.getInstance(
                 Database.getInstance().getUserDao());
         return new EditProfileViewModelFactory(userRepository);
+    }
+
+    public SearchResultViewModelFactory provideSearchResultViewModelFactory() {
+        DonationRepository donationRepository = DonationRepository.getInstance(
+                Database.getInstance().getDonationDao());
+        return new SearchResultViewModelFactory(donationRepository);
     }
 }
