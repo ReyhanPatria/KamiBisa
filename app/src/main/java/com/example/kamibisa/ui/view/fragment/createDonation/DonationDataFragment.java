@@ -177,6 +177,9 @@ public class DonationDataFragment extends Fragment implements View.OnClickListen
         else if(!Donation.isPhoneValid(phone)) {
             warningMessage = "Phone number is not valid";
         }
+        else if(!Donation.isFinishedDateValid(finishedDate)) {
+            warningMessage = "Finish date is not valid";
+        }
         else {
             Integer actualTargetAmount = Integer.parseInt(targetAmount);
 

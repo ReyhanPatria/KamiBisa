@@ -1,15 +1,20 @@
 package com.example.kamibisa.data.model;
 
+import android.util.Log;
 import android.util.Patterns;
 
 import com.example.kamibisa.R;
 import com.google.firebase.firestore.Exclude;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.time.Instant;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Donation {
+    private static final String TAG = "Donation";
+
     @Exclude
     private String id;
 
@@ -142,6 +147,19 @@ public class Donation {
 
     public static Boolean isBeneficiaryNameValid(String beneficiaryName) {
         return !beneficiaryName.isEmpty() && beneficiaryName.length() <= 50;
+    }
+
+    public static Boolean isFinishedDateValid(Date finishedDate) {
+        boolean isValid = false;
+        try {
+            String todayString = DateFormat.getDateInstance().format(Date.from(Instant.now()));
+            Date today = DateFormat.getDateInstance().parse(todayString);
+            isValid = finishedDate.after(today);
+        }
+        catch(ParseException e) {
+            Log.e(TAG, e.getMessage());
+        }
+        return isValid;
     }
 
     @Exclude
