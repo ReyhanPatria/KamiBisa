@@ -7,12 +7,14 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.kamibisa.R;
@@ -34,6 +36,8 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
 
     private CreateDonationViewModel createDonationViewModel;
 
+    private SearchView searchView;
+
     private FrameLayout createDonationFrameLayout;
 
     private Fragment personalDataFragment;
@@ -52,10 +56,12 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_donation);
-        initializeUi();
-        setOnClickListeners();
+
         initializeViewModel();
         observeVariables();
+        initializeUi();
+        setOnClickListeners();
+        setOnQueryListeners();
 
         newDonation = new Donation();
 
@@ -63,6 +69,8 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
     }
 
     public void initializeUi() {
+        this.searchView = this.findViewById(R.id.search_bar);
+
         this.createDonationFrameLayout = this.findViewById(R.id.fl_createDonation_fragment);
 
         this.personalDataFragment = PersonalDataFragment.newInstance();
@@ -132,6 +140,25 @@ public class CreateDonationActivity extends AppCompatActivity implements View.On
 
     public void setOnClickListeners() {
         this.cancelButton.setOnClickListener(this);
+    }
+
+    private void setOnQueryListeners() {
+        this.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent newIntent = new Intent(getApplicationContext(), SearchResultActivity.class);
+                newIntent.putExtra("query", query);
+                startActivity(newIntent);
+                finish();
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     private void gotoSuccessFragment() {

@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,12 +21,11 @@ import com.example.kamibisa.ui.view.fragment.home.HistoryFragment;
 import com.example.kamibisa.ui.view.fragment.home.HomeFragment;
 import com.example.kamibisa.ui.view.fragment.home.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
 
-    private EditText searchEditText;
+    private SearchView searchView;
     private BottomNavigationView menuNavigationBar;
 
     private Fragment homeFragment;
@@ -44,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
 
         initializeUi();
         setOnClickListeners();
+        setOnQueryListeners();
 
         // Set shown fragment when first created
         changeMenu(homeFragment);
@@ -59,7 +59,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initializeUi() {
-        this.searchEditText = this.findViewById(R.id.edt_home_search);
+        this.searchView = this.findViewById(R.id.search_bar);
+
         this.menuNavigationBar = this.findViewById(R.id.nbr_home_menu);
 
         this.homeFragment = HomeFragment.newInstance();
@@ -113,6 +114,24 @@ public class HomeActivity extends AppCompatActivity {
 
                 changeMenu(targetMenu);
                 return returnValue;
+            }
+        });
+    }
+
+    private void setOnQueryListeners() {
+        this.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent newIntent = new Intent(getApplicationContext(), SearchResultActivity.class);
+                newIntent.putExtra("query", query);
+                startActivity(newIntent);
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
             }
         });
     }
