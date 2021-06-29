@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Isi data di bawah ini untuk galang dana"
-        android:textSize="32sp"
+        android:textSize="26sp"
         android:textColor="@color/primary_dark_blue"
         android:textStyle="bold"/>
 
@@ -93,7 +93,7 @@
             android:layout_marginHorizontal="8dp"
             android:backgroundTint="@color/white"
             android:text="SEBELUMNYA"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textColor="@color/primary_blue"
             android:textStyle="bold"
             app:cornerRadius="50dp"/>
@@ -108,7 +108,7 @@
             android:layout_marginHorizontal="8dp"
             android:backgroundTint="@color/primary_light_blue"
             android:text="SELANJUTNYA"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:cornerRadius="50dp"/>

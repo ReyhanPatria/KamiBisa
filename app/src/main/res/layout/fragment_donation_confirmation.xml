@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Apakah semua informasi yang kamu masukkan sudah benar dan lengkap?"
-        android:textSize="32sp"
+        android:textSize="26sp"
         android:textColor="@color/primary_dark_blue"
         android:textStyle="bold"/>
 
@@ -58,7 +58,7 @@
         android:backgroundTint="@color/white"
         app:strokeWidth="1dp"
         android:text="SEBELUMNYA"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textColor="@color/primary_blue"
         android:textStyle="bold"
         app:cornerRadius="50dp"/>
