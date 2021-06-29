@@ -13,7 +13,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="20dp"
         app:cardCornerRadius="20dp"
-        android:backgroundTint="@color/primary_light_blue">
+        android:backgroundTint="@color/secondary_light_blue">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
         android:layout_marginVertical="20dp"
         android:layout_below="@+id/cv_history_ownedDonation"
         app:cardCornerRadius="20dp"
-        android:backgroundTint="@color/primary_light_blue">
+        android:backgroundTint="@color/secondary_light_blue">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
             app:cardCornerRadius="20dp"
-            android:backgroundTint="@color/primary_light_blue">
+            android:backgroundTint="@color/secondary_light_blue">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
