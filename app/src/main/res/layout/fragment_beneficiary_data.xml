@@ -25,7 +25,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="16dp"
             android:text="Kategori Penggalangan Dana"
             android:textColor="@color/primary_dark_blue"/>
 
@@ -41,7 +42,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="16dp"
             android:text="Untuk siapa kamu menggalang dana?"
             android:textColor="@color/primary_dark_blue"/>
 
@@ -57,7 +59,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="16dp"
             android:text="Siapa nama penerima bantuan?"
             android:textColor="@color/primary_dark_blue"/>
 

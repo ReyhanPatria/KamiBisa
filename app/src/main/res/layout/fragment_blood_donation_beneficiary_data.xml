@@ -27,7 +27,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="16dp"
                 android:text="Untuk siapa kamu mencari pendonor darah?"
                 android:textColor="@color/primary_dark_blue"/>
 
@@ -43,7 +44,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="16dp"
                 android:text="Siapa nama penerima bantuan?"
                 android:textColor="@color/primary_dark_blue"/>
 
@@ -61,7 +63,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="16dp"
                 android:text="Golongan darah penerima bantuan"
                 android:textColor="@color/primary_dark_blue"/>
 
@@ -77,7 +80,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="16dp"
                 android:text="Sampai kapan donor darah mu berlangsung?"
                 android:textColor="@color/primary_dark_blue" />
 
@@ -108,7 +112,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="16dp"
                 android:text="Lokasi penerima bantuan saat ini"
                 android:textColor="@color/primary_dark_blue"/>
 
@@ -126,7 +131,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="16dp"
                 android:text="Siapa nama penerima bantuan?"
                 android:textColor="@color/primary_dark_blue"/>
 
